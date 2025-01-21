@@ -1,0 +1,23 @@
+@use './fonts.scss';
+
+h1 {
+    letter-spacing: 20px;
+    font-family: GOT, Georgia, 'Times New Roman', Times, serif;
+    color: black;
+    text-shadow: 
+    1px 1px 0 #FFF,
+    -1px -1px 0 #FFF,
+    1px -1px 0 #FFF,
+    -1px 1px 0 #FFF;
+}
+
+h2 {
+    font-family: Aquiline, 'Brush Script MT', 'Lucida Handwriting', cursive;
+    font-size: 30px;
+}
+
+p {
+    font-family: IM Fell English, Georgia, 'Times New Roman', Times, serif;
+    font-size: 15px;
+    font-weight: bolder;
+}

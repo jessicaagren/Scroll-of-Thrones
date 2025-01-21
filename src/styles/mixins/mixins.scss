@@ -1,0 +1,10 @@
+@mixin set-background-image ($url, $size){
+    background-image: url($url);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: $size;
+}
+
+@mixin set-background-color($color) {
+    background-color: $color;
+}

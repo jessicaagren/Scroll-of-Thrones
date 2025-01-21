@@ -1,0 +1,50 @@
+@use './styles/mixins/mixins.scss';
+@use './styles/reset/reset.scss';
+@use './styles/typography/font-styling.scss';
+
+html {
+    @include mixins.set-background-color(brown);
+}
+
+body {
+    // @include mixins.set-background-image('./media/Texturelabs_Wood_149L.jpg', cover);
+    @include mixins.set-background-image('./media/Texturelabs_Wood_130L.jpg', cover);
+    display: grid;
+    grid-template-rows: auto 1fr;
+    font-family: IM Fell English, Georgia, 'Times New Roman', Times, serif;
+}
+
+header {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin: 20px;
+}
+
+nav {
+    @include mixins.set-background-image('./media/leather-book.png', cover);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+article {
+    @include mixins.set-background-image('./media/paper-mask-standing.png', cover);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+aside {
+    @include mixins.set-background-image('./media/paper-mask-standing.png', cover);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
