@@ -2,6 +2,11 @@
 @use './styles/reset/reset.scss';
 @use './styles/typography/font-styling.scss';
 
+$white: #fefae0;
+$transparent-white: rgba(254, 250, 224, 0.5);
+$dark-red: #49111c;
+$black: #0a0908;
+
 html {
     @include mixins.set-background-color(brown);
 }
@@ -14,12 +19,12 @@ body {
     font-family: IM Fell English, Georgia, 'Times New Roman', Times, serif;
 }
 
-header {
-    grid-column: 1 / -1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+// header {
+//     grid-column: 1 / -1;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+// }
 
 main {
     display: grid;
@@ -30,13 +35,28 @@ main {
 
 nav {
     @include mixins.set-background-image('./media/leather-book.png', cover);
+    padding-top: 80px;
+    padding-left: 145px;
+    display: flex;
+    // flex-wrap: wrap;
+    flex-direction: column;
+    // justify-content: center;
+    // align-items: center;
+}
+
+.icons {
+    width: fit-content;
+    height: fit-content;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 50%;
+    padding: 15px;
+    background-color: $transparent-white;
 }
 
 article {
-    @include mixins.set-background-image('./media/paper-mask-standing.png', cover);
+    @include mixins.set-background-image('./media/distressed-map.png', contain);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -47,4 +67,21 @@ aside {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#relief {
+    color: $dark-red;
+    text-shadow: 
+        -2px -2px 3px $black,
+        2px 2px 3px $white,
+        0 0 8px rgba(10, 9, 8, 0.4);
+}
+
+
+#relief2 {
+    color: $dark-red;
+    text-shadow: 
+        2px 2px 3px $black,
+        -2px -2px 3px $white,
+        0 0 8px rgba(10, 9, 8, 0.4);
 }
