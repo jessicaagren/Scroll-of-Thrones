@@ -47,6 +47,7 @@ header {
     padding: 15px;
     color: var.$dark-brown;
     @include mixins.box-shadow-embossed(var.$transparent-black);
+
     transition: all 0.2s ease-in-out;
 }
 
@@ -98,10 +99,10 @@ aside {
 }
 
 
-#relief2 {
-    color: var.$dark-red;
-    text-shadow: 
-        2px 2px 3px var.$black,
-        -2px -2px 3px var.$white,
-        0 0 8px rgba(10, 9, 8, 0.4);
-}
+// .relief2 {
+//     color: var.$dark-red;
+//     text-shadow: 
+//         2px 2px 3px var.$black,
+//         -2px -2px 3px var.$white,
+//         0 0 8px rgba(10, 9, 8, 0.4);
+// }
