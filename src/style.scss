@@ -1,15 +1,7 @@
 @use './styles/mixins/mixins.scss';
 @use './styles/reset/reset.scss';
 @use './styles/typography/font-styling.scss';
-
-$white: #fefae0;
-$transparent-white: rgba(254, 250, 224, 0.5);
-$dark-red: #49111c;
-$black: #0a0908;
-
-html {
-    @include mixins.set-background-color(brown);
-}
+@use './styles/variables/var.scss';
 
 body {
     // @include mixins.set-background-image('./media/Texturelabs_Wood_149L.jpg', cover);
@@ -18,13 +10,6 @@ body {
     grid-template-rows: auto 1fr;
     font-family: IM Fell English, Georgia, 'Times New Roman', Times, serif;
 }
-
-// header {
-//     grid-column: 1 / -1;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-// }
 
 main {
     display: grid;
@@ -35,8 +20,7 @@ main {
 
 nav {
     @include mixins.set-background-image('./media/leather-book.png', cover);
-    padding-top: 80px;
-    padding-left: 145px;
+    padding: 5rem 3rem 0 10rem;
     display: flex;
     // flex-wrap: wrap;
     flex-direction: column;
@@ -52,11 +36,15 @@ nav {
     align-items: center;
     border-radius: 50%;
     padding: 15px;
-    background-color: $transparent-white;
+    background-color: var.$transparent-white;
 }
 
 article {
-    @include mixins.set-background-image('./media/distressed-map.png', contain);
+    div {
+        @include mixins.set-background-image('./media/distressed-map.png', cover);
+        width: 100%;
+        height: 100%;
+    }
     display: flex;
     justify-content: center;
     align-items: center;
@@ -69,19 +57,19 @@ aside {
     align-items: center;
 }
 
-#relief {
-    color: $dark-red;
+.relief {
+    color: var.$dark-brown;
     text-shadow: 
-        -2px -2px 3px $black,
-        2px 2px 3px $white,
+        -2px -2px 3px var.$black,
+        2px 2px 3px var.$white,
         0 0 8px rgba(10, 9, 8, 0.4);
 }
 
 
 #relief2 {
-    color: $dark-red;
+    color: var.$dark-red;
     text-shadow: 
-        2px 2px 3px $black,
-        -2px -2px 3px $white,
+        2px 2px 3px var.$black,
+        -2px -2px 3px var.$white,
         0 0 8px rgba(10, 9, 8, 0.4);
 }
