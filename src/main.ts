@@ -26,6 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
         searchElement.addEventListener("click", async () => {
             try {
                 article.style.backgroundImage = "url('./media/backgrounds/paper-mask-standing2.png')";
+                article.innerHTML = "";
                 const input = document.createElement("input");
                 input.type = "text";
                 article.appendChild(input);
