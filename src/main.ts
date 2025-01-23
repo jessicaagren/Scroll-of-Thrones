@@ -22,7 +22,7 @@ import Quote from './types/quoteAPI';
 // TODO lägg till overflow
 
 const flipPageAudio = new Audio('./media/audio/page-flip-47177.mp3');
-const writingAudio = new Audio('./media/audio/pencil-foley-write-2-162851.mp3')
+const writingAudio = new Audio('./media/audio/pencil.mp3')
 
 document.addEventListener("DOMContentLoaded", () => {
     const quotesElement = document.getElementById("quotes");
