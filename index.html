@@ -7,58 +7,58 @@
     <title>Scroll of Thrones</title>
   </head>
   <body>
-    <header></header>
-    <!-- TODO Ta bort grid med header -->
     <main>
-      <!-- TODO Lägg boken i en div??? -->
-      <!-- TODO Inte så många divs!! -->
       <nav>
         <header>
           <img src="/media/icon.png" alt="" width="50px" class="dragon" />
           <h1 class="relief">SCROLL OF THRONES</h1>
         </header>
-        <div id="icon-container">
-          <div class="icons">
+        <ul id="icons-container">
+          <li class="icons-wrapper">
             <img
               src="/media/magnifying-glass-colour.png"
-              alt=""
+              alt="Search"
               width="50px"
               height="auto"
-              id="map-icon" />
-          </div>
-          <div class="icons">
+              class="icons" />
+            <p class="icons-text">Search</p>
+          </li>
+          <li class="icons-wrapper">
             <img
               src="/media/biography-colour.png"
-              alt=""
+              alt="Quotes"
               width="50px"
               height="auto"
-              id="map-icon" />
-          </div>
-          <div class="icons">
+              id="map-icon"
+              class="icons" />
+            <p class="icons-text">Quotes</p>
+          </li>
+          <li class="icons-wrapper">
             <img
               src="/media/old-map-colour.png"
-              alt=""
+              alt="Map"
               width="50px"
               height="auto"
-              id="map-icon" />
-          </div>
-          <div class="icons">
+              id="map-icon"
+              class="icons" />
+            <p class="icons-text">Map</p>
+          </li>
+          <li class="icons-wrapper">
             <img
               src="/media/castle2-colour.png"
-              alt=""
+              alt="Houses"
               width="50px"
               height="auto"
-              id="map-icon" />
-          </div>
-        </div>
+              id="map-icon"
+              class="icons" />
+            <p class="icons-text">Houses</p>
+          </li>
+        </ul>
         <!-- TODO Gör ikoner dynamiska -->
       </nav>
-      <article>
-        <div></div>
-      </article>
-      <aside><div></div></aside>
+      <article></article>
+      <aside></aside>
     </main>
-    <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

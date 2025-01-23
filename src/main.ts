@@ -10,8 +10,6 @@ const scrollIcon = document.getElementById("scroll-icon") as HTMLImageElement;
 mapIcon.addEventListener("click", addMap);
 scrollIcon.addEventListener("click", addScroll);
 
-// TODO GRID är knas, fix plz! Göra om till flex?????
-
 // TODO lägg till DOM för karta + scroll
 
 // TODO testa lägga in karaktärer med DOM
