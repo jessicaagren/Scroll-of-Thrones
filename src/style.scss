@@ -109,3 +109,14 @@ article {
 aside {
     @include mixins.set-background-image('./media/backgrounds/paper-mask-standing.png', contain);
 }
+
+input {
+    all: unset;
+    background-color: var.$white;
+    font-family: IMFellEnglish, Georgia, 'Times New Roman', Times, serif;
+    color: var.$black;
+    height: 2rem;
+    text-indent: 0.3rem;
+    border: var.$black 1px solid;
+    border-radius: 0.5rem;
+}
