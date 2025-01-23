@@ -25,10 +25,14 @@
     align-items: center;
 }
 
-@mixin relief-text( $color){
+@mixin relief-text($color){
     color: $color;
     text-shadow: 
         -2px -2px 3px var.$black,
         2px 2px 3px var.$white,
         0 0 8px rgba(10, 9, 8, 0.4);
+}
+
+@mixin background-drop-shadow() {
+    filter: drop-shadow(-5px 3px 5px #000000);
 }

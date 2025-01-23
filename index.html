@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="jpg" href="/media/icon-white.png" />
+    <link rel="icon" type="jpg" href="/media/icons/icon-white.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Scroll of Thrones</title>
   </head>
@@ -10,22 +10,22 @@
     <main>
       <nav>
         <header>
-          <img src="/media/icon.png" alt="" width="50px" class="dragon" />
+          <img src="/media/icons/icon.png" alt="" width="50px" class="dragon" />
           <h1 class="relief">SCROLL OF THRONES</h1>
         </header>
         <ul id="icons-container">
-          <li class="icons-wrapper">
+          <li class="icons-wrapper" id="search">
             <img
-              src="/media/magnifying-glass-colour.png"
+              src="/media/icons/magnifying-glass-colour.png"
               alt="Search"
               width="50px"
               height="auto"
               class="icons" />
             <p class="icons-text">Search</p>
           </li>
-          <li class="icons-wrapper">
+          <li class="icons-wrapper" id="quotes">
             <img
-              src="/media/biography-colour.png"
+              src="/media/icons/biography-colour.png"
               alt="Quotes"
               width="50px"
               height="auto"
@@ -33,9 +33,9 @@
               class="icons" />
             <p class="icons-text">Quotes</p>
           </li>
-          <li class="icons-wrapper">
+          <li class="icons-wrapper" id="map">
             <img
-              src="/media/old-map-colour.png"
+              src="/media/icons/old-map-colour.png"
               alt="Map"
               width="50px"
               height="auto"
@@ -43,9 +43,9 @@
               class="icons" />
             <p class="icons-text">Map</p>
           </li>
-          <li class="icons-wrapper">
+          <li class="icons-wrapper" id="houses">
             <img
-              src="/media/castle2-colour.png"
+              src="/media/icons/castle2-colour.png"
               alt="Houses"
               width="50px"
               height="auto"
@@ -54,9 +54,9 @@
             <p class="icons-text">Houses</p>
           </li>
         </ul>
-        <!-- TODO Gör ikoner dynamiska -->
+        <!-- TODO Gör ikoner dynamiska? -->
       </nav>
-      <article></article>
+      <article id="quoteArticle"></article>
       <aside></aside>
     </main>
     <script type="module" src="/src/main.ts"></script>

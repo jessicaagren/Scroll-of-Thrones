@@ -5,7 +5,7 @@
 
 body {
     // @include mixins.set-background-image('./media/Texturelabs_Wood_149L.jpg', cover);
-    @include mixins.set-background-image('./media/Texturelabs_Wood_130L.jpg', cover);
+    @include mixins.set-background-image('./media/backgrounds/Texturelabs_Wood_130L.jpg', cover);
     display: flex;
     font-family: IM Fell English, Georgia, 'Times New Roman', Times, serif;
 }
@@ -23,7 +23,8 @@ main {
 }
 
 nav {
-    @include mixins.set-background-image('./media/leather-book.png', contain);
+    @include mixins.set-background-image('./media/backgrounds/leather-book.png', contain);
+    @include mixins.background-drop-shadow();
     display: flex;
     gap: 20px;
     width: 100%;
@@ -62,6 +63,7 @@ li {
     gap: 1rem;
 
     & .icons-wrapper {
+        cursor: pointer;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -93,17 +95,17 @@ li {
     @include mixins.box-shadow-embossed(var.$transparent-black);
 }
 
-article {
-        // @include mixins.set-background-image('./media/distressed-map.png', contain);
-        @include mixins.set-background-image('./media/paper-mask-standing2.png', contain);
-        width: 100%;
-        height: 100%;
+article, aside {
+    @include mixins.background-drop-shadow();
+    width: 100%;
+    height: 100%;
     @include mixins.flex-center();
 }
 
+article {
+    @include mixins.set-background-image('./media/backgrounds/paper-mask-standing2.png', contain);
+}
+
 aside {
-        @include mixins.set-background-image('./media/paper-mask-standing.png', contain);
-        width: 100%;
-        height: 100%;
-    @include mixins.flex-center();
+    @include mixins.set-background-image('./media/backgrounds/paper-mask-standing.png', contain);
 }

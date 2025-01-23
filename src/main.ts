@@ -1,14 +1,7 @@
+import { randomQuote } from './api/quoteAPI';
 import './style.scss';
 
 import Quote from './types/quoteAPI';
-
-const main = document.querySelector("main") as HTMLElement;
-
-const mapIcon = document.getElementById("map-icon") as HTMLImageElement;
-const scrollIcon = document.getElementById("scroll-icon") as HTMLImageElement;
-
-mapIcon.addEventListener("click", addMap);
-scrollIcon.addEventListener("click", addScroll);
 
 // TODO lägg till DOM för karta + scroll
 
@@ -27,3 +20,51 @@ scrollIcon.addEventListener("click", addScroll);
 // TODO Sortera media
 
 // TODO lägg till overflow
+
+const flipPageAudio = new Audio('./media/audio/page-flip-47177.mp3');
+const writingAudio = new Audio('./media/audio/pencil-foley-write-2-162851.mp3')
+
+document.addEventListener("DOMContentLoaded", () => {
+    const quotesElement = document.getElementById("quotes");
+    const article = document.querySelector("article");
+
+    if (quotesElement && article) {
+        quotesElement.addEventListener("click", async () => {
+            try {
+                writingAudio.currentTime = 0;
+                writingAudio.play();
+
+                article.style.backgroundImage = "url('./media/backgrounds/paper-mask-standing2.png')";
+                article.innerHTML = "";
+                const quoteHTML = await randomQuote();
+                article.innerHTML = quoteHTML;
+            } catch (error) {
+                console.error("Fel vid hämtning av citat:", error);
+            }
+        });
+    } else {
+        console.error("Element med ID 'quotes' eller 'article' hittades inte.");
+    }
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const mapElement = document.getElementById("map");
+    const article = document.querySelector("article");
+    
+    if (mapElement && article) {
+        mapElement.addEventListener("click", async () => {
+            try {
+                flipPageAudio.currentTime = 0;
+                flipPageAudio.play();
+
+                article.innerHTML = "";
+                article.style.backgroundImage = "url('./media//backgrounds/distressed-map.png')";
+            } catch (error) {
+                console.error("Fel vid hämtning av karta:", error);
+            }
+        });
+    } else {
+        console.error("Element med ID 'map' eller 'article' hittades inte.");
+    }
+});
