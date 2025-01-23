@@ -25,6 +25,26 @@ const flipPageAudio = new Audio('./media/audio/page-flip-47177.mp3');
 const writingAudio = new Audio('./media/audio/pencil.mp3')
 
 document.addEventListener("DOMContentLoaded", () => {
+    const searchElement = document.getElementById("search");
+    const article = document.querySelector("article");
+
+    if (searchElement && article) {
+        searchElement.addEventListener("click", async () => {
+            try {
+                article.style.backgroundImage = "url('./media/backgrounds/paper-mask-standing2.png')";
+                const input = document.createElement("input");
+                input.type = "text";
+                article.appendChild(input);
+            } catch (error) {
+                console.error("Fel vid hämtning av sökfält:", error);
+            }
+        });
+    } else {
+        console.error("Element med ID 'search' eller 'article' hittades inte.");
+    }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
     const quotesElement = document.getElementById("quotes");
     const article = document.querySelector("article");
 
