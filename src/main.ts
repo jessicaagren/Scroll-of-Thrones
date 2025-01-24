@@ -153,11 +153,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 article.innerHTML = "";
                 article.style.backgroundImage = "url('./media/backgrounds/paper-mask-standing2.png')";
             } catch (error) {
-                console.error("Fel vid hämtning av karta:", error);
+                console.error("Fel vid hämtning av hus:", error);
             }
         });
     } else {
-        console.error("Element med ID 'map' eller 'article' hittades inte.");
+        console.error("Element med ID 'houses' eller 'article' hittades inte.");
     }
 });
 
