@@ -7,7 +7,7 @@ body {
     // @include mixins.set-background-image('./media/Texturelabs_Wood_149L.jpg', cover);
     @include mixins.set-background-image('./media/backgrounds/Texturelabs_Wood_130L.jpg', cover);
     display: flex;
-    font-family: IM Fell English, Georgia, 'Times New Roman', Times, serif;
+    font-family: IMFellEnglish, Georgia, 'Times New Roman', Times, serif;
 }
 
 main {
@@ -116,14 +116,17 @@ aside {
 }
 
 input {
-    background-color: var.$white;
+    background-color: var.$transparent-white;
     font-family: IMFellEnglish, Georgia, 'Times New Roman', Times, serif;
     color: var.$black;
     height: 2rem;
     padding: 0 0.5rem;
-    border: var.$dark-red 1px solid;
+    border: none;
     border-radius: 0.5rem;
-    @include mixins.background-drop-shadow();
+    &:focus {
+        outline: none;
+    }
+    // @include mixins.background-drop-shadow();
 }
 
 p.hourglass {
