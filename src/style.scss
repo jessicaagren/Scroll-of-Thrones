@@ -100,6 +100,10 @@ article, aside {
     width: 100%;
     height: 100%;
     @include mixins.flex-center();
+    flex-direction: column;
+    // & p {
+    //     padding: 5rem;
+    // }
 }
 
 article {
@@ -115,7 +119,18 @@ input {
     font-family: IMFellEnglish, Georgia, 'Times New Roman', Times, serif;
     color: var.$black;
     height: 2rem;
-    text-indent: 0.3rem;
-    border: var.$black 1px solid;
+    padding: 0 0.5rem;
+    border: var.$dark-red 1px solid;
     border-radius: 0.5rem;
+    @include mixins.background-drop-shadow();
+}
+
+// TODO Gör egen hourglass
+p.hourglass {
+	width: 10rem;
+	height: 10rem;
+	background-image: url("./media/assets/hourglass3.gif");
+	background-position: center;
+	background-size: contain;
+    background-repeat: no-repeat;
 }

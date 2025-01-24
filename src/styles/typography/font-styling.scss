@@ -1,4 +1,5 @@
 @use './fonts.scss';
+@use '../variables/var.scss';
 
 h1 {
     font-size: 2rem;
@@ -11,11 +12,13 @@ h1 {
 h2 {
     font-family: Aquiline, 'Brush Script MT', 'Lucida Handwriting', cursive;
     font-size: 1.5rem;
+    color: var.$black;
 }
 
 p {
     font-family: IMFellEnglish, Georgia, 'Times New Roman', Times, serif;
     font-size: 1rem;
     font-weight: bolder;
+    color: var.$black;
 }
 
