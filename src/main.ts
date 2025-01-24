@@ -65,6 +65,7 @@ const writingAudio = new Audio('./media/audio/pencil2.mp3')
 const drawingSwordAudio = new Audio('./media/audio/draw-sword.mp3')
 let soundOn: Boolean = true;
 
+const iconsElements = document.querySelectorAll(".icons");
 
 document.addEventListener("DOMContentLoaded", () => {
     const searchElement = document.getElementById("search") as HTMLElement;
@@ -79,7 +80,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     bellAudio.play();
                 }
 
+                iconsElements.forEach(icon => {
+                    icon.classList.remove("clicked");
+                });
                 searchIcon.classList.add("clicked");
+
                 article.style.backgroundImage = "url('./media/backgrounds/paper-mask-standing2.png')";
                 article.innerHTML = "";
                 const input = document.createElement("input");
@@ -108,7 +113,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 writingAudio.play();
                 }
 
+                iconsElements.forEach(icon => {
+                    icon.classList.remove("clicked");
+                });
                 quotesIcon.classList.add("clicked");
+                
                 article.style.backgroundImage = "url('./media/backgrounds/paper-mask-standing2.png')";
                 article.innerHTML = "";
                 const quoteHTML = await randomQuote();
@@ -136,7 +145,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 flipPageAudio.play();
                 }
 
+                iconsElements.forEach(icon => {
+                    icon.classList.remove("clicked");
+                });
                 mapIcon.classList.add("clicked");
+
                 article.innerHTML = "";
                 article.style.backgroundImage = "url('./media//backgrounds/distressed-map.png')";
             } catch (error) {
@@ -162,7 +175,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 drawingSwordAudio.play();
                 }
 
+                iconsElements.forEach(icon => {
+                    icon.classList.remove("clicked");
+                });
                 housesIcon.classList.add("clicked");
+                
                 article.innerHTML = "";
                 article.style.backgroundImage = "url('./media/backgrounds/paper-mask-standing2.png')";
             } catch (error) {
