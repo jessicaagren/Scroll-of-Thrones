@@ -9,11 +9,11 @@ import Quote from './types/quoteAPI';
 
 // TODO Gör så att sökfält uppdaterar med karaktärer
 
-// TODO Bara namn i mitten och klicka på namnet för att se info om karaktären
-
-// TODO Fixa CSS
+// TODO Bara namn i mitten och klicka på namnet för att se info om karaktären till vänster
 
 // TODO Fixa responsivitet
+
+// TODO Göra alla knappar till en funktion?
 
 // TODO svh lvh och dvh?
 
@@ -23,13 +23,7 @@ import Quote from './types/quoteAPI';
 
 // TODO Lägg upp quotes när kartan visas, med knapp för nytt random quote
 
-// TODO Gör knapp för att kunna stänga av ljud (sound = true, när knapp trycks = false?)
-
-// TODO Gör om Eddard "Ned" Stark till bara Eddard Stark
-
-// TODO Byta färg på knapp när den har tryckts
-
-// TODO Animera plceholder i input?
+// TODO Animera placeholder i input?
 
 // TODO Fixa input så det ser ut som att den "står på pappret", t.ex. med blend mode för bakgrund och samma typsnitt som texten (kanske bara en underline utan border?)
 
@@ -179,7 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     icon.classList.remove("clicked");
                 });
                 housesIcon.classList.add("clicked");
-                
+
                 article.innerHTML = "";
                 article.style.backgroundImage = "url('./media/backgrounds/paper-mask-standing2.png')";
             } catch (error) {
