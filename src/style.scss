@@ -92,8 +92,9 @@ li {
     }
 }
 
-.dragon {
+#dragon {
     border-radius: 50%;
+    width: 3.5rem;
     @include mixins.box-shadow-embossed(var.$transparent-black);
 }
 
@@ -129,8 +130,8 @@ input {
 
 // TODO Gör egen hourglass
 p.hourglass {
-	width: 10rem;
-	height: 10rem;
+    height: 8rem;
+	width: 8rem;
 	background-image: url("./media/assets/hourglass3.gif");
 	background-position: center;
 	background-size: contain;
