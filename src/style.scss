@@ -105,7 +105,7 @@ li {
 #dragon {
     border-radius: 50%;
     width: 3.5rem;
-    @include mixins.box-shadow-embossed(var.$transparent-black);
+    @include mixins.box-shadow-debossed(var.$transparent-black);
 }
 
 article, aside {
