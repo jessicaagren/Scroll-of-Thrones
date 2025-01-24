@@ -67,7 +67,8 @@ let soundOn: Boolean = true;
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    const searchElement = document.getElementById("search");
+    const searchElement = document.getElementById("search") as HTMLElement;
+    const searchIcon = document.getElementById("search-icon") as HTMLElement;
     const article = document.querySelector("article");
 
     if (searchElement && article) {
@@ -78,10 +79,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     bellAudio.play();
                 }
 
+                searchIcon.classList.add("clicked");
                 article.style.backgroundImage = "url('./media/backgrounds/paper-mask-standing2.png')";
                 article.innerHTML = "";
                 const input = document.createElement("input");
                 input.type = "text";
+                input.placeholder = ". . .";
                 article.appendChild(input);
             } catch (error) {
                 console.error("Fel vid hämtning av sökfält:", error);
@@ -94,6 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
     const quotesElement = document.getElementById("quotes");
+    const quotesIcon = document.getElementById("quotes-icon") as HTMLElement;
     const article = document.querySelector("article");
 
     if (quotesElement && article) {
@@ -104,6 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 writingAudio.play();
                 }
 
+                quotesIcon.classList.add("clicked");
                 article.style.backgroundImage = "url('./media/backgrounds/paper-mask-standing2.png')";
                 article.innerHTML = "";
                 const quoteHTML = await randomQuote();
@@ -120,6 +125,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 document.addEventListener("DOMContentLoaded", () => {
     const mapElement = document.getElementById("map");
+    const mapIcon = document.getElementById("map-icon") as HTMLElement;
     const article = document.querySelector("article");
     
     if (mapElement && article) {
@@ -130,6 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 flipPageAudio.play();
                 }
 
+                mapIcon.classList.add("clicked");
                 article.innerHTML = "";
                 article.style.backgroundImage = "url('./media//backgrounds/distressed-map.png')";
             } catch (error) {
@@ -143,17 +150,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    const houseElement = document.getElementById("houses");
+    const housesElement = document.getElementById("houses");
+    const housesIcon = document.getElementById("houses-icon") as HTMLElement;
     const article = document.querySelector("article");
     
-    if (houseElement && article) {
-        houseElement.addEventListener("click", async () => {
+    if (housesElement && article) {
+        housesElement.addEventListener("click", async () => {
             try {
                 if (soundOn === true) {
                 drawingSwordAudio.currentTime = 0;
                 drawingSwordAudio.play();
                 }
 
+                housesIcon.classList.add("clicked");
                 article.innerHTML = "";
                 article.style.backgroundImage = "url('./media/backgrounds/paper-mask-standing2.png')";
             } catch (error) {

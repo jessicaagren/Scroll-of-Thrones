@@ -80,13 +80,25 @@ li {
     @include mixins.flex-center();
     color: var.$dark-brown;
     padding: 1rem;
-    width: 3.5rem;
     border-radius: 50%;
     @include mixins.box-shadow-embossed(var.$transparent-black);
     transition: all 0.2s ease-in-out;
     
     &:hover {
         @include mixins.box-shadow-embossed(var.$transparent-white);
+    }
+    
+    & img {
+        width: 3.5rem;
+
+    }
+}
+
+.icons.clicked {
+    @include mixins.box-shadow-debossed(var.$transparent-black);
+
+    &:hover {
+        @include mixins.box-shadow-debossed(var.$transparent-white);
     }
 }
 

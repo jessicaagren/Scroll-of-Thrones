@@ -11,13 +11,22 @@
     background-color: $color;
 }
 
-@mixin box-shadow-embossed($color){
+@mixin box-shadow-debossed($color){
     box-shadow: 
     -2px -2px 3px var.$black,
     2px 2px 3px var.$white,
     0 0 8px rgba(10, 9, 8, 0.4);
     background-color: $color;
 }
+
+@mixin box-shadow-embossed($color) {
+    box-shadow: 
+        2px 2px 3px var.$black,
+        -2px -2px 3px var.$white,
+        0 0 8px rgba(10, 9, 8, 0.4);
+    background-color: $color;
+}
+
 
 @mixin flex-center(){
     display: flex;
