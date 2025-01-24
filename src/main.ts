@@ -27,6 +27,8 @@ import Quote from './types/quoteAPI';
 
 // TODO Gör om Eddard "Ned" Stark till bara Eddard Stark
 
+// TODO Byta färg på knapp när den har tryckts
+
 // TODO När man trycker på quote visas "Guess the quote!" och Begin. Visa upp ett quote och fyra alternativ på vem som sa det. Fortsätt tills man svarar fel, spara poäng. Varje quote kan bara komma en gång. Alternativ på karaktär väljs från quote-API.
 
 // TODO När man trycker på hus visas "Guess the house" och Begin. Visa upp en karaktär och fyra alternativ på hus. Fortsätt tills man svarar fel, spara poäng. Varje karaktär kan bara komma en gång. Alternativ på karaktär väljs från ASOIAF-API.
@@ -57,6 +59,7 @@ const bellAudio = new Audio('./media/audio/church-bell.mp3')
 const flipPageAudio = new Audio('./media/audio/page-flip.mp3');
 const writingAudio = new Audio('./media/audio/pencil2.mp3')
 const drawingSwordAudio = new Audio('./media/audio/draw-sword.mp3')
+let soundOn: Boolean = true;
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -66,8 +69,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (searchElement && article) {
         searchElement.addEventListener("click", async () => {
             try {
-                bellAudio.currentTime = 0;
-                bellAudio.play();
+                if (soundOn === true) {
+                    bellAudio.currentTime = 0;
+                    bellAudio.play();
+                }
 
                 article.style.backgroundImage = "url('./media/backgrounds/paper-mask-standing2.png')";
                 article.innerHTML = "";
@@ -90,8 +95,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (quotesElement && article) {
         quotesElement.addEventListener("click", async () => {
             try {
+                if (soundOn === true) {
                 writingAudio.currentTime = 0;
                 writingAudio.play();
+                }
 
                 article.style.backgroundImage = "url('./media/backgrounds/paper-mask-standing2.png')";
                 article.innerHTML = "";
@@ -114,8 +121,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (mapElement && article) {
         mapElement.addEventListener("click", async () => {
             try {
+                if (soundOn === true) {
                 flipPageAudio.currentTime = 0;
                 flipPageAudio.play();
+                }
 
                 article.innerHTML = "";
                 article.style.backgroundImage = "url('./media//backgrounds/distressed-map.png')";
@@ -136,8 +145,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (houseElement && article) {
         houseElement.addEventListener("click", async () => {
             try {
+                if (soundOn === true) {
                 drawingSwordAudio.currentTime = 0;
                 drawingSwordAudio.play();
+                }
 
                 article.innerHTML = "";
                 article.style.backgroundImage = "url('./media/backgrounds/paper-mask-standing2.png')";
@@ -147,5 +158,29 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     } else {
         console.error("Element med ID 'map' eller 'article' hittades inte.");
+    }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    const soundElement = document.getElementById("sound");
+
+    if (soundElement) {
+        soundElement.addEventListener("click", () => {
+            try {
+                if (soundElement.style.filter === 'grayscale(1)') {
+                    soundElement.style.filter = 'none';
+                    soundOn = true;
+                    console.log(soundOn);
+                } else {
+                    soundElement.style.filter = 'grayscale(1)';
+                    soundOn = false;
+                    console.log(soundOn);
+                }
+            } catch (error) {
+                console.error("Fel vid klickhantering:", error);
+            }
+        });
+    } else {
+        console.error("Element med ID 'sound' hittades inte.");
     }
 });

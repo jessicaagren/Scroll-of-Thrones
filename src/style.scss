@@ -68,7 +68,7 @@ li {
         display: flex;
         flex-direction: column;
         align-items: center;
-
+        
         & .icons-text {
             margin-top: 0.5rem;
             color: var.$white;
@@ -81,7 +81,8 @@ li {
 .icons {
     @include mixins.flex-center();
     color: var.$dark-brown;
-    padding: 15px;
+    padding: 1rem;
+    width: 3.5rem;
     border-radius: 50%;
     @include mixins.box-shadow-embossed(var.$transparent-black);
     transition: all 0.2s ease-in-out;
@@ -134,4 +135,15 @@ p.hourglass {
 	background-position: center;
 	background-size: contain;
     background-repeat: no-repeat;
+}
+
+#sound {
+    background-color: var.$transparent-white;
+    border-radius: 50%;
+    padding: 0.5rem;
+    width: 2.5rem;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 100;
 }
