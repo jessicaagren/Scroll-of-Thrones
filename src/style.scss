@@ -104,9 +104,9 @@ article, aside {
     height: 100%;
     @include mixins.flex-center();
     flex-direction: column;
-    // & p {
-    //     padding: 5rem;
-    // }
+    & section {
+        padding: 5rem;
+    }
 }
 
 article {
@@ -128,7 +128,6 @@ input {
     @include mixins.background-drop-shadow();
 }
 
-// TODO Gör egen hourglass
 p.hourglass {
     height: 8rem;
 	width: 8rem;

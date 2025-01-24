@@ -16,6 +16,6 @@ export let randomQuoteName = "";
 export const randomQuote = async (): Promise<string> => {
     const quote = await getRandomQuote();
     randomQuoteName = quote.character.name;
-    return `<p>${quote.sentence} - ${quote.character.name}</p>`;
+    return `<section><p>${quote.sentence} - ${quote.character.name}</p></section>`;
 }
 
