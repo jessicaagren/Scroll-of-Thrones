@@ -1,9 +1,5 @@
-import { getRandomQuote } from './api/quoteAPI';
-import { renderQuoteGame, startQuoteGame } from './quoteGame/quoteGame';
+import { startQuoteGame } from './quoteGame/quoteGame';
 import './style.scss';
-
-
-import Quote from './types/quoteAPI';
 
 // TODO testa lägga in karaktärer med DOM
 
