@@ -7,19 +7,11 @@ export const getRandomQuote = async (): Promise<Quote> => {
     if (!response.ok) {
         throw new Error('Något gick fel vid hämtning av citat');
     }
-    const data = await response.json() as Quote;
-    return data;
-}
+    const quote = (await response.json()) as Quote;
 
-export let randomQuoteName = "";
-
-export const randomQuote = async (): Promise<string> => {
-    const quote = await getRandomQuote();
     if (quote.character.name === 'Eddard "Ned" Stark') {
-        randomQuoteName = 'Eddard Stark';
-    } else {
-        randomQuoteName = quote.character.name;
+        quote.character.name = 'Eddard Stark';
     }
-    return `<section><p>${quote.sentence} - ${randomQuoteName}</p></section>`;
-}
 
+    return quote;
+};
