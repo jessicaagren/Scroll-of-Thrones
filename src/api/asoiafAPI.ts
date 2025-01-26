@@ -34,3 +34,29 @@ export const getCharacterByExactName = async (name: string): Promise<AsoiafChara
 // };
 
 // export default createCharacterCard;
+
+// Funktion för att söka efter karaktärsnamn i ASOIAF API
+const searchCharacterByName = async (name: string): Promise<any[]> => {
+    const response = await fetch(`${rooturl}characters`); // Hämta alla karaktärer från API
+
+    if (!response.ok) {
+        throw new Error("Något gick fel vid hämtning av karaktärer."); // Kontrollera om svaret är OK
+    }
+
+    const characters = await response.json(); // Konvertera svaret till JSON
+
+    // Filtrera karaktärer baserat på namn
+    const filteredCharacters = characters.filter((character: { name: string }) => 
+        character.name.toLowerCase().includes(name.toLowerCase()) // Filtrera med case-insensitive
+    );
+
+    return filteredCharacters; // Returnera de filtrerade karaktärerna
+};
+
+// Exempelanvändning
+searchCharacterByName("Eddard").then(filteredCharacters => {
+    console.log(filteredCharacters); // Logga de filtrerade karaktärerna
+}).catch(error => {
+    console.error(error); // Hantera eventuella fel
+});
+

@@ -16,10 +16,18 @@ h2 {
     color: var.$black;
 }
 
-p, input {
+p, input, figcaption {
     font-family: IMFellEnglish, Georgia, 'Times New Roman', Times, serif;
     font-size: 1.2rem;
     font-weight: bolder;
     color: var.$black;
+}
+
+.quote {
+    font-style: italic;
+}
+
+.quote-name {
+    font-family: Aquiline;
 }
 

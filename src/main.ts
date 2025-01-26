@@ -1,5 +1,7 @@
-import { randomQuote } from './api/quoteAPI';
+import { getRandomQuote } from './api/quoteAPI';
+import { renderQuoteGame, startQuoteGame } from './quoteGame/quoteGame';
 import './style.scss';
+
 
 import Quote from './types/quoteAPI';
 
@@ -24,6 +26,8 @@ import Quote from './types/quoteAPI';
 // TODO Lägg upp quotes när kartan visas, med knapp för nytt random quote
 
 // TODO Animera placeholder i input?
+
+// TODO Gör article + aside till funktion för DRY?
 
 // TODO Fixa input så det ser ut som att den "står på pappret", t.ex. med blend mode för bakgrund och samma typsnitt som texten (kanske bara en underline utan border?)
 
@@ -53,6 +57,8 @@ import Quote from './types/quoteAPI';
 //     }
 // };
 
+const article = document.querySelector("article") as HTMLElement;
+const aside = document.querySelector("aside") as HTMLElement;
 const bellAudio = new Audio('./media/audio/church-bell.mp3')
 const flipPageAudio = new Audio('./media/audio/page-flip.mp3');
 const writingAudio = new Audio('./media/audio/pencil2.mp3')
@@ -64,7 +70,6 @@ const iconsElements = document.querySelectorAll(".icons");
 document.addEventListener("DOMContentLoaded", () => {
     const searchElement = document.getElementById("search") as HTMLElement;
     const searchIcon = document.getElementById("search-icon") as HTMLElement;
-    const article = document.querySelector("article");
 
     if (searchElement && article) {
         searchElement.addEventListener("click", async () => {
@@ -81,6 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 article.style.backgroundImage = "url('./media/backgrounds/paper-mask-standing2.png')";
                 article.innerHTML = "";
+                aside.innerHTML ="";
                 const input = document.createElement("input");
                 input.type = "text";
                 input.placeholder = ". . .";
@@ -97,25 +103,26 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
     const quotesElement = document.getElementById("quotes");
     const quotesIcon = document.getElementById("quotes-icon") as HTMLElement;
-    const article = document.querySelector("article");
 
     if (quotesElement && article) {
         quotesElement.addEventListener("click", async () => {
             try {
                 if (soundOn === true) {
-                writingAudio.currentTime = 0;
-                writingAudio.play();
+                    writingAudio.currentTime = 0;
+                    writingAudio.play();
                 }
 
                 iconsElements.forEach(icon => {
                     icon.classList.remove("clicked");
                 });
                 quotesIcon.classList.add("clicked");
-                
+
                 article.style.backgroundImage = "url('./media/backgrounds/paper-mask-standing2.png')";
                 article.innerHTML = "";
-                const quoteHTML = await randomQuote();
-                article.innerHTML = quoteHTML;
+                aside.innerHTML ="";
+
+                startQuoteGame();
+
             } catch (error) {
                 console.error("Fel vid hämtning av citat:", error);
             }
@@ -129,7 +136,6 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
     const mapElement = document.getElementById("map");
     const mapIcon = document.getElementById("map-icon") as HTMLElement;
-    const article = document.querySelector("article");
     
     if (mapElement && article) {
         mapElement.addEventListener("click", async () => {
@@ -146,6 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 article.innerHTML = "";
                 article.style.backgroundImage = "url('./media//backgrounds/distressed-map.png')";
+                aside.innerHTML ="";
             } catch (error) {
                 console.error("Fel vid hämtning av karta:", error);
             }
@@ -159,7 +166,6 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("DOMContentLoaded", () => {
     const housesElement = document.getElementById("houses");
     const housesIcon = document.getElementById("houses-icon") as HTMLElement;
-    const article = document.querySelector("article");
     
     if (housesElement && article) {
         housesElement.addEventListener("click", async () => {
@@ -176,6 +182,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 article.innerHTML = "";
                 article.style.backgroundImage = "url('./media/backgrounds/paper-mask-standing2.png')";
+                aside.innerHTML ="";
             } catch (error) {
                 console.error("Fel vid hämtning av hus:", error);
             }
