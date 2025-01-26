@@ -59,11 +59,6 @@ const getRandomNames = async (correctName: string): Promise<string[]> => {
 
 const renderQuoteGame = async (): Promise<void> => {
 
-    if (!article || !aside) {
-        console.error("Element för article eller aside saknas");
-        return;
-    }
-
     try {
         const quote = await getUniqueRandomQuote();
 
@@ -121,6 +116,11 @@ const handleGuess = async (selectedName: string, correctName: string, article: E
         totalScores.push(score);
 
         const scoreList = document.getElementById("score-list") as HTMLUListElement;
+
+        if (!scoreList) {
+            console.error("Element för scoreList går inte att hämta");
+            return;
+        }
 
         for (const scores of totalScores) {
             const listItem = document.createElement("li");
