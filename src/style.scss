@@ -53,7 +53,7 @@ li {
     list-style: none;
 }
 
-#icons-container {
+#buttons-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     justify-content: center;
@@ -61,7 +61,7 @@ li {
     gap: 1rem;
     padding-left: 5rem;
 
-    & .icons-wrapper {
+    & .buttons-wrapper {
         cursor: pointer;
         display: flex;
         flex-direction: column;
@@ -83,6 +83,8 @@ li {
     border-radius: 50%;
     @include mixins.box-shadow-embossed(var.$transparent-black);
     transition: all 0.2s ease-in-out;
+    cursor: pointer;
+
     
     &:hover {
         @include mixins.box-shadow-embossed(var.$transparent-white);
