@@ -15,3 +15,16 @@ export const getRandomQuote = async (): Promise<Quote> => {
 
     return quote;
 };
+
+export const usedQuotes: Set<string> = new Set();
+// TODO Ska detta vara här? Eller i en const-mapp? Eller i state??
+
+export const getUniqueRandomQuote = async (): Promise<Quote> => {
+    let quote: Quote;
+    do {
+        quote = await getRandomQuote();
+    } while (usedQuotes.has(quote.sentence));
+
+    usedQuotes.add(quote.sentence); 
+    return quote;
+};

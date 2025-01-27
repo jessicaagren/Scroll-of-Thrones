@@ -1,11 +1,13 @@
-import { getRandomQuote } from '../api/quoteAPI';
-import Quote from "../types/quoteAPI";
+import { getRandomQuote, getUniqueRandomQuote, usedQuotes } from "../api/quoteAPI";
+import { playSound, soundOn } from "../main";
 
 const article = document.querySelector("article") as HTMLElement;
 const aside = document.querySelector("aside") as HTMLElement;
 
-const usedQuotes: Set<string> = new Set();
-const usedNames: Set<string> = new Set(); 
+const gameOverAudio = new Audio('./media/audio/wrong-answer.mp3');
+const correctAudio = new Audio('./media/audio/correct.mp3');
+
+const usedNames: Set<string> = new Set();
 
 let score: number = 0;
 let totalScores: number[] = [];
@@ -27,16 +29,6 @@ export const startQuoteGame = async (): Promise<void> => {
     button.addEventListener("click", () => renderQuoteGame());
     article.appendChild(button);
 }
-
-const getUniqueRandomQuote = async (): Promise<Quote> => {
-    let quote: Quote;
-    do {
-        quote = await getRandomQuote();
-    } while (usedQuotes.has(quote.sentence));
-
-    usedQuotes.add(quote.sentence); 
-    return quote;
-};
 
 const getRandomNames = async (correctName: string): Promise<string[]> => {
     const randomNames: string[] = [];
@@ -88,16 +80,25 @@ const handleGuess = async (selectedName: string, correctName: string, article: E
 
     if (selectedName === correctName) {
         score++;
+        if (correctAudio as HTMLAudioElement) {
+            playSound(soundOn, correctAudio);
+        }
+
         article.innerHTML = `
             <section>
                 <p><strong>Correct!</strong> The quote was by ${correctName}.</p>
                 <p>Current score: ${score}</p>
                 <p>Loading next quote...</p>
+                <div class="hourglass"></div>
             </section>
         `;
 
         setTimeout(() => renderQuoteGame(), 2000);
     } else {
+
+        if (gameOverAudio as HTMLAudioElement) {
+            playSound(soundOn, gameOverAudio);
+        }
 
         article.innerHTML = `
             <section>
