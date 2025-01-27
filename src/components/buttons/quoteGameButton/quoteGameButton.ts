@@ -1,6 +1,6 @@
 import { article, writingAudio } from "../../../constants/constants";
 import { clearArticle, clearAside, clearClickedClass, playSound } from "../../../helpers/helpers";
-import { startQuoteGame } from "../../../quoteGame/quoteGame";
+import { startQuoteGame } from "../../quoteGame/quoteGame";
 import { soundOn } from "../soundButton/soundButton";
 
 export const handleQuoteClick = () => {

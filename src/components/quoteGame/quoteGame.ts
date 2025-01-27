@@ -1,7 +1,7 @@
-import { getRandomQuote, getUniqueRandomQuote, usedQuotes } from "../api/quoteAPI";
-import { soundOn } from "../components/buttons/soundButton/soundButton";
-import { article, aside } from "../constants/constants";
-import { clearAside, playSound } from "../helpers/helpers";
+import { getRandomQuote, getUniqueRandomQuote, usedQuotes } from "../../api/quoteAPI";
+import { soundOn } from "../buttons/soundButton/soundButton";
+import { article, aside } from "../../constants/constants";
+import { clearAside, playSound } from "../../helpers/helpers";
 
 
 const gameOverAudio = new Audio('./media/audio/wrong-answer.mp3');

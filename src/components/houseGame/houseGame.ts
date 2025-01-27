@@ -1,5 +1,5 @@
-import { getRandomQuote } from '../api/quoteAPI';
-import Quote from "../types/quoteAPI";
+import { getRandomQuote } from '../../api/quoteAPI';
+import Quote from "../../types/quoteAPI";
 
 //TODO Skriv om till hus istället för quote
 
