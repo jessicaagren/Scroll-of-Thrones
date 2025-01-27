@@ -1,14 +1,16 @@
 @use '../variables/var.scss';
 
+@mixin flex-center(){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 @mixin set-background-image ($url, $size){
     background-image: url($url);
     background-position: center;
     background-repeat: no-repeat;
     background-size: $size;
-}
-
-@mixin set-background-color($color){
-    background-color: $color;
 }
 
 @mixin box-shadow-debossed($color){
@@ -25,13 +27,6 @@
         -2px -2px 3px var.$white,
         0 0 8px rgba(10, 9, 8, 0.4);
     background-color: $color;
-}
-
-
-@mixin flex-center(){
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 @mixin relief-text($color){
