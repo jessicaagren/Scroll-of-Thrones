@@ -76,7 +76,7 @@ li {
 }
 
 
-.icons {
+.button-icons {
     @include mixins.flex-center();
     color: var.$dark-brown;
     padding: 1rem;
@@ -94,7 +94,7 @@ li {
     }
 }
 
-.icons.clicked {
+.button-icons.clicked {
     @include mixins.box-shadow-debossed(var.$transparent-black);
 
     &:hover {

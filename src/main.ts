@@ -68,12 +68,12 @@ export const playSound = (soundOn: boolean, audioElement: HTMLAudioElement) => {
     }
 };
 
-const clearClickedClass = (iconElement: HTMLElement) => {
-    const iconsElements = document.querySelectorAll(".icons");
-    iconsElements.forEach(icon => {
-        icon.classList.remove("clicked");
+const clearClickedClass = (buttonElement: HTMLButtonElement) => {
+    const buttonElements = document.querySelectorAll(".button-icons");
+    buttonElements.forEach(button => {
+        button.classList.remove("clicked");
     });
-    iconElement.classList.add("clicked");
+    buttonElement.classList.add("clicked");
 }
 
 const clearArticle = (backgroundURL: string) => {
@@ -87,7 +87,7 @@ const clearAside = () => {
 
 const handleSearchClick = () => {
     const searchElement = document.getElementById("search") as HTMLElement;
-    const searchIcon = document.getElementById("search-icon") as HTMLElement;
+    const searchButton = document.getElementById("search-button") as HTMLButtonElement;
 
     if (searchElement && article) {
         searchElement.addEventListener("click", async () => {
@@ -96,7 +96,7 @@ const handleSearchClick = () => {
                     playSound(soundOn, drawingSwordAudio);
                 }
 
-                clearClickedClass(searchIcon);
+                clearClickedClass(searchButton);
 
                 clearArticle("url('./media/backgrounds/paper-mask-standing2.png')");
                 clearAside();
@@ -118,7 +118,7 @@ handleSearchClick();
 
 const handleQuoteClick = () => {
     const quotesElement = document.getElementById("quotes");
-    const quotesIcon = document.getElementById("quotes-icon") as HTMLElement;
+    const quotesButton = document.getElementById("quotes-button") as HTMLButtonElement;
     
     if (quotesElement && article) {
         quotesElement.addEventListener("click", async () => {
@@ -127,7 +127,7 @@ const handleQuoteClick = () => {
                     playSound(soundOn, writingAudio);
                 }
     
-                clearClickedClass(quotesIcon);
+                clearClickedClass(quotesButton);
     
                 clearArticle("url('./media/backgrounds/paper-mask-standing2.png')");
                 clearAside();
@@ -147,7 +147,7 @@ handleQuoteClick();
 
 const handleMapClick = () => {
     const mapElement = document.getElementById("map");
-    const mapIcon = document.getElementById("map-icon") as HTMLElement;
+    const mapButton = document.getElementById("map-button") as HTMLButtonElement;
     
     if (mapElement && article) {
         mapElement.addEventListener("click", async () => {
@@ -156,7 +156,7 @@ const handleMapClick = () => {
                     playSound(soundOn, flipPageAudio);
                 }
     
-                clearClickedClass(mapIcon);
+                clearClickedClass(mapButton);
     
                 clearArticle("url('./media/backgrounds/distressed-map.png')");
                 clearAside();
@@ -174,7 +174,7 @@ handleMapClick();
 
 const handleHouseClick = () => {
     const housesElement = document.getElementById("houses");
-    const housesIcon = document.getElementById("houses-icon") as HTMLElement;
+    const housesButton = document.getElementById("houses-button") as HTMLButtonElement;
     
     if (housesElement && article) {
         housesElement.addEventListener("click", async () => {
@@ -183,7 +183,7 @@ const handleHouseClick = () => {
                     playSound(soundOn, drawingSwordAudio);
                 }
     
-                clearClickedClass(housesIcon);
+                clearClickedClass(housesButton);
     
                 clearArticle("url('./media/backgrounds/paper-mask-standing2.png')");
                 clearAside();
