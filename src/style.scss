@@ -13,13 +13,11 @@ body {
 main {
     display: flex;
     justify-content: space-between;
-    // gap: 10px;
     margin: 2%;
     width: 100%;
-    > * {
-        flex: 1;
-}
-
+        > * {
+            flex: 1;
+        }
 }
 
 nav {
@@ -121,6 +119,7 @@ article, aside {
     }
     & button {
         background-color: var.$white;
+        cursor: pointer;
     }
     
     & input, button {
@@ -133,7 +132,6 @@ article, aside {
         &:focus {
             outline: none;
         }
-        // @include mixins.background-drop-shadow();
     }
 }
 
