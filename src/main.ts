@@ -59,30 +59,48 @@ const bellAudio = new Audio('./media/audio/church-bell.mp3')
 const flipPageAudio = new Audio('./media/audio/page-flip.mp3');
 const writingAudio = new Audio('./media/audio/pencil2.mp3')
 const drawingSwordAudio = new Audio('./media/audio/draw-sword.mp3')
-let soundOn: Boolean = true;
+export let soundOn: boolean = true;
 
-const iconsElements = document.querySelectorAll(".icons");
+export const playSound = (soundOn: boolean, audioElement: HTMLAudioElement) => {
+    if (soundOn) {
+        audioElement.currentTime = 0;
+        audioElement.play();
+    }
+};
 
-document.addEventListener("DOMContentLoaded", () => {
+const clearClickedClass = (iconElement: HTMLElement) => {
+    const iconsElements = document.querySelectorAll(".icons");
+    iconsElements.forEach(icon => {
+        icon.classList.remove("clicked");
+    });
+    iconElement.classList.add("clicked");
+}
+
+const clearArticle = (backgroundURL: string) => {
+    article.textContent = "";
+    article.style.backgroundImage = backgroundURL;
+}
+
+const clearAside = () => {
+    aside.textContent ="";
+}
+
+const handleSearchClick = () => {
     const searchElement = document.getElementById("search") as HTMLElement;
     const searchIcon = document.getElementById("search-icon") as HTMLElement;
 
     if (searchElement && article) {
         searchElement.addEventListener("click", async () => {
             try {
-                if (soundOn === true) {
-                    bellAudio.currentTime = 0;
-                    bellAudio.play();
+                if (bellAudio as HTMLAudioElement) {
+                    playSound(soundOn, drawingSwordAudio);
                 }
 
-                iconsElements.forEach(icon => {
-                    icon.classList.remove("clicked");
-                });
-                searchIcon.classList.add("clicked");
+                clearClickedClass(searchIcon);
 
-                article.style.backgroundImage = "url('./media/backgrounds/paper-mask-standing2.png')";
-                article.innerHTML = "";
-                aside.innerHTML ="";
+                clearArticle("url('./media/backgrounds/paper-mask-standing2.png')");
+                clearAside();
+
                 const input = document.createElement("input");
                 input.type = "text";
                 input.placeholder = ". . .";
@@ -93,32 +111,29 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     } else {
         console.error("Element med ID 'search' eller 'article' hittades inte.");
-    }
-});
+    };
+}
 
-document.addEventListener("DOMContentLoaded", () => {
+handleSearchClick();
+
+const handleQuoteClick = () => {
     const quotesElement = document.getElementById("quotes");
     const quotesIcon = document.getElementById("quotes-icon") as HTMLElement;
-
+    
     if (quotesElement && article) {
         quotesElement.addEventListener("click", async () => {
             try {
-                if (soundOn === true) {
-                    writingAudio.currentTime = 0;
-                    writingAudio.play();
+                if (writingAudio as HTMLAudioElement) {
+                    playSound(soundOn, writingAudio);
                 }
-
-                iconsElements.forEach(icon => {
-                    icon.classList.remove("clicked");
-                });
-                quotesIcon.classList.add("clicked");
-
-                article.style.backgroundImage = "url('./media/backgrounds/paper-mask-standing2.png')";
-                article.innerHTML = "";
-                aside.innerHTML ="";
-
+    
+                clearClickedClass(quotesIcon);
+    
+                clearArticle("url('./media/backgrounds/paper-mask-standing2.png')");
+                clearAside();
+    
                 startQuoteGame();
-
+    
             } catch (error) {
                 console.error("Fel vid hämtning av citat:", error);
             }
@@ -126,29 +141,26 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
         console.error("Element med ID 'quotes' eller 'article' hittades inte.");
     }
-});
+}
 
+handleQuoteClick();
 
-document.addEventListener("DOMContentLoaded", () => {
+const handleMapClick = () => {
     const mapElement = document.getElementById("map");
     const mapIcon = document.getElementById("map-icon") as HTMLElement;
     
     if (mapElement && article) {
         mapElement.addEventListener("click", async () => {
             try {
-                if (soundOn === true) {
-                flipPageAudio.currentTime = 0;
-                flipPageAudio.play();
+                if (flipPageAudio as HTMLAudioElement) {
+                    playSound(soundOn, flipPageAudio);
                 }
-
-                iconsElements.forEach(icon => {
-                    icon.classList.remove("clicked");
-                });
-                mapIcon.classList.add("clicked");
-
-                article.innerHTML = "";
-                article.style.backgroundImage = "url('./media//backgrounds/distressed-map.png')";
-                aside.innerHTML ="";
+    
+                clearClickedClass(mapIcon);
+    
+                clearArticle("url('./media/backgrounds/distressed-map.png')");
+                clearAside();
+    
             } catch (error) {
                 console.error("Fel vid hämtning av karta:", error);
             }
@@ -156,29 +168,26 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
         console.error("Element med ID 'map' eller 'article' hittades inte.");
     }
-});
+}
 
+handleMapClick();
 
-document.addEventListener("DOMContentLoaded", () => {
+const handleHouseClick = () => {
     const housesElement = document.getElementById("houses");
     const housesIcon = document.getElementById("houses-icon") as HTMLElement;
     
     if (housesElement && article) {
         housesElement.addEventListener("click", async () => {
             try {
-                if (soundOn === true) {
-                drawingSwordAudio.currentTime = 0;
-                drawingSwordAudio.play();
+                if (drawingSwordAudio as HTMLAudioElement) {
+                    playSound(soundOn, drawingSwordAudio);
                 }
-
-                iconsElements.forEach(icon => {
-                    icon.classList.remove("clicked");
-                });
-                housesIcon.classList.add("clicked");
-
-                article.innerHTML = "";
-                article.style.backgroundImage = "url('./media/backgrounds/paper-mask-standing2.png')";
-                aside.innerHTML ="";
+    
+                clearClickedClass(housesIcon);
+    
+                clearArticle("url('./media/backgrounds/paper-mask-standing2.png')");
+                clearAside();
+    
             } catch (error) {
                 console.error("Fel vid hämtning av hus:", error);
             }
@@ -186,11 +195,14 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
         console.error("Element med ID 'houses' eller 'article' hittades inte.");
     }
-});
+}
 
-document.addEventListener("DOMContentLoaded", () => {
-    const soundElement = document.getElementById("sound");
+handleHouseClick();
 
+
+const handleSoundClick = () => {
+    const soundElement = document.getElementById("sound-button");
+    
     if (soundElement) {
         soundElement.addEventListener("click", () => {
             try {
@@ -210,4 +222,6 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
         console.error("Element med ID 'sound' hittades inte.");
     }
-});
+}
+
+handleSoundClick();
