@@ -102,7 +102,7 @@ li {
     }
 }
 
-#dragon {
+#dragon-icon {
     border-radius: 50%;
     width: 3.5rem;
     @include mixins.box-shadow-debossed(var.$transparent-black);
@@ -117,6 +117,22 @@ article, aside {
     & section {
         padding: 5rem;
     }
+    & button {
+        background-color: var.$white;
+    }
+    
+    & input, button {
+        font-family: IMFellEnglish, Georgia, 'Times New Roman', Times, serif;
+        color: var.$black;
+        height: 2rem;
+        padding: 0 0.5rem;
+        border: none;
+        border-radius: 0.5rem;
+        &:focus {
+            outline: none;
+        }
+        // @include mixins.background-drop-shadow();
+    }
 }
 
 article {
@@ -129,21 +145,12 @@ aside {
 
 input {
     background-color: var.$transparent-white;
-    font-family: IMFellEnglish, Georgia, 'Times New Roman', Times, serif;
-    color: var.$black;
-    height: 2rem;
-    padding: 0 0.5rem;
-    border: none;
-    border-radius: 0.5rem;
-    &:focus {
-        outline: none;
-    }
-    // @include mixins.background-drop-shadow();
 }
 
-p.hourglass {
-    height: 8rem;
-	width: 8rem;
+
+div.hourglass {
+    height: 6rem;
+	width: 6rem;
 	background-image: url("./media/assets/hourglass3.gif");
 	background-position: center;
 	background-size: contain;
@@ -160,13 +167,19 @@ p.hourglass {
     }
   }
 
-#sound {
+
+  #sound-button {
+    position: absolute;
+    z-index: 100;
+    top: 0.5rem;
+    right: 0.5rem;
     background-color: var.$transparent-white;
     border-radius: 50%;
-    padding: 0.5rem;
-    width: 2.5rem;
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    z-index: 100;
+    @include mixins.flex-center();
+
+    #sound-icon {
+        padding: 0.5rem;
+        width: 2.5rem;
+        height: 2.5rem;    
+    }
 }

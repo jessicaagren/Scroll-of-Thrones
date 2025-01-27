@@ -7,52 +7,53 @@
     <title>Scroll of Thrones</title>
   </head>
   <body>
-    <img src="/media/icons/sound.png" alt="Sound off/on" id="sound" />
+    <button id="sound-button" alt="Sound off/on">
+      <img src="/media/icons/sound.png" alt="Sound off/on" id="sound-icon" />
+    </button>
     <main>
       <nav>
         <header>
-          <img src="/media/icons/icon.png" alt="" id="dragon" />
+          <img src="/media/icons/icon.png" alt="" id="dragon-icon" />
           <h1 class="relief">SCROLL OF THRONES</h1>
         </header>
         <ul id="icons-container">
           <li class="icons-wrapper" id="search">
-            <figure class="icons" id="search-icon">
+            <button class="icons" id="search-icon">
               <img
                 src="/media/icons/magnifying-glass-colour.png"
                 alt="Search" />
-            </figure>
-            <figcaption class="icons-text">Search</figcaption>
+            </button>
+            <p class="icons-text">Search</p>
           </li>
           <li class="icons-wrapper" id="map">
-            <figure class="icons" id="map-icon">
+            <button class="icons" id="map-icon">
               <img src="/media/icons/old-map-colour.png" alt="Map" />
-            </figure>
-            <figcaption class="icons-text">Map</figcaption>
+            </button>
+            <p class="icons-text">Map</p>
           </li>
           <li class="icons-wrapper" id="quotes">
-            <figure class="icons" id="quotes-icon">
+            <button class="icons" id="quotes-icon">
               <img
                 src="/media/icons/biography-colour.png"
                 alt="Guess the quote" />
-            </figure>
-            <figcaption class="icons-text">Guess the quote</figcaption>
+            </button>
+            <p class="icons-text">Guess the quote</p>
           </li>
           <li class="icons-wrapper" id="houses">
-            <figure class="icons" id="houses-icon">
+            <button class="icons" id="houses-icon">
               <img
                 src="/media/icons/castle2-colour.png"
                 alt="Guess the house" />
-            </figure>
-            <figcaption class="icons-text">Guess the house</figcaption>
+            </button>
+            <p class="icons-text">Guess the house</p>
           </li>
         </ul>
-        <!-- TODO Gör ikoner dynamiska? -->
       </nav>
       <article id="quoteArticle">
         <input type="text" placeholder=". . ." />
-        <p class="hourglass"></p>
+        <div class="hourglass"></div>
       </article>
-      <!-- TODO ta bort placeholder-input -->
+      <!-- TODO ta bort placeholder-input och hourglass -->
       <aside></aside>
     </main>
     <script type="module" src="/src/main.ts"></script>
