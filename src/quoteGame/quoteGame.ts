@@ -1,8 +1,8 @@
 import { getRandomQuote, getUniqueRandomQuote, usedQuotes } from "../api/quoteAPI";
-import { playSound, soundOn } from "../main";
+import { soundOn } from "../components/buttons/soundButton/soundButton";
+import { article, aside } from "../constants/constants";
+import { clearAside, playSound } from "../helpers/helpers";
 
-const article = document.querySelector("article") as HTMLElement;
-const aside = document.querySelector("aside") as HTMLElement;
 
 const gameOverAudio = new Audio('./media/audio/wrong-answer.mp3');
 const correctAudio = new Audio('./media/audio/correct.mp3');
@@ -17,7 +17,7 @@ export const startQuoteGame = async (): Promise<void> => {
     usedQuotes.clear();
     usedNames.clear();
 
-    aside.innerHTML = "";
+    clearAside();
     article.innerHTML = "";
     article.innerHTML = `
     <section>

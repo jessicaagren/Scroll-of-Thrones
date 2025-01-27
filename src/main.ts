@@ -1,4 +1,8 @@
-import { startQuoteGame } from './quoteGame/quoteGame';
+import { handleHouseClick } from './components/buttons/houseGameButton/houseGameButton';
+import { handleMapClick } from './components/buttons/mapButton/mapButton';
+import { handleQuoteClick } from './components/buttons/quoteGameButton/quoteGameButton';
+import { handleSearchClick } from './components/buttons/searchButton/searchButton';
+import { handleSoundClick } from './components/buttons/soundButton/soundButton';
 import './style.scss';
 
 // TODO testa lägga in karaktärer med DOM
@@ -53,175 +57,12 @@ import './style.scss';
 //     }
 // };
 
-const article = document.querySelector("article") as HTMLElement;
-const aside = document.querySelector("aside") as HTMLElement;
-const bellAudio = new Audio('./media/audio/church-bell.mp3')
-const flipPageAudio = new Audio('./media/audio/page-flip.mp3');
-const writingAudio = new Audio('./media/audio/pencil2.mp3')
-const drawingSwordAudio = new Audio('./media/audio/draw-sword.mp3')
-export let soundOn: boolean = true;
-
-export const playSound = (soundOn: boolean, audioElement: HTMLAudioElement) => {
-    if (soundOn) {
-        audioElement.currentTime = 0;
-        audioElement.play();
-    }
-};
-
-const clearClickedClass = (buttonElement: HTMLButtonElement) => {
-    const buttonElements = document.querySelectorAll(".button-icons");
-    buttonElements.forEach(button => {
-        button.classList.remove("clicked");
-    });
-    buttonElement.classList.add("clicked");
-}
-
-const clearArticle = (backgroundURL: string) => {
-    article.textContent = "";
-    article.style.backgroundImage = backgroundURL;
-}
-
-const clearAside = () => {
-    aside.textContent ="";
-}
-
-const handleSearchClick = () => {
-    const searchElement = document.getElementById("search") as HTMLElement;
-    const searchButton = document.getElementById("search-button") as HTMLButtonElement;
-
-    if (searchElement && article) {
-        searchElement.addEventListener("click", async () => {
-            try {
-                if (bellAudio as HTMLAudioElement) {
-                    playSound(soundOn, drawingSwordAudio);
-                }
-
-                clearClickedClass(searchButton);
-
-                clearArticle("url('./media/backgrounds/paper-mask-standing2.png')");
-                clearAside();
-
-                const input = document.createElement("input");
-                input.type = "text";
-                input.placeholder = ". . .";
-                article.appendChild(input);
-            } catch (error) {
-                console.error("Fel vid hämtning av sökfält:", error);
-            }
-        });
-    } else {
-        console.error("Element med ID 'search' eller 'article' hittades inte.");
-    };
-}
-
 handleSearchClick();
-
-const handleQuoteClick = () => {
-    const quotesElement = document.getElementById("quotes");
-    const quotesButton = document.getElementById("quotes-button") as HTMLButtonElement;
-    
-    if (quotesElement && article) {
-        quotesElement.addEventListener("click", async () => {
-            try {
-                if (writingAudio as HTMLAudioElement) {
-                    playSound(soundOn, writingAudio);
-                }
-    
-                clearClickedClass(quotesButton);
-    
-                clearArticle("url('./media/backgrounds/paper-mask-standing2.png')");
-                clearAside();
-    
-                startQuoteGame();
-    
-            } catch (error) {
-                console.error("Fel vid hämtning av citat:", error);
-            }
-        });
-    } else {
-        console.error("Element med ID 'quotes' eller 'article' hittades inte.");
-    }
-}
 
 handleQuoteClick();
 
-const handleMapClick = () => {
-    const mapElement = document.getElementById("map");
-    const mapButton = document.getElementById("map-button") as HTMLButtonElement;
-    
-    if (mapElement && article) {
-        mapElement.addEventListener("click", async () => {
-            try {
-                if (flipPageAudio as HTMLAudioElement) {
-                    playSound(soundOn, flipPageAudio);
-                }
-    
-                clearClickedClass(mapButton);
-    
-                clearArticle("url('./media/backgrounds/distressed-map.png')");
-                clearAside();
-    
-            } catch (error) {
-                console.error("Fel vid hämtning av karta:", error);
-            }
-        });
-    } else {
-        console.error("Element med ID 'map' eller 'article' hittades inte.");
-    }
-}
-
 handleMapClick();
 
-const handleHouseClick = () => {
-    const housesElement = document.getElementById("houses");
-    const housesButton = document.getElementById("houses-button") as HTMLButtonElement;
-    
-    if (housesElement && article) {
-        housesElement.addEventListener("click", async () => {
-            try {
-                if (drawingSwordAudio as HTMLAudioElement) {
-                    playSound(soundOn, drawingSwordAudio);
-                }
-    
-                clearClickedClass(housesButton);
-    
-                clearArticle("url('./media/backgrounds/paper-mask-standing2.png')");
-                clearAside();
-    
-            } catch (error) {
-                console.error("Fel vid hämtning av hus:", error);
-            }
-        });
-    } else {
-        console.error("Element med ID 'houses' eller 'article' hittades inte.");
-    }
-}
-
 handleHouseClick();
-
-
-const handleSoundClick = () => {
-    const soundElement = document.getElementById("sound-button");
-    
-    if (soundElement) {
-        soundElement.addEventListener("click", () => {
-            try {
-                if (soundElement.style.filter === 'grayscale(1)') {
-                    soundElement.style.filter = 'none';
-                    soundOn = true;
-                    console.log(soundOn);
-                } else {
-                    soundElement.style.filter = 'grayscale(1)';
-                    soundOn = false;
-                    console.log(soundOn);
-                }
-            } catch (error) {
-                console.error("Fel vid klickhantering:", error);
-            }
-        });
-    } else {
-        console.error("Element med ID 'sound' hittades inte.");
-    }
-}
 
 handleSoundClick();
