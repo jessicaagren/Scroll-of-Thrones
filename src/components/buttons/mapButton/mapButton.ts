@@ -1,5 +1,5 @@
 import { article, flipPageAudio } from "../../../constants/constants";
-import { clearArticle, clearAside, clearClickedClass, playSound } from "../../../helpers/helpers";
+import { clearArticleAndAddBackground, clearAside, clearAndAddClickedClass, playSound } from "../../../helpers/helpers";
 import { soundOn } from "../soundButton/soundButton";
 
 export const handleMapClick = () => {
@@ -13,9 +13,9 @@ export const handleMapClick = () => {
                     playSound(soundOn, flipPageAudio);
                 }
     
-                clearClickedClass(mapButton);
+                clearAndAddClickedClass(mapButton);
     
-                clearArticle("url('./media/backgrounds/distressed-map.png')");
+                clearArticleAndAddBackground("url('./media/backgrounds/distressed-map.png')");
                 clearAside();
     
             } catch (error) {

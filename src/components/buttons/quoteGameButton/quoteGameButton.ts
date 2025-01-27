@@ -1,5 +1,5 @@
 import { article, writingAudio } from "../../../constants/constants";
-import { clearArticle, clearAside, clearClickedClass, playSound } from "../../../helpers/helpers";
+import { clearArticleAndAddBackground, clearAside, clearAndAddClickedClass, playSound } from "../../../helpers/helpers";
 import { startQuoteGame } from "../../quoteGame/quoteGame";
 import { soundOn } from "../soundButton/soundButton";
 
@@ -14,9 +14,9 @@ export const handleQuoteClick = () => {
                     playSound(soundOn, writingAudio);
                 }
     
-                clearClickedClass(quotesButton);
+                clearAndAddClickedClass(quotesButton);
     
-                clearArticle("url('./media/backgrounds/paper-mask-standing2.png')");
+                clearArticleAndAddBackground("url('./media/backgrounds/paper-mask-standing2.png')");
                 clearAside();
     
                 startQuoteGame();

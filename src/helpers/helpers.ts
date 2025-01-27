@@ -7,7 +7,7 @@ export const playSound = (soundOn: boolean, audioElement: HTMLAudioElement) => {
     }
 };
 
-export const clearClickedClass = (buttonElement: HTMLButtonElement) => {
+export const clearAndAddClickedClass = (buttonElement: HTMLButtonElement) => {
     const buttonElements = document.querySelectorAll(".button-icons");
     buttonElements.forEach(button => {
         button.classList.remove("clicked");
@@ -15,9 +15,12 @@ export const clearClickedClass = (buttonElement: HTMLButtonElement) => {
     buttonElement.classList.add("clicked");
 }
 
-export const clearArticle = (backgroundURL: string) => {
+export const clearArticleAndAddBackground = (backgroundURL?: string) => {
     article.textContent = "";
-    article.style.backgroundImage = backgroundURL;
+    if(backgroundURL)
+    {
+        article.style.backgroundImage = backgroundURL;
+    }
 }
 
 export const clearAside = () => {

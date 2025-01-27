@@ -1,5 +1,5 @@
 import { article, drawingSwordAudio } from "../../../constants/constants";
-import { clearArticle, clearAside, clearClickedClass, playSound } from "../../../helpers/helpers";
+import { clearArticleAndAddBackground, clearAside, clearAndAddClickedClass, playSound } from "../../../helpers/helpers";
 import { soundOn } from "../soundButton/soundButton";
 
 export const handleHouseClick = () => {
@@ -13,9 +13,9 @@ export const handleHouseClick = () => {
                     playSound(soundOn, drawingSwordAudio);
                 }
     
-                clearClickedClass(housesButton);
+                clearAndAddClickedClass(housesButton);
     
-                clearArticle("url('./media/backgrounds/paper-mask-standing2.png')");
+                clearArticleAndAddBackground("url('./media/backgrounds/paper-mask-standing2.png')");
                 clearAside();
     
             } catch (error) {

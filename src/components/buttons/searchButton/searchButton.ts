@@ -1,5 +1,5 @@
 import { article, bellAudio } from "../../../constants/constants";
-import { clearArticle, clearAside, clearClickedClass, playSound } from "../../../helpers/helpers";
+import { clearArticleAndAddBackground, clearAside, clearAndAddClickedClass, playSound } from "../../../helpers/helpers";
 import { soundOn } from "../soundButton/soundButton";
 
 export const handleSearchClick = () => {
@@ -13,9 +13,9 @@ export const handleSearchClick = () => {
                     playSound(soundOn, bellAudio);
                 }
 
-                clearClickedClass(searchButton);
+                clearAndAddClickedClass(searchButton);
 
-                clearArticle("url('./media/backgrounds/paper-mask-standing2.png')");
+                clearArticleAndAddBackground("url('./media/backgrounds/paper-mask-standing2.png')");
                 clearAside();
 
                 const input = document.createElement("input");

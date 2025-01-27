@@ -1,11 +1,7 @@
 import { getRandomQuote, getUniqueRandomQuote, usedQuotes } from "../../api/quoteAPI";
 import { soundOn } from "../buttons/soundButton/soundButton";
-import { article, aside } from "../../constants/constants";
-import { clearAside, playSound } from "../../helpers/helpers";
-
-
-const gameOverAudio = new Audio('./media/audio/wrong-answer.mp3');
-const correctAudio = new Audio('./media/audio/correct.mp3');
+import { article, aside, correctAudio, gameOverAudio } from "../../constants/constants";
+import { clearArticleAndAddBackground, clearAside, playSound } from "../../helpers/helpers";
 
 const usedNames: Set<string> = new Set();
 
@@ -18,7 +14,7 @@ export const startQuoteGame = async (): Promise<void> => {
     usedNames.clear();
 
     clearAside();
-    article.innerHTML = "";
+    clearArticleAndAddBackground();
     article.innerHTML = `
     <section>
     <p>Guess who said the quote. Keep guessing until you get it wrong.</p>
@@ -50,7 +46,6 @@ const getRandomNames = async (correctName: string): Promise<string[]> => {
 };
 
 const renderQuoteGame = async (): Promise<void> => {
-
     try {
         const quote = await getUniqueRandomQuote();
 
@@ -63,7 +58,7 @@ const renderQuoteGame = async (): Promise<void> => {
             </section>
         `;
 
-        aside.innerHTML = "";
+        clearAside();
         randomNames.forEach(name => {
             const button = document.createElement("button");
             button.textContent = name;
@@ -77,7 +72,6 @@ const renderQuoteGame = async (): Promise<void> => {
 
 
 const handleGuess = async (selectedName: string, correctName: string, article: Element) => {
-
     if (selectedName === correctName) {
         score++;
         if (correctAudio as HTMLAudioElement) {
