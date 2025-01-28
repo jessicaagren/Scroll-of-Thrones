@@ -5,13 +5,13 @@ const rooturl = "https://www.anapioficeandfire.com/api/";
 // https://www.anapioficeandfire.com/api/characters?name=NAMN
 
 export const getCharacterByExactName = async (name: string): Promise<AsoiafCharacter | null> => {
-  try {
-    const response = await fetch(`${rooturl}characters?name=${name}`);
-    const data = await response.json();
+    try {
+        const response = await fetch(`${rooturl}characters?name=${name}`);
+        const data = await response.json();
 
     if (data.length === 0) {
-      console.log("Ingen karaktär hittades.");
-      return null;
+        console.log("Ingen karaktär hittades.");
+        return null;
     }
 
     return data[0] as AsoiafCharacter;
@@ -20,7 +20,39 @@ export const getCharacterByExactName = async (name: string): Promise<AsoiafChara
         console.error("Fel vid hämtning av karaktärsdetaljer:", error);
         return null;
     }
-  }
+}
+
+export const getCharacterByID = async (id: number): Promise<AsoiafCharacter | null> => {
+    try {
+        const response = await fetch(`${rooturl}characters/${id}`);
+        const data = await response.json();
+
+        if (data.length === 0) {
+            console.log("Ingen karaktär hittades.");
+            return null;
+        }
+
+        return data as AsoiafCharacter;
+
+    } catch (error) {
+        console.error("Fel vid hämtning av karaktär via ID:", error);
+        return null;
+    }
+    
+}
+
+export const getRandomCharacterByID = async (): Promise<AsoiafCharacter> => {
+    const randomID = (Math.floor(Math.random() * 2134) + 1);
+
+    try {
+        const character = await getCharacterByID(randomID);
+        return character as AsoiafCharacter;
+
+    } catch (error) {
+        console.error(`Fel vid hämtning av karaktär med id ${randomID}:`, error);
+        throw new Error("Kunde inte hämta random karaktär");
+    }
+}
 
 // const createCharacterCard = (character: DisneyCharacter) => {
 // 	const div = document.createElement("div");
@@ -35,28 +67,34 @@ export const getCharacterByExactName = async (name: string): Promise<AsoiafChara
 
 // export default createCharacterCard;
 
-// Funktion för att söka efter karaktärsnamn i ASOIAF API
-const searchCharacterByName = async (name: string): Promise<any[]> => {
-    const response = await fetch(`${rooturl}characters`); // Hämta alla karaktärer från API
-
-    if (!response.ok) {
-        throw new Error("Något gick fel vid hämtning av karaktärer."); // Kontrollera om svaret är OK
+export const searchCharactersParallel = async (query: string): Promise<AsoiafCharacter[]> => {
+    const pageSize = 50;
+    const totalPages = 50;
+  
+    try {
+      const requests = Array.from({ length: totalPages }, async (_, i) => {
+        const page = i + 1;
+        const response = await fetch(`${rooturl}/characters/?page=${page}&pageSize=${pageSize}`);
+        const data = await response.json();
+        return data;
+      });
+  
+      const results = await Promise.all(requests);
+  
+      const characters = results.flat();
+  
+      const filteredCharacters = characters.filter((character) => {
+        const fullName = character.name || "";
+        return (
+          fullName.toLowerCase().includes(query.toLowerCase()) ||
+          fullName.toLowerCase().endsWith(query.toLowerCase())
+        );
+      });
+  
+      return filteredCharacters;
+    } catch (error) {
+        console.error("Fel vid sökning:", error);
+  
+      return [];
     }
-
-    const characters = await response.json(); // Konvertera svaret till JSON
-
-    // Filtrera karaktärer baserat på namn
-    const filteredCharacters = characters.filter((character: { name: string }) => 
-        character.name.toLowerCase().includes(name.toLowerCase()) // Filtrera med case-insensitive
-    );
-
-    return filteredCharacters; // Returnera de filtrerade karaktärerna
-};
-
-// Exempelanvändning
-searchCharacterByName("Eddard").then(filteredCharacters => {
-    console.log(filteredCharacters); // Logga de filtrerade karaktärerna
-}).catch(error => {
-    console.error(error); // Hantera eventuella fel
-});
-
+  };
