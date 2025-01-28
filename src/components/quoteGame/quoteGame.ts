@@ -5,11 +5,11 @@ import { clearArticleAndAddBackground, clearAside, playSound } from "../../helpe
 
 const usedNames: Set<string> = new Set();
 
-let score: number = 0;
-let totalScores: number[] = [];
+let quoteGameScore: number = 0;
+let totalQuoteGameScores: number[] = [];
 
 export const startQuoteGame = async (): Promise<void> => {
-    score = 0;
+    quoteGameScore = 0;
     usedQuotes.clear();
     usedNames.clear();
 
@@ -54,7 +54,7 @@ const renderQuoteGame = async (): Promise<void> => {
         article.innerHTML = `
             <section>
                 <p>"${quote.sentence}"</p>
-                <p>Points: ${score}</p>
+                <p>Points: ${quoteGameScore}</p>
             </section>
         `;
 
@@ -73,7 +73,7 @@ const renderQuoteGame = async (): Promise<void> => {
 
 const handleGuess = async (selectedName: string, correctName: string, article: Element) => {
     if (selectedName === correctName) {
-        score++;
+        quoteGameScore++;
         if (correctAudio as HTMLAudioElement) {
             playSound(soundOn, correctAudio);
         }
@@ -81,7 +81,7 @@ const handleGuess = async (selectedName: string, correctName: string, article: E
         article.innerHTML = `
             <section>
                 <p><strong>Correct!</strong> The quote was by ${correctName}.</p>
-                <p>Current score: ${score}</p>
+                <p>Current score: ${quoteGameScore}</p>
                 <p>Loading next quote...</p>
                 <div class="hourglass"></div>
             </section>
@@ -98,7 +98,7 @@ const handleGuess = async (selectedName: string, correctName: string, article: E
             <section>
                 <p><strong>Incorrect!</strong> The quote was by ${correctName}.</p>
                 <p>Game over.</p>
-                <p>Total score: ${score}</p>
+                <p>Total score: ${quoteGameScore}</p>
                 <p>Previous scores:</p>
                 <ul id="score-list"></ul>
             </section>
@@ -108,7 +108,7 @@ const handleGuess = async (selectedName: string, correctName: string, article: E
         button.textContent = "Play again";
         button.addEventListener("click", () => startQuoteGame());
         article.appendChild(button);
-        totalScores.push(score);
+        totalQuoteGameScores.push(quoteGameScore);
 
         const scoreList = document.getElementById("score-list") as HTMLUListElement;
 
@@ -117,7 +117,7 @@ const handleGuess = async (selectedName: string, correctName: string, article: E
             return;
         }
 
-        for (const scores of totalScores) {
+        for (const scores of totalQuoteGameScores) {
             const listItem = document.createElement("li");
         listItem.textContent = `${scores}`;
         scoreList.appendChild(listItem);
