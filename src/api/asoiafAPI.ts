@@ -1,4 +1,5 @@
-import AsoiafCharacter from "../types/asoiafAPI";
+import AsoiafCharacter from "../types/asoiafType";
+import HouseType from "../types/houseType";
 
 const rooturl = "https://www.anapioficeandfire.com/api/";
 
@@ -25,9 +26,14 @@ export const getCharacterByExactName = async (name: string): Promise<AsoiafChara
 export const getCharacterByID = async (id: number): Promise<AsoiafCharacter | null> => {
     try {
         const response = await fetch(`${rooturl}characters/${id}`);
+        if (!response.ok) {
+            console.error(`Fel vid hämtning av karaktär.`);
+            return null;
+        }
+
         const data = await response.json();
 
-        if (data.length === 0) {
+        if (!data || Object.keys(data).length === 0) {
             console.log("Ingen karaktär hittades.");
             return null;
         }
@@ -38,10 +44,9 @@ export const getCharacterByID = async (id: number): Promise<AsoiafCharacter | nu
         console.error("Fel vid hämtning av karaktär via ID:", error);
         return null;
     }
-    
-}
+};
 
-export const getRandomCharacterByID = async (): Promise<AsoiafCharacter> => {
+export const getRandomCharacter = async (): Promise<AsoiafCharacter> => {
     const randomID = (Math.floor(Math.random() * 2134) + 1);
 
     try {
@@ -53,6 +58,24 @@ export const getRandomCharacterByID = async (): Promise<AsoiafCharacter> => {
         throw new Error("Kunde inte hämta random karaktär");
     }
 }
+
+export const getHouseByURL = async (url: string): Promise<HouseType | null> => {
+    try {
+        const response = await fetch(url);
+
+        if (!response.ok) {
+            console.error(`Fel vid hämtning av hus.`);
+            return null;
+        }
+
+        const data = await response.json();
+        return data as HouseType;
+    } catch (error) {
+        console.error("Fel vid hämtning av hus via URL:", error);
+        return null;
+    }
+};
+
 
 // const createCharacterCard = (character: DisneyCharacter) => {
 // 	const div = document.createElement("div");

@@ -14,6 +14,6 @@ type AsoiafCharacter = {
     titles: string[];
     tvSeries: string[];
     url: string;
-  };
+  }
 
   export default AsoiafCharacter;

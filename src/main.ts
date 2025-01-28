@@ -1,11 +1,10 @@
-import { getRandomCharacterByID, searchCharacterByName, searchCharactersParallel } from './api/asoiafAPI';
+import { getRandomCharacter } from './api/asoiafAPI';
 import { handleHouseClick } from './components/buttons/houseGameButton/houseGameButton';
 import { handleMapClick } from './components/buttons/mapButton/mapButton';
 import { handleQuoteClick } from './components/buttons/quoteGameButton/quoteGameButton';
 import { handleSearchClick } from './components/buttons/searchButton/searchButton';
 import { handleSoundClick } from './components/buttons/soundButton/soundButton';
 import './style.scss';
-import AsoiafCharacter from './types/asoiafAPI';
 
 // TODO testa lägga in karaktärer med DOM
 
@@ -66,5 +65,4 @@ handleMapClick();
 handleHouseClick();
 
 handleSoundClick();
-
 

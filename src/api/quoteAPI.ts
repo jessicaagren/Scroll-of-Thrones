@@ -1,4 +1,4 @@
-import Quote from "../types/quoteAPI";
+import Quote from "../types/quoteType";
 
 const rooturl = "https://api.gameofthronesquotes.xyz/v1/random";
 
