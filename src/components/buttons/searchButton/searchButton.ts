@@ -22,6 +22,7 @@ export const handleSearchClick = () => {
                 input.type = "text";
                 input.placeholder = ". . .";
                 article.appendChild(input);
+
             } catch (error) {
                 console.error("Fel vid hämtning av sökfält:", error);
             }
