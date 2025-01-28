@@ -148,6 +148,8 @@ const handleGuess = async (selectedHouse: string, correctHouseURL: string) => {
     }
 };
 
+//TODO Läs igenom och dubbelkolla (ska spelet ändras?)
+// TODO ANvänd nedan lista vid sökning istället
 
 export const housesList = [
     { name: "Arryn", icon: "/media/houses/arryn.svg" },
