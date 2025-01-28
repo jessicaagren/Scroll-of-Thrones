@@ -1,5 +1,6 @@
 import { article, drawingSwordAudio } from "../../../constants/constants";
 import { clearArticleAndAddBackground, clearAside, clearAndAddClickedClass, playSound } from "../../../helpers/helpers";
+import { startHouseGame } from "../../houseGame/houseGame";
 import { soundOn } from "../soundButton/soundButton";
 
 export const handleHouseClick = () => {
@@ -17,6 +18,8 @@ export const handleHouseClick = () => {
     
                 clearArticleAndAddBackground("url('./media/backgrounds/paper-mask-standing2.png')");
                 clearAside();
+
+                startHouseGame();
     
             } catch (error) {
                 console.error("Fel vid hämtning av hus:", error);
