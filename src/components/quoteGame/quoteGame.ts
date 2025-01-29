@@ -15,16 +15,22 @@ export const startQuoteGame = async (): Promise<void> => {
 
     clearAside();
     clearArticleAndAddBackground();
-    article.innerHTML = `
-    <section>
-    <p>Guess who said the quote. Keep guessing until you get it wrong.</p>
-            </section>
-        `;
+    
+    const gameContainer = document.createElement("section");
+    gameContainer.id = "game-container";
+    article.appendChild(gameContainer);
+
+    gameContainer.innerHTML = `
+        <section>
+            <p>Guess who said the quote. Keep guessing until you get it wrong.</p>
+        </section>
+    `;
+
     const button = document.createElement("button");
     button.textContent = "Start game";
     button.addEventListener("click", () => renderQuoteGame());
-    article.appendChild(button);
-}
+    gameContainer.appendChild(button);
+};
 
 const getRandomNames = async (correctName: string): Promise<string[]> => {
     const randomNames: string[] = [];
@@ -32,10 +38,7 @@ const getRandomNames = async (correctName: string): Promise<string[]> => {
     while (randomNames.length < 3) {
         const randomQuote = await getRandomQuote();
 
-        if (
-            !usedNames.has(randomQuote.character.name) && 
-            randomQuote.character.name !== correctName
-        ) {
+        if (!usedNames.has(randomQuote.character.name) && randomQuote.character.name !== correctName) {
             randomNames.push(randomQuote.character.name);
             usedNames.add(randomQuote.character.name);
         }
@@ -48,10 +51,10 @@ const getRandomNames = async (correctName: string): Promise<string[]> => {
 const renderQuoteGame = async (): Promise<void> => {
     try {
         const quote = await getUniqueRandomQuote();
-
         const randomNames = await getRandomNames(quote.character.name);
 
-        article.innerHTML = `
+        const gameContainer = document.getElementById("game-container") as HTMLElement;
+        gameContainer.innerHTML = `
             <section>
                 <p>"${quote.sentence}"</p>
                 <p>Points: ${quoteGameScore}</p>
@@ -59,26 +62,33 @@ const renderQuoteGame = async (): Promise<void> => {
         `;
 
         clearAside();
+        const gameAside = document.createElement("section");
+        gameAside.id = "game-aside";
+        aside.appendChild(gameAside);
+
         randomNames.forEach(name => {
             const button = document.createElement("button");
             button.textContent = name;
-            button.addEventListener("click", () => handleGuess(name, quote.character.name, article));
-            aside.appendChild(button);
+            button.addEventListener("click", () => handleGuess(name, quote.character.name));
+            gameAside.appendChild(button);
         });
+
     } catch (error) {
         console.error("Ett fel inträffade:", error);
     }
 };
 
+const handleGuess = async (selectedName: string, correctName: string) => {
+    const gameContainer = document.getElementById("game-container") as HTMLElement;
 
-const handleGuess = async (selectedName: string, correctName: string, article: Element) => {
     if (selectedName === correctName) {
         quoteGameScore++;
+
         if (correctAudio as HTMLAudioElement) {
             playSound(soundOn, correctAudio);
         }
 
-        article.innerHTML = `
+        gameContainer.innerHTML = `
             <section>
                 <p><strong>Correct!</strong> The quote was by ${correctName}.</p>
                 <p>Current score: ${quoteGameScore}</p>
@@ -89,12 +99,11 @@ const handleGuess = async (selectedName: string, correctName: string, article: E
 
         setTimeout(() => renderQuoteGame(), 2000);
     } else {
-
         if (gameOverAudio as HTMLAudioElement) {
             playSound(soundOn, gameOverAudio);
         }
 
-        article.innerHTML = `
+        gameContainer.innerHTML = `
             <section>
                 <p><strong>Incorrect!</strong> The quote was by ${correctName}.</p>
                 <p>Game over.</p>
@@ -107,7 +116,8 @@ const handleGuess = async (selectedName: string, correctName: string, article: E
         const button = document.createElement("button");
         button.textContent = "Play again";
         button.addEventListener("click", () => startQuoteGame());
-        article.appendChild(button);
+        gameContainer.appendChild(button);
+
         totalQuoteGameScores.push(quoteGameScore);
 
         const scoreList = document.getElementById("score-list") as HTMLUListElement;
@@ -119,8 +129,8 @@ const handleGuess = async (selectedName: string, correctName: string, article: E
 
         for (const scores of totalQuoteGameScores) {
             const listItem = document.createElement("li");
-        listItem.textContent = `${scores}`;
-        scoreList.appendChild(listItem);
+            listItem.textContent = `${scores}`;
+            scoreList.appendChild(listItem);
         }
     }
 };
