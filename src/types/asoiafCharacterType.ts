@@ -1,4 +1,6 @@
-type AsoiafCharacter = {
+import HouseType from "./houseType";
+
+type AsoiafCharacterType = {
     aliases: string[];
     allegiances: string[];
     books: string[];
@@ -16,4 +18,4 @@ type AsoiafCharacter = {
     url: string;
   }
 
-  export default AsoiafCharacter;
+  export default AsoiafCharacterType;
