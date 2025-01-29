@@ -1,4 +1,3 @@
-import { getRandomCharacter } from './api/asoiafAPI';
 import { handleHouseClick } from './components/buttons/houseGameButton/houseGameButton';
 import { handleMapClick } from './components/buttons/mapButton/mapButton';
 import { handleQuoteClick } from './components/buttons/quoteGameButton/quoteGameButton';
