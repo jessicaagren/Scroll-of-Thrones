@@ -1,0 +1,52 @@
+@use '../mixins/mixins.scss';
+@use '../variables/var.scss';
+
+#buttons-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding-left: 5rem;
+
+    & .buttons-wrapper {
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        & .icons-text {
+            margin-top: 0.5rem;
+            color: var.$white;
+            @include mixins.relief-text(var.$white);
+        }
+    }
+}
+
+.button-icons {
+    @include mixins.flex-center();
+    color: var.$dark-brown;
+    padding: 1rem;
+    border-radius: 50%;
+    @include mixins.box-shadow-embossed(var.$transparent-black);
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+
+    
+    &:hover {
+        @include mixins.box-shadow-embossed(var.$transparent-white);
+    }
+    
+    & img {
+        width: 3.5rem;
+
+    }
+}
+
+.button-icons.clicked {
+    @include mixins.box-shadow-debossed(var.$transparent-black);
+
+    &:hover {
+        @include mixins.box-shadow-debossed(var.$transparent-white);
+    }
+}

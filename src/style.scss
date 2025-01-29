@@ -2,121 +2,16 @@
 @use './styles/reset/reset.scss';
 @use './styles/typography/font-styling.scss';
 @use './styles/variables/var.scss';
-
-body {
-    // @include mixins.set-background-image('./media/Texturelabs_Wood_149L.jpg', cover);
-    @include mixins.set-background-image('./media/backgrounds/Texturelabs_Wood_130L.jpg', cover);
-    display: flex;
-    font-family: IMFellEnglish, Georgia, 'Times New Roman', Times, serif;
-}
-
-main {
-    display: flex;
-    justify-content: space-between;
-    margin: 2%;
-    width: 100%;
-        > * {
-            flex: 1;
-        }
-}
-
-nav {
-    @include mixins.set-background-image('./media/backgrounds/leather-book.png', contain);
-    @include mixins.background-drop-shadow();
-    display: flex;
-    gap: 20px;
-    width: 100%;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;    
-}
-
-header, #buttons-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 1rem;
-    padding-left: 5rem;
-}
-
-header {
-    justify-content: flex-end;
-    width: 60%;
-    h1 {
-        @include mixins.relief-text(var.$dark-brown);
-    }
-}
-
-li {
-    list-style: none;
-}
-
-#buttons-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    padding-left: 5rem;
-
-    & .buttons-wrapper {
-        cursor: pointer;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        
-        & .icons-text {
-            margin-top: 0.5rem;
-            color: var.$white;
-            @include mixins.relief-text(var.$white);
-        }
-    }
-}
-
-
-.button-icons {
-    @include mixins.flex-center();
-    color: var.$dark-brown;
-    padding: 1rem;
-    border-radius: 50%;
-    @include mixins.box-shadow-embossed(var.$transparent-black);
-    transition: all 0.2s ease-in-out;
-    cursor: pointer;
-
-    
-    &:hover {
-        @include mixins.box-shadow-embossed(var.$transparent-white);
-    }
-    
-    & img {
-        width: 3.5rem;
-
-    }
-}
-
-.button-icons.clicked {
-    @include mixins.box-shadow-debossed(var.$transparent-black);
-
-    &:hover {
-        @include mixins.box-shadow-debossed(var.$transparent-white);
-    }
-}
-
-#dragon-icon {
-    border-radius: 50%;
-    width: 3.5rem;
-    @include mixins.box-shadow-debossed(var.$transparent-black);
-}
+@use './styles/layout/layout.scss';
+@use './styles/buttons/buttons.scss';
+@use './styles/layout/nav.scss';
 
 article, aside {
     @include mixins.background-drop-shadow();
     width: 100%;
     height: 100%;
-    @include mixins.flex-center();
-    flex-direction: column;
-    & section {
-        padding: 5rem;
-    }
+    // @include mixins.flex-center();
+    // flex-direction: column;
     & button {
         background-color: var.$white;
         cursor: pointer;
@@ -135,22 +30,62 @@ article, aside {
     }
 }
 
-article {
-    @include mixins.set-background-image('./media/backgrounds/paper-mask-standing2.png', contain);
+#game-container, #game-aside, #search-container, #search-aside {
+    @include mixins.flex-center();
+    flex-direction: column;
+    padding: 5rem 2rem;
+    width: 70%;
+    height: auto;
+    max-height: 80%;
 }
 
-aside {
-    @include mixins.set-background-image('./media/backgrounds/paper-mask-standing.png', contain);
+#search-input {
+    margin-bottom: 1rem;
+}
+
+#search-container, #game-container {
+    h2 {
+        font-family: IMFellEnglish, Georgia, 'Times New Roman', Times, serif;
+    }
+}
+
+#character-list {
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 800px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0.5rem;
+    border-radius: 5px;
+
+    & li {
+        width: calc(50% - 1rem);
+        margin: 0.25rem;
+        box-sizing: border-box;
+        cursor: pointer;
+    }
+    &::-webkit-scrollbar {
+        width: 8px;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        background: var.$white;
+        border-radius: 10px;
+    }
+    
+    &::-webkit-scrollbar-track {
+        background: var.$transparent-black;
+    }
 }
 
 input {
     background-color: var.$transparent-white;
 }
 
-
 div.hourglass {
     height: 6rem;
 	width: 6rem;
+    padding: 2rem;
 	background-image: url("./media/assets/hourglass3.gif");
 	background-position: center;
 	background-size: contain;

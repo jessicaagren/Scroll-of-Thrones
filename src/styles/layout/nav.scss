@@ -1,0 +1,35 @@
+@use '../mixins/mixins.scss';
+@use '../variables/var.scss';
+
+nav {
+    @include mixins.set-background-image('./media/backgrounds/leather-book.png', contain);
+    @include mixins.background-drop-shadow();
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;    
+}
+
+header, #buttons-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 1rem;
+    padding-left: 5rem;
+}
+
+header {
+    justify-content: flex-end;
+    width: 60%;
+    h1 {
+        @include mixins.relief-text(var.$dark-brown);
+    }
+}
+
+#dragon-icon {
+    border-radius: 50%;
+    width: 3.5rem;
+    @include mixins.box-shadow-debossed(var.$transparent-black);
+}

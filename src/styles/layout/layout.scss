@@ -1,0 +1,33 @@
+@use '../mixins/mixins.scss';
+@use './nav.scss';
+
+body {
+    // @include mixins.set-background-image('./media/Texturelabs_Wood_149L.jpg', cover);
+    @include mixins.set-background-image('./media/backgrounds/Texturelabs_Wood_130L.jpg', cover);
+    display: flex;
+    font-family: IMFellEnglish, Georgia, 'Times New Roman', Times, serif;
+}
+
+main {
+    display: flex;
+    justify-content: space-between;
+    margin: 2%;
+    width: 100%;
+        > * {
+            flex: 1;
+        }
+}
+
+article, aside {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+article {
+    @include mixins.set-background-image('./media/backgrounds/paper-mask-standing2.png', contain);
+}
+
+aside {
+    @include mixins.set-background-image('./media/backgrounds/paper-mask-standing.png', contain);
+}

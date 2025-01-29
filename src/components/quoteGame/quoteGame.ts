@@ -22,7 +22,7 @@ export const startQuoteGame = async (): Promise<void> => {
 
     gameContainer.innerHTML = `
         <section>
-            <p>Guess who said the quote. Keep guessing until you get it wrong.</p>
+            <h2>Guess who said the quote. Keep guessing until you get it wrong.</h2>
         </section>
     `;
 
