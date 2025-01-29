@@ -1,9 +1,9 @@
-import AsoiafCharacter from "../types/asoiafType";
+import AsoiafCharacterType from "../types/asoiafCharacterType";
+import AsoiafCharacter from "../types/asoiafCharacterType";
+import BookType from "../types/bookType";
 import HouseType from "../types/houseType";
 
 const rooturl = "https://www.anapioficeandfire.com/api/";
-
-// https://www.anapioficeandfire.com/api/characters?name=NAMN
 
 export const getCharacterByExactName = async (name: string): Promise<AsoiafCharacter | null> => {
     try {
@@ -76,6 +76,23 @@ export const getHouseByURL = async (url: string): Promise<HouseType | null> => {
     }
 };
 
+export const getBookByURL = async (url: string): Promise<BookType | null> => {
+    try {
+        const response = await fetch(url);
+
+        if (!response.ok) {
+            console.error(`Fel vid hämtning av bok.`);
+            return null;
+        }
+
+        const data = await response.json();
+        return data as BookType;
+    } catch (error) {
+        console.error("Fel vid hämtning av bok via URL:", error);
+        return null;
+    }
+};
+
 
 // const createCharacterCard = (character: DisneyCharacter) => {
 // 	const div = document.createElement("div");
@@ -90,7 +107,7 @@ export const getHouseByURL = async (url: string): Promise<HouseType | null> => {
 
 // export default createCharacterCard;
 
-export const searchCharactersParallel = async (query: string): Promise<AsoiafCharacter[]> => {
+export const searchCharacters = async (query: string): Promise<AsoiafCharacterType[]> => {
     const pageSize = 50;
     const totalPages = 50;
   
@@ -98,7 +115,7 @@ export const searchCharactersParallel = async (query: string): Promise<AsoiafCha
       const requests = Array.from({ length: totalPages }, async (_, i) => {
         const page = i + 1;
         const response = await fetch(`${rooturl}/characters/?page=${page}&pageSize=${pageSize}`);
-        const data = await response.json();
+        const data = (await response.json()) as AsoiafCharacterType[];
         return data;
       });
   
