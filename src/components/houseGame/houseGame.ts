@@ -1,9 +1,7 @@
-import { getRandomQuote, getUniqueRandomQuote } from "../../api/quoteAPI";
 import { soundOn } from "../buttons/soundButton/soundButton";
 import { article, aside, correctAudio, gameOverAudio } from "../../constants/constants";
 import { clearArticleAndAddBackground, clearAside, playSound } from "../../helpers/helpers";
-import { getCharacterByID, getHouseByURL, getRandomCharacter } from "../../api/asoiafAPI";
-import AsoiafCharacter from "../../types/asoiafType";
+import { getHouseByURL, getRandomCharacter } from "../../api/asoiafAPI";
 
 const usedHouses: Set<string> = new Set();
 const usedCharacters: Set<string> = new Set();
