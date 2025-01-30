@@ -14,7 +14,7 @@ export const startHouseGame = async (): Promise<void> => {
     usedCharacters.clear();
 
     clearAside();
-    clearArticleAndAddBackground();
+    clearArticleAndAddBackground('./media/backgrounds/paper-mask-standing2.png');
     article.innerHTML = `
     <section>
     <p>Guess which house the character belongs to. Keep guessing until you get it wrong.</p>

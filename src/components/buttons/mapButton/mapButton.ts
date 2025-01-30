@@ -15,7 +15,7 @@ export const handleMapClick = () => {
     
                 clearAndAddClickedClass(mapButton);
     
-                clearArticleAndAddBackground("url('./media/backgrounds/distressed-map.png')");
+                clearArticleAndAddBackground('./media/backgrounds/distressed-map.png');
                 clearAside();
     
             } catch (error) {

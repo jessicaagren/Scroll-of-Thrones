@@ -16,7 +16,7 @@ export const handleSearchClick = async () => {
                 }
 
                 clearAndAddClickedClass(searchButton);
-                clearArticleAndAddBackground("url('./media/backgrounds/paper-mask-standing2.png')");
+                clearArticleAndAddBackground('./media/backgrounds/paper-mask-standing2.png');
                 clearAside();
 
                 const searchContainer = document.createElement("div");

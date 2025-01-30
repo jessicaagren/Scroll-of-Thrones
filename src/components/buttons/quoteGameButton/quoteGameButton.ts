@@ -16,7 +16,7 @@ export const handleQuoteClick = () => {
     
                 clearAndAddClickedClass(quotesButton);
     
-                clearArticleAndAddBackground("url('./media/backgrounds/paper-mask-standing2.png')");
+                clearArticleAndAddBackground('./media/backgrounds/paper-mask-standing2.png');
                 clearAside();
     
                 startQuoteGame();
