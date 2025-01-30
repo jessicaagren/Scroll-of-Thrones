@@ -19,8 +19,9 @@ export const clearArticleAndAddBackground = (backgroundURL?: string) => {
     article.textContent = "";
     if(backgroundURL)
     {
-        article.style.backgroundImage = backgroundURL;
-    }
+        if (article.style.backgroundImage !== `url("${backgroundURL}")`) {
+            article.style.backgroundImage = `url("${backgroundURL}")`;
+        }    }
 }
 
 export const clearAside = () => {
