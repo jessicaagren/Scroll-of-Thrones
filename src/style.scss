@@ -4,16 +4,17 @@
 @use './styles/variables/var.scss';
 @use './styles/layout/layout.scss';
 @use './styles/buttons/buttons.scss';
+@use './styles/assets/loadingIndicator.scss';
 @use './styles/layout/nav.scss';
 
 article, aside {
     @include mixins.background-drop-shadow();
     width: 100%;
     height: 100%;
-    // @include mixins.flex-center();
-    // flex-direction: column;
+
     & button {
         background-color: var.$white;
+        margin-bottom: 1rem;
         cursor: pointer;
     }
     
@@ -24,6 +25,7 @@ article, aside {
         padding: 0 0.5rem;
         border: none;
         border-radius: 0.5rem;
+
         &:focus {
             outline: none;
         }
@@ -39,38 +41,37 @@ article, aside {
     max-height: 80%;
 }
 
-#search-input {
-    margin-bottom: 1rem;
-}
-
 #search-container, #game-container {
     h2 {
         font-family: IMFellEnglish, Georgia, 'Times New Roman', Times, serif;
     }
 }
 
+#search-input {
+    background-color: var.$transparent-white;
+    margin-bottom: 1rem;
+}
+
 #character-list {
     display: flex;
     flex-wrap: wrap;
-    max-height: 800px;
+    max-height: 50rem;
     overflow-y: auto;
     overflow-x: hidden;
     padding: 0.5rem;
-    border-radius: 5px;
 
     & li {
-        width: calc(50% - 1rem);
+        min-width: 45%;
         margin: 0.25rem;
         box-sizing: border-box;
         cursor: pointer;
     }
     &::-webkit-scrollbar {
-        width: 8px;
+        width: 0.5rem;
     }
     
     &::-webkit-scrollbar-thumb {
         background: var.$white;
-        border-radius: 10px;
     }
     
     &::-webkit-scrollbar-track {
@@ -78,33 +79,9 @@ article, aside {
     }
 }
 
-#character-list:has(li:nth-child(1)) li {
-    width: 100%;
+#character-list:not:first-child {
+    width: calc(50% - 1rem);
 }
-
-input {
-    background-color: var.$transparent-white;
-}
-
-div.hourglass {
-    height: 6rem;
-	width: 6rem;
-    padding: 2rem;
-	background-image: url("./media/assets/hourglass3.gif");
-	background-position: center;
-	background-size: contain;
-    background-repeat: no-repeat;
-    animation: rotation 4s infinite linear;
-}
-
-@keyframes rotation {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(359deg);
-    }
-  }
 
 
   #sound-button {

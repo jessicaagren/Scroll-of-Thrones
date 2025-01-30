@@ -31,7 +31,6 @@
     @include mixins.box-shadow-embossed(var.$transparent-black);
     transition: all 0.2s ease-in-out;
     cursor: pointer;
-
     
     &:hover {
         @include mixins.box-shadow-embossed(var.$transparent-white);

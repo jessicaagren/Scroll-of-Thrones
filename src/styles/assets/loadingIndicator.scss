@@ -1,0 +1,19 @@
+.hourglass {
+    height: 6rem;
+	width: 6rem;
+    padding: 2rem;
+	background-image: url("./media/assets/hourglass3.gif");
+	background-position: center;
+	background-size: contain;
+    background-repeat: no-repeat;
+    animation: rotation 4s infinite linear;
+}
+
+@keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+  }
