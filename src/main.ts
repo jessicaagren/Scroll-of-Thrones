@@ -5,19 +5,9 @@ import { handleSearchClick } from './components/buttons/searchButton/searchButto
 import { handleSoundClick } from './components/buttons/soundButton/soundButton';
 import './style.scss';
 
-// TODO (Läsa igenom Niklas repo)
-
 // TODO Fixa responsivitet
 
-// TODO Göra alla knappar till en funktion?
-
-// TODO lägg in husen med bild och koppla till API
-
 // TODO När man trycker på hus visas "Guess the house" och Begin. Visa upp en karaktär och fyra alternativ på hus. Fortsätt tills man svarar fel, spara poäng. Varje karaktär kan bara komma en gång. Alternativ på karaktär väljs från ASOIAF-API.
-
-// TODO Conditional rendering från renderCharList div.innerHTML = `<h2>Search result${
-// 				charList.search ? ` for "${charList.search}"` : ""
-// 			}:</h2>`;
 
 // TODO handleSearchClick från CharacterSearchForm.ts
 // const handleSearchClick = async () => {
