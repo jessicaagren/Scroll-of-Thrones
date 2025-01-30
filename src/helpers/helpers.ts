@@ -1,4 +1,5 @@
 import { article, aside } from "../constants/constants";
+import AsoiafCharacterType from "../types/asoiafCharacterType";
 
 export const playSound = (soundOn: boolean, audioElement: HTMLAudioElement) => {
     if (soundOn) {
@@ -26,4 +27,15 @@ export const clearArticleAndAddBackground = (backgroundURL?: string) => {
 
 export const clearAside = () => {
     aside.textContent ="";
+}
+
+export const renderLoadingIndicator = (element: HTMLElement) => {
+    const loadingIndicator = document.createElement("div");
+    loadingIndicator.className = "hourglass";
+    element.appendChild(loadingIndicator);
+}
+
+export const removeLoadingIndicator = (element: HTMLElement) => {
+    const loadingIndicator = document.querySelector(".hourglass") as HTMLDivElement;
+    element.removeChild(loadingIndicator);
 }

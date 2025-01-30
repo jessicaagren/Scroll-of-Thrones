@@ -8,3 +8,5 @@ export const drawingSwordAudio = new Audio('./media/audio/draw-sword.mp3');
 
 export const gameOverAudio = new Audio('./media/audio/wrong-answer.mp3');
 export const correctAudio = new Audio('./media/audio/correct.mp3');
+
+export const knownHouses = [ "Arryn", "Baelish", "Baratheon", "Bolton", "Clegane", "Dondarrion", "Frey", "Greyjoy", "Karstark", "Lannister", "Martell", "Mormont", "Reed", "Stark", "Targaryen", "Tully", "Tyrell" ];
