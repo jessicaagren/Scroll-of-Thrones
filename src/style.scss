@@ -78,6 +78,10 @@ article, aside {
     }
 }
 
+#character-list:has(li:nth-child(1)) li {
+    width: 100%;
+}
+
 input {
     background-color: var.$transparent-white;
 }
@@ -117,4 +121,10 @@ div.hourglass {
         width: 2.5rem;
         height: 2.5rem;    
     }
+}
+
+.house-sigil {
+    max-width: 7rem;
+    display: block;
+    margin: 1rem auto;
 }
