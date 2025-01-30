@@ -1,5 +1,3 @@
-import HouseType from "./houseType";
-
 type AsoiafCharacterType = {
     aliases: string[];
     allegiances: string[];
