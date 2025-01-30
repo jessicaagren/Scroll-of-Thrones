@@ -1,6 +1,6 @@
-import { getBookByURL, getHouseByURL, getRandomCharacter, searchCharacters } from "../../api/asoiafAPI";
-import { article, aside } from "../../constants/constants";
-import { clearAside } from "../../helpers/helpers";
+import { getBookByURL, getCharacterByURL, getHouseByURL, getRandomCharacter, searchCharacters } from "../../api/asoiafAPI";
+import { article, aside, knownHouses } from "../../constants/constants";
+import { clearAside, removeLoadingIndicator, renderLoadingIndicator } from "../../helpers/helpers";
 import AsoiafCharacterType from "../../types/asoiafCharacterType";
 
 export const setupSearchContainer = () => {
@@ -14,7 +14,7 @@ export const setupSearchContainer = () => {
 
     const input = document.createElement("input");
     input.type = "text";
-    input.placeholder = ". . .";
+    input.placeholder = "Press enter to search...";
     input.id = "search-input";
     searchContainer.appendChild(input);
 
@@ -36,16 +36,14 @@ const handleInput = () => {
         if (event.key === 'Enter') {
             clearPreviousSearchResults();
 
-            const loadingIndicator = document.createElement("div");
-            loadingIndicator.className = "hourglass";
-            searchContainer.appendChild(loadingIndicator);
+            renderLoadingIndicator(searchContainer);
 
             const searchInput = input.value;
             const searchedCharacters = await searchCharacters(searchInput);
 
-            searchContainer.removeChild(loadingIndicator);
+            removeLoadingIndicator(searchContainer);
 
-            displaySearchResults(searchInput, searchedCharacters);
+            renderSearchResults(searchInput, searchedCharacters);
             input.value = '';
         }
     });
@@ -60,7 +58,7 @@ const handleRandomButton = () => {
             try {
                 const character = await getRandomCharacter();
                 if (character) {
-                    displayCharacterInfo(character);
+                    renderCharacterInfo(character);
                 } else {
                     console.error("Ingen karaktär hittades.");
                 }
@@ -82,7 +80,7 @@ const clearPreviousSearchResults = () => {
     if (previousCharacterList) searchContainer.removeChild(previousCharacterList);
 };
 
-const displaySearchResults = (searchInput: string, searchedCharacters: AsoiafCharacterType[]) => {
+const renderSearchResults = (searchInput: string, searchedCharacters: AsoiafCharacterType[]) => {
     const searchContainer = document.getElementById("search-container") as HTMLElement;
 
     const searchElement = document.createElement("p");
@@ -96,20 +94,26 @@ const displaySearchResults = (searchInput: string, searchedCharacters: AsoiafCha
     searchedCharacters.forEach(character => {
         const listItem = document.createElement("li");
         listItem.textContent = character.name;
-        listItem.addEventListener("click", () => displayCharacterInfo(character));
+        listItem.addEventListener("click", () => renderCharacterInfo(character));
         characterList.appendChild(listItem);
     });
 
     searchContainer.appendChild(characterList);
 };
 
-const displayCharacterInfo = async (character: AsoiafCharacterType) => {
+const renderCharacterInfo = async (character: AsoiafCharacterType) => {
     let houseNames: string[] = [];
     let bookNames: string[] = [];
+    let houseWords: string[] = [];
 
     for (const houseURL of character.allegiances) {
         const house = await getHouseByURL(houseURL);
-        if (house) houseNames.push(house.name);
+        if (house) {
+            houseNames.push(house.name);
+            if (house.words) {
+                houseWords.push(house.words);
+            }
+        }
     }
 
     for (const bookURL of character.povBooks) {
@@ -117,12 +121,13 @@ const displayCharacterInfo = async (character: AsoiafCharacterType) => {
         if (book) bookNames.push(book.name);
     }
 
+    const spouseCharacter = await getCharacterByURL(character.spouse);
+
+
     clearAside();
     const searchAside = document.createElement("div");
     searchAside.id = "search-aside";
     aside.appendChild(searchAside);
-
-    const knownHouses = [ "Arryn", "Baelish", "Baratheon", "Bolton", "Clegane", "Dondarrion", "Frey", "Greyjoy", "Lannister", "Martell", "Mormont", "Stark", "Targaryen", "Tully", "Tyrell" ];
 
     let houseSVG = "";
     if (houseNames.length > 0) {
@@ -138,12 +143,16 @@ const displayCharacterInfo = async (character: AsoiafCharacterType) => {
         <h2>${character.name}</h2>
         ${houseSVG}
         <section>
-            <p>Allegiances: ${houseNames.length > 0 ? houseNames.join(", ") : "Unknown"}</p>
+            <p>House: ${houseNames.length > 0 ? houseNames.join(", ") : "Unknown"}</p>
+            <p>House words: ${houseWords.length > 0 ? houseWords.join(", ") : "Unknown"}</p>
             <p>Titles: ${character.titles.length > 0 ? character.titles.join(", ") : "Unknown"}</p>
             <p>Culture: ${character.culture || "Unknown"}</p>
+            <p>Mother: ${character.mother || "Unknown"}</p>
+            <p>Father: ${character.father || "Unknown"}</p>
+            <p>Spouse: ${spouseCharacter ? spouseCharacter.name : "Unknown"}</p>
             <p>Born: ${character.born || "Unknown"}</p>
-            <p>Died: ${character.died || "N/A"}</p>
+            <p>Died: ${character.died || "Unknown"}</p>
             <p>POV books: ${bookNames.length > 0 ? bookNames.join(", ") : "None"}</p>
         </section>
     `;
-};
+}

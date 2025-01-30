@@ -59,6 +59,23 @@ export const getRandomCharacter = async (): Promise<AsoiafCharacter> => {
     }
 }
 
+export const getCharacterByURL = async (url: string): Promise<AsoiafCharacter | null> => {
+    try {
+        const response = await fetch(url);
+
+        if (!response.ok) {
+            console.error(`Fel vid hämtning av karaktär.`);
+            return null;
+        }
+
+        const data = await response.json();
+        return data as AsoiafCharacter;
+    } catch (error) {
+        console.error("Fel vid hämtning av karaktär via URL:", error);
+        return null;
+    }
+};
+
 export const getHouseByURL = async (url: string): Promise<HouseType | null> => {
     try {
         const response = await fetch(url);
