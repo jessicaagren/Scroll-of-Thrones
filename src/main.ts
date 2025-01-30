@@ -5,7 +5,15 @@ import { handleSearchClick } from './components/buttons/searchButton/searchButto
 import { handleSoundClick } from './components/buttons/soundButton/soundButton';
 import './style.scss';
 
-// TODO Fixa responsivitet
+// TODO Fixa responsivitet (ändra root med mixin?)
+
+// TODO Rensa mer bland style, se över funktioner för DRY
+
+// TODO Se över typning
+
+// TODO Kolla error-meddelanden
+
+// TODO Gör lista på husen och skriv ut info om husen (istället för spel?)
 
 // TODO När man trycker på hus visas "Guess the house" och Begin. Visa upp en karaktär och fyra alternativ på hus. Fortsätt tills man svarar fel, spara poäng. Varje karaktär kan bara komma en gång. Alternativ på karaktär väljs från ASOIAF-API.
 
