@@ -23,7 +23,7 @@ article, aside {
     & input, button {
         font-family: IMFellEnglish, Georgia, 'Times New Roman', Times, serif;
         color: var.$black;
-        height: 2rem;
+        min-height: 2rem;
         padding: 0 0.5rem;
         border: none;
         border-radius: 0.5rem;
@@ -52,6 +52,11 @@ article, aside {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+#input-container {
+    display: flex;
+    gap: 1rem;
 }
 
 #search-container, #game-container {
