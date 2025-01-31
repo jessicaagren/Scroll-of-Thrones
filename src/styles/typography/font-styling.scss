@@ -13,10 +13,16 @@ h2 {
     font-family: Aquiline, 'Brush Script MT', 'Lucida Handwriting', cursive;
     font-size: 1.5rem;
 }
+
 h1, h2 {
     color: var.$black;
     padding-bottom: 1rem;
 }
+
+#character-name {
+    font-size: 2rem;
+}
+
 p, input, button, ul {
     font-family: IMFellEnglish, Georgia, 'Times New Roman', Times, serif;
     font-size: 1.2rem;
