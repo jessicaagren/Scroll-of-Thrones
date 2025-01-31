@@ -21,7 +21,7 @@ export const startQuoteGame = async (): Promise<void> => {
     article.appendChild(gameContainer);
 
     gameContainer.innerHTML = `
-        <section>
+        <section class="game-info">
             <h2>Guess who said the quote. Keep guessing until you get it wrong.</h2>
         </section>
     `;
@@ -55,7 +55,7 @@ const renderQuoteGame = async (): Promise<void> => {
 
         const gameContainer = document.getElementById("game-container") as HTMLElement;
         gameContainer.innerHTML = `
-            <section>
+            <section class="game-info">
                 <p>"${quote.sentence}"</p>
                 <p>Points: ${quoteGameScore}</p>
             </section>
@@ -104,7 +104,7 @@ const handleGuess = async (selectedName: string, correctName: string) => {
         }
 
         gameContainer.innerHTML = `
-            <section>
+            <section class="game-info">
                 <p><strong>Incorrect!</strong> The quote was by ${correctName}.</p>
                 <p>Game over.</p>
                 <p>Total score: ${quoteGameScore}</p>

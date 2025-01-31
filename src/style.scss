@@ -43,10 +43,15 @@ article, aside {
     max-height: 80%;
 }
 
-#search-aside {
-    & section {
-        padding: 1rem;
-    }
+.game-info {
+    padding-bottom: 2rem;
+}
+
+#game-container > * {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 #search-container, #game-container {
