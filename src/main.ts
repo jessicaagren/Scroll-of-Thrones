@@ -20,6 +20,8 @@ import './style.scss';
 
 // TODO (Om tid finns) gör favoritfunktion
 
+// TODO GÖr "Map" till info med kontaktuppgifter och API-sources
+
 // TODO När man trycker på hus visas "Guess the house" och Begin. Visa upp en karaktär och fyra alternativ på hus. Fortsätt tills man svarar fel, spara poäng. Varje karaktär kan bara komma en gång. Alternativ på karaktär väljs från ASOIAF-API.
 
 // TODO handleSearchClick från CharacterSearchForm.ts
