@@ -1,5 +1,4 @@
 import { article, aside } from "../constants/constants";
-import AsoiafCharacterType from "../types/asoiafCharacterType";
 
 export const playSound = (soundOn: boolean, audioElement: HTMLAudioElement) => {
     if (soundOn) {
