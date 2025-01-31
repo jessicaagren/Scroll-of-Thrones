@@ -12,41 +12,51 @@ export const setupSearchContainer = () => {
     explanation.innerHTML = "Search for any character below";
     searchContainer.appendChild(explanation);
 
+    const inputContainer = document.createElement("div");
+    inputContainer.id = "input-container";
+    searchContainer.appendChild(inputContainer);
+
     const input = document.createElement("input");
     input.type = "text";
-    input.placeholder = "Press enter to search...";
+    input.placeholder = "Enter character name...";
     input.id = "search-input";
-    searchContainer.appendChild(input);
+    inputContainer.appendChild(input);
 
-    handleInput();
+    const searchButton = document.createElement("button");
+    searchButton.textContent = "Search";
+    searchButton.id = "search-button";
+    inputContainer.appendChild(searchButton);
 
-    const button = document.createElement("button");
-    button.textContent = "Randomise";
-    button.id = "randomise-button";
-    searchContainer.appendChild(button);
+    searchButton.addEventListener("click", handleSearch);
+    input.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") handleSearch();
+    });
+
+    const randomButton = document.createElement("button");
+    randomButton.textContent = "Randomise";
+    randomButton.id = "randomise-button";
+    searchContainer.appendChild(randomButton);
 
     handleRandomButton();
 };
 
-const handleInput = () => {
+
+const handleSearch = async () => {
     const input = document.getElementById("search-input") as HTMLInputElement;
     const searchContainer = document.getElementById("search-container") as HTMLElement;
 
-    input.addEventListener('keydown', async (event) => {
-        if (event.key === 'Enter') {
-            clearPreviousSearchResults();
+    if (!input.value.trim()) return;
 
-            renderLoadingIndicator(searchContainer);
+    clearPreviousSearchResults();
+    renderLoadingIndicator(searchContainer);
 
-            const searchInput = input.value;
-            const searchedCharacters = await searchCharacters(searchInput);
+    const searchInput = input.value;
+    const searchedCharacters = await searchCharacters(searchInput);
 
-            removeLoadingIndicator(searchContainer);
+    removeLoadingIndicator(searchContainer);
+    renderSearchResults(searchInput, searchedCharacters);
 
-            renderSearchResults(searchInput, searchedCharacters);
-            input.value = '';
-        }
-    });
+    input.value = '';
 };
 
 const handleRandomButton = () => {
@@ -127,7 +137,6 @@ const renderCharacterInfo = async (character: AsoiafCharacterType) => {
         }
     }
 
-    // Hämtar släktingar baserat på ID
     const spouseId = getIdFromURL(character.spouse);
     const motherId = getIdFromURL(character.mother);
     const fatherId = getIdFromURL(character.father);
@@ -136,13 +145,11 @@ const renderCharacterInfo = async (character: AsoiafCharacterType) => {
     const motherCharacter = motherId ? await getCharacterByID(motherId) : null;
     const fatherCharacter = fatherId ? await getCharacterByID(fatherId) : null;
 
-    // Rensar aside och skapar ny container
     clearAside();
     const searchAside = document.createElement("div");
     searchAside.id = "search-aside";
     aside.appendChild(searchAside);
 
-    // Hanterar House SVG
     let houseSVG = "";
     if (houseNames.length > 0) {
         const matchingHouse = knownHouses.find(house => houseNames[0].includes(house));
@@ -152,7 +159,6 @@ const renderCharacterInfo = async (character: AsoiafCharacterType) => {
         }
     }
 
-    // Genererar HTML-innehållet
     searchAside.innerHTML = `
         <h2 id="character-name">${character.name}</h2>
         ${houseSVG}
@@ -166,7 +172,6 @@ const renderCharacterInfo = async (character: AsoiafCharacterType) => {
             <p>Spouse: ${spouseCharacter ? spouseCharacter.name : "Unknown"}</p>
             <p>Born: ${character.born || "Unknown"}</p>
             <p>Died: ${character.died || "Unknown"}</p>
-            <p>Books: ${character.books.length}</p>
             <p>POV books: ${bookNames.length > 0 ? bookNames.join(", ") : "None"}</p>
         </section>
     `;
