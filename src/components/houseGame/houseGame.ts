@@ -1,7 +1,7 @@
 import { soundOn } from "../buttons/soundButton/soundButton";
 import { article, aside, correctAudio, gameOverAudio } from "../../constants/constants";
 import { clearArticleAndAddBackground, clearAside, playSound } from "../../helpers/helpers";
-import { getHouseByURL, getRandomCharacter } from "../../api/asoiafAPI";
+import { getRandomCharacter } from "../../api/asoiafAPI";
 
 const usedHouses: Set<string> = new Set();
 const usedCharacters: Set<string> = new Set();

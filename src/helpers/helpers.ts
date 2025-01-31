@@ -38,3 +38,7 @@ export const removeLoadingIndicator = (element: HTMLElement) => {
     const loadingIndicator = document.querySelector(".hourglass") as HTMLDivElement;
     element.removeChild(loadingIndicator);
 }
+
+export const getIdFromURL = (url: string) => {
+    return url.split("/").filter(Boolean).pop();
+};

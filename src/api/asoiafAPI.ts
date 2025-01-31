@@ -23,7 +23,7 @@ const rooturl = "https://www.anapioficeandfire.com/api/";
 //     }
 // }
 
-export const getCharacterByID = async (id: number): Promise<AsoiafCharacter | null> => {
+export const getCharacterByID = async (id: string | number): Promise<AsoiafCharacter | null> => {
     try {
         const response = await fetch(`${rooturl}characters/${id}`);
         if (!response.ok) {
@@ -57,58 +57,54 @@ export const getRandomCharacter = async (): Promise<AsoiafCharacter> => {
         console.error(`Fel vid hämtning av karaktär med id ${randomID}:`, error);
         throw new Error("Kunde inte hämta random karaktär");
     }
-}
-
-export const getCharacterByURL = async (url: string): Promise<AsoiafCharacter | null> => {
-    try {
-        const response = await fetch(url);
-
-        if (!response.ok) {
-            console.error(`Fel vid hämtning av karaktär.`);
-            return null;
-        }
-
-        const data = await response.json();
-        return data as AsoiafCharacter;
-    } catch (error) {
-        console.error("Fel vid hämtning av karaktär via URL:", error);
-        return null;
-    }
 };
 
-export const getHouseByURL = async (url: string): Promise<HouseType | null> => {
+export const getHouseByID = async (id: string): Promise<HouseType | null> => {
     try {
-        const response = await fetch(url);
-
+        const response = await fetch(`${rooturl}houses/${id}`);
         if (!response.ok) {
             console.error(`Fel vid hämtning av hus.`);
             return null;
         }
 
         const data = await response.json();
+
+        if (!data || Object.keys(data).length === 0) {
+            console.log("Inget hus hittades.");
+            return null;
+        }
+
         return data as HouseType;
+
     } catch (error) {
-        console.error("Fel vid hämtning av hus via URL:", error);
+        console.error("Fel vid hämtning av hus via ID:", error);
         return null;
     }
 };
 
-export const getBookByURL = async (url: string): Promise<BookType | null> => {
+export const getBookByID = async (id: string): Promise<BookType | null> => {
     try {
-        const response = await fetch(url);
-
+        const response = await fetch(`${rooturl}books/${id}`);
         if (!response.ok) {
             console.error(`Fel vid hämtning av bok.`);
             return null;
         }
 
         const data = await response.json();
+
+        if (!data || Object.keys(data).length === 0) {
+            console.log("Ingen bok hittades.");
+            return null;
+        }
+
         return data as BookType;
+
     } catch (error) {
-        console.error("Fel vid hämtning av bok via URL:", error);
+        console.error("Fel vid hämtning av bok via ID:", error);
         return null;
     }
 };
+
 
 export const searchCharacters = async (query: string): Promise<AsoiafCharacterType[]> => {
     const pageSize = 50;

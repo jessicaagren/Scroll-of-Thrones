@@ -1,6 +1,6 @@
-import { getBookByURL, getCharacterByURL, getHouseByURL, getRandomCharacter, searchCharacters } from "../../api/asoiafAPI";
+import { getBookByID, getCharacterByID, getHouseByID, getRandomCharacter, searchCharacters } from "../../api/asoiafAPI";
 import { article, aside, knownHouses } from "../../constants/constants";
-import { clearAside, removeLoadingIndicator, renderLoadingIndicator } from "../../helpers/helpers";
+import { clearAside, getIdFromURL, removeLoadingIndicator, renderLoadingIndicator } from "../../helpers/helpers";
 import AsoiafCharacterType from "../../types/asoiafCharacterType";
 
 export const setupSearchContainer = () => {
@@ -107,39 +107,52 @@ const renderCharacterInfo = async (character: AsoiafCharacterType) => {
     let houseWords: string[] = [];
 
     for (const houseURL of character.allegiances) {
-        const house = await getHouseByURL(houseURL);
-        if (house) {
-            houseNames.push(house.name);
-            if (house.words) {
-                houseWords.push(house.words);
+        const houseId = getIdFromURL(houseURL);
+        if (houseId) {
+            const house = await getHouseByID(houseId);
+            if (house) {
+                houseNames.push(house.name);
+                if (house.words) {
+                    houseWords.push(house.words);
+                }
             }
         }
     }
 
     for (const bookURL of character.povBooks) {
-        const book = await getBookByURL(bookURL);
-        if (book) bookNames.push(book.name);
+        const bookId = getIdFromURL(bookURL);
+        if (bookId) {
+            const book = await getBookByID(bookId);
+            if (book) bookNames.push(book.name);
+        }
     }
 
-    const spouseCharacter = await getCharacterByURL(character.spouse);
-    const motherCharacter = await getCharacterByURL(character.mother);
-    const fatherCharacter = await getCharacterByURL(character.father);
+    // Hämtar släktingar baserat på ID
+    const spouseId = getIdFromURL(character.spouse);
+    const motherId = getIdFromURL(character.mother);
+    const fatherId = getIdFromURL(character.father);
 
+    const spouseCharacter = spouseId ? await getCharacterByID(spouseId) : null;
+    const motherCharacter = motherId ? await getCharacterByID(motherId) : null;
+    const fatherCharacter = fatherId ? await getCharacterByID(fatherId) : null;
+
+    // Rensar aside och skapar ny container
     clearAside();
     const searchAside = document.createElement("div");
     searchAside.id = "search-aside";
     aside.appendChild(searchAside);
 
+    // Hanterar House SVG
     let houseSVG = "";
     if (houseNames.length > 0) {
         const matchingHouse = knownHouses.find(house => houseNames[0].includes(house));
-        
         if (matchingHouse) {
             const houseSlug = matchingHouse.toLowerCase();
             houseSVG = `<img src="./media/houses/${houseSlug}.svg" alt="${matchingHouse}" class="house-sigil">`;
         }
     }
 
+    // Genererar HTML-innehållet
     searchAside.innerHTML = `
         <h2 id="character-name">${character.name}</h2>
         ${houseSVG}
@@ -157,7 +170,8 @@ const renderCharacterInfo = async (character: AsoiafCharacterType) => {
             <p>POV books: ${bookNames.length > 0 ? bookNames.join(", ") : "None"}</p>
         </section>
     `;
-}
+};
+
 
 // const createCharacterCard = (character: DisneyCharacter) => {
 // 	const div = document.createElement("div");
