@@ -122,7 +122,8 @@ const renderCharacterInfo = async (character: AsoiafCharacterType) => {
     }
 
     const spouseCharacter = await getCharacterByURL(character.spouse);
-
+    const motherCharacter = await getCharacterByURL(character.mother);
+    const fatherCharacter = await getCharacterByURL(character.father);
 
     clearAside();
     const searchAside = document.createElement("div");
@@ -140,19 +141,33 @@ const renderCharacterInfo = async (character: AsoiafCharacterType) => {
     }
 
     searchAside.innerHTML = `
-        <h2>${character.name}</h2>
+        <h2 id="character-name">${character.name}</h2>
         ${houseSVG}
         <section>
             <p>House: ${houseNames.length > 0 ? houseNames.join(", ") : "Unknown"}</p>
             <p>House words: ${houseWords.length > 0 ? houseWords.join(", ") : "Unknown"}</p>
             <p>Titles: ${character.titles.length > 0 ? character.titles.join(", ") : "Unknown"}</p>
             <p>Culture: ${character.culture || "Unknown"}</p>
-            <p>Mother: ${character.mother || "Unknown"}</p>
-            <p>Father: ${character.father || "Unknown"}</p>
+            <p>Mother: ${motherCharacter ? motherCharacter.name : "Unknown"}</p>
+            <p>Father: ${fatherCharacter ? fatherCharacter.name : "Unknown"}</p>
             <p>Spouse: ${spouseCharacter ? spouseCharacter.name : "Unknown"}</p>
             <p>Born: ${character.born || "Unknown"}</p>
             <p>Died: ${character.died || "Unknown"}</p>
+            <p>Books: ${character.books.length}</p>
             <p>POV books: ${bookNames.length > 0 ? bookNames.join(", ") : "None"}</p>
         </section>
     `;
 }
+
+// const createCharacterCard = (character: DisneyCharacter) => {
+// 	const div = document.createElement("div");
+// 	div.classList.add("CharacterCard");
+
+// 	div.innerHTML = `
+//         <p>${character.name}</p>
+//         <img src="${character.imageUrl}">
+//     `;
+// 	return div;
+// };
+
+// export default createCharacterCard;
