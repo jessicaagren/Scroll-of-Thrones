@@ -1,7 +1,8 @@
-import { handleHouseClick } from './components/buttons/houseGameButton/houseGameButton';
-import { handleMapClick } from './components/buttons/mapButton/mapButton';
-import { handleQuoteClick } from './components/buttons/quoteGameButton/quoteGameButton';
-import { handleSearchClick } from './components/buttons/searchButton/searchButton';
+
+import handleHouseClick from './components/buttons/houseGameButton/houseGameButton';
+import handleMapClick from './components/buttons/mapButton/mapButton';
+import handleQuoteClick from './components/buttons/quoteGameButton/quoteGameButton';
+import handleSearchClick from './components/buttons/searchButton/searchButton';
 import { handleSoundClick } from './components/buttons/soundButton/soundButton';
 import './style.scss';
 
@@ -12,6 +13,8 @@ import './style.scss';
 // TODO Se över typning
 
 // TODO Kolla error-meddelanden
+
+// TODO Läs uppgift och kolla state??
 
 // TODO Gör lista på husen och skriv ut info om husen (istället för spel?)
 

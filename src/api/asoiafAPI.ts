@@ -5,23 +5,23 @@ import HouseType from "../types/houseType";
 
 const rooturl = "https://www.anapioficeandfire.com/api/";
 
-export const getCharacterByExactName = async (name: string): Promise<AsoiafCharacter | null> => {
-    try {
-        const response = await fetch(`${rooturl}characters?name=${name}`);
-        const data = await response.json();
+// export const getCharacterByExactName = async (name: string): Promise<AsoiafCharacter | null> => {
+//     try {
+//         const response = await fetch(`${rooturl}characters?name=${name}`);
+//         const data = await response.json();
 
-    if (data.length === 0) {
-        console.log("Ingen karaktär hittades.");
-        return null;
-    }
+//     if (data.length === 0) {
+//         console.log("Ingen karaktär hittades.");
+//         return null;
+//     }
 
-    return data[0] as AsoiafCharacter;
+//     return data[0] as AsoiafCharacter;
 
-    } catch (error) {
-        console.error("Fel vid hämtning av karaktärsdetaljer:", error);
-        return null;
-    }
-}
+//     } catch (error) {
+//         console.error("Fel vid hämtning av karaktärsdetaljer:", error);
+//         return null;
+//     }
+// }
 
 export const getCharacterByID = async (id: number): Promise<AsoiafCharacter | null> => {
     try {
@@ -109,20 +109,6 @@ export const getBookByURL = async (url: string): Promise<BookType | null> => {
         return null;
     }
 };
-
-
-// const createCharacterCard = (character: DisneyCharacter) => {
-// 	const div = document.createElement("div");
-// 	div.classList.add("CharacterCard");
-
-// 	div.innerHTML = `
-//         <p>${character.name}</p>
-//         <img src="${character.imageUrl}">
-//     `;
-// 	return div;
-// };
-
-// export default createCharacterCard;
 
 export const searchCharacters = async (query: string): Promise<AsoiafCharacterType[]> => {
     const pageSize = 50;

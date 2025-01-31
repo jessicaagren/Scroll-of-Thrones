@@ -1,6 +1,6 @@
-import { article } from "../../constants/constants";
-import { clearAndAddClickedClass, clearArticleAndAddBackground, clearAside, playSound } from "../../helpers/helpers";
-import { soundOn } from "./soundButton/soundButton";
+import { article } from "../../../constants/constants";
+import { clearAndAddClickedClass, clearArticleAndAddBackground, clearAside, playSound } from "../../../helpers/helpers";
+import { soundOn } from "../soundButton/soundButton";
 
 const handleButtonClick = (
     elementId: string, 

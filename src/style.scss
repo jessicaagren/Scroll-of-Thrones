@@ -41,6 +41,10 @@ article, aside {
     max-height: 80%;
 }
 
+#game-aside {
+    flex-wrap: wrap;   
+}
+
 #search-container, #game-container {
     h2 {
         font-family: IMFellEnglish, Georgia, 'Times New Roman', Times, serif;
@@ -82,7 +86,6 @@ article, aside {
 #character-list:not:first-child {
     width: calc(50% - 1rem);
 }
-
 
   #sound-button {
     position: absolute;
