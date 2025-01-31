@@ -1,0 +1,18 @@
+@use '../mixins/mixins.scss';
+@use '../variables/var.scss';
+
+#sound-button {
+    position: absolute;
+    z-index: 100;
+    top: 0.5rem;
+    right: 0.5rem;
+    background-color: var.$transparent-white;
+    border-radius: 50%;
+    @include mixins.flex-center();
+
+    #sound-icon {
+        padding: 0.5rem;
+        width: 2.5rem;
+        height: 2.5rem;    
+    }
+}

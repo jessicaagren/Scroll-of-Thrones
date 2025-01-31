@@ -6,6 +6,8 @@
 @use './styles/buttons/buttons.scss';
 @use './styles/assets/loadingIndicator.scss';
 @use './styles/layout/nav.scss';
+@use './styles/assets/houseSigil.scss';
+@use './styles/assets/soundButton.scss';
 
 article, aside {
     @include mixins.background-drop-shadow();
@@ -32,7 +34,7 @@ article, aside {
     }
 }
 
-#game-container, #game-aside, #search-container, #search-aside {
+#search-container, #search-aside, #game-container, #game-aside {
     @include mixins.flex-center();
     flex-direction: column;
     padding: 5rem 2rem;
@@ -41,8 +43,10 @@ article, aside {
     max-height: 80%;
 }
 
-#game-aside {
-    flex-wrap: wrap;   
+#search-aside {
+    & section {
+        padding: 1rem;
+    }
 }
 
 #search-container, #game-container {
@@ -87,24 +91,3 @@ article, aside {
     width: calc(50% - 1rem);
 }
 
-  #sound-button {
-    position: absolute;
-    z-index: 100;
-    top: 0.5rem;
-    right: 0.5rem;
-    background-color: var.$transparent-white;
-    border-radius: 50%;
-    @include mixins.flex-center();
-
-    #sound-icon {
-        padding: 0.5rem;
-        width: 2.5rem;
-        height: 2.5rem;    
-    }
-}
-
-.house-sigil {
-    max-width: 7rem;
-    display: block;
-    margin: 1rem auto;
-}
