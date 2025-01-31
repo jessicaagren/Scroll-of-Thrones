@@ -47,15 +47,18 @@ export const getCharacterByID = async (id: string | number): Promise<AsoiafChara
 };
 
 export const getRandomCharacter = async (): Promise<AsoiafCharacter> => {
-    const randomID = (Math.floor(Math.random() * 2134) + 1);
-
     try {
-        const character = await getCharacterByID(randomID);
-        return character as AsoiafCharacter;
+        while (true) {
+            const randomID = Math.floor(Math.random() * 2134) + 1;
+            const character = await getCharacterByID(randomID);
 
+            if (character && character.name?.trim() && character.allegiances.length > 0) {
+                return character as AsoiafCharacter;
+            }
+        }
     } catch (error) {
-        console.error(`Fel vid hämtning av karaktär med id ${randomID}:`, error);
-        throw new Error("Kunde inte hämta random karaktär");
+        console.error("Fel vid hämtning av random karaktär:", error);
+        throw new Error("Kunde inte hämta en giltig random karaktär");
     }
 };
 
@@ -109,31 +112,33 @@ export const getBookByID = async (id: string): Promise<BookType | null> => {
 export const searchCharacters = async (query: string): Promise<AsoiafCharacterType[]> => {
     const pageSize = 50;
     const totalPages = 50;
-  
+
     try {
-      const requests = Array.from({ length: totalPages }, async (_, i) => {
-        const page = i + 1;
-        const response = await fetch(`${rooturl}/characters/?page=${page}&pageSize=${pageSize}`);
-        const data = (await response.json()) as AsoiafCharacterType[];
-        return data;
-      });
-  
-      const results = await Promise.all(requests);
-  
-      const characters = results.flat();
-  
-      const filteredCharacters = characters.filter((character) => {
-        const fullName = character.name || "";
-        return (
-          fullName.toLowerCase().includes(query.toLowerCase()) ||
-          fullName.toLowerCase().endsWith(query.toLowerCase())
-        );
-      });
-  
-      return filteredCharacters;
+        const requests = Array.from({ length: totalPages }, async (_, i) => {
+            const page = i + 1;
+            const response = await fetch(`${rooturl}/characters/?page=${page}&pageSize=${pageSize}`);
+            const data = (await response.json()) as AsoiafCharacterType[];
+            return data;
+        });
+
+        const results = await Promise.all(requests);
+        const characters = results.flat();
+
+        const filteredCharacters = characters.filter((character) => {
+            const fullName = character.name?.trim();
+            const hasHouse = character.allegiances && character.allegiances.length > 0;
+            
+            return (
+                fullName &&
+                hasHouse &&
+                (fullName.toLowerCase().includes(query.toLowerCase()) ||
+                fullName.toLowerCase().endsWith(query.toLowerCase()))
+            );
+        });
+
+        return filteredCharacters;
     } catch (error) {
         console.error("Fel vid sökning:", error);
-  
-      return [];
+        return [];
     }
-  };
+};
