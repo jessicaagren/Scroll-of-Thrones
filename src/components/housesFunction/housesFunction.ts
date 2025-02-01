@@ -9,6 +9,7 @@ let allHouses: HouseType[] = [];
 
 export const setupHouseContainer = async () => {
     const houseContainer = document.createElement("div");
+    houseContainer.className = "containers";
     houseContainer.id = "house-container";
     article.appendChild(houseContainer);
 
@@ -89,6 +90,7 @@ const changePage = (direction: number) => {
 const renderHouseInfo = async (house: HouseType) => {
     clearAside();
     const houseAside = document.createElement("div");
+    houseAside.className = "containers";
     houseAside.id = "house-aside";
     aside.appendChild(houseAside);
 

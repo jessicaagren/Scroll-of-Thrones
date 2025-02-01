@@ -17,6 +17,7 @@ export const startQuoteGame = async (): Promise<void> => {
     clearArticleAndAddBackground();
     
     const gameContainer = document.createElement("section");
+    gameContainer.className = "containers";
     gameContainer.id = "game-container";
     article.appendChild(gameContainer);
 
@@ -63,6 +64,7 @@ const renderQuoteGame = async (): Promise<void> => {
 
         clearAside();
         const gameAside = document.createElement("section");
+        gameAside.className = "containers";
         gameAside.id = "game-aside";
         aside.appendChild(gameAside);
 

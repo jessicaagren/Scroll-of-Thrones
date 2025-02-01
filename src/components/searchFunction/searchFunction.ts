@@ -5,6 +5,7 @@ import AsoiafCharacterType from "../../types/asoiafCharacterType";
 
 export const setupSearchContainer = () => {
     const searchContainer = document.createElement("div");
+    searchContainer.className = "containers";
     searchContainer.id = "search-container";
     article.appendChild(searchContainer);
 
@@ -13,6 +14,7 @@ export const setupSearchContainer = () => {
     searchContainer.appendChild(explanation);
 
     const inputContainer = document.createElement("div");
+    inputContainer.className = "containers";
     inputContainer.id = "input-container";
     searchContainer.appendChild(inputContainer);
 
@@ -147,6 +149,7 @@ const renderCharacterInfo = async (character: AsoiafCharacterType) => {
 
     clearAside();
     const searchAside = document.createElement("div");
+    searchAside.className ="containers";
     searchAside.id = "search-aside";
     aside.appendChild(searchAside);
 
