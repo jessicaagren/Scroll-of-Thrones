@@ -160,7 +160,7 @@ const renderCharacterInfo = async (character: AsoiafCharacterType) => {
     }
 
     searchAside.innerHTML = `
-        <h2 id="character-name">${character.name}</h2>
+        <h2 id="title">${character.name}</h2>
         ${houseSVG}
         <section>
             <p>House: ${houseNames.length > 0 ? houseNames.join(", ") : "Unknown"}</p>
