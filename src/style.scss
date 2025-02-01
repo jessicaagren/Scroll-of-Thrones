@@ -34,7 +34,7 @@ article, aside {
     }
 }
 
-#search-container, #search-aside, #game-container, #game-aside {
+#search-container, #search-aside, #game-container, #game-aside, #house-container, #house-aside {
     @include mixins.flex-center();
     flex-direction: column;
     padding: 5rem 2rem;
@@ -59,7 +59,7 @@ article, aside {
     gap: 1rem;
 }
 
-#search-container, #game-container {
+#search-container, #game-container, #house-container {
     h2 {
         font-family: IMFellEnglish, Georgia, 'Times New Roman', Times, serif;
     }
@@ -101,3 +101,6 @@ article, aside {
     width: calc(50% - 1rem);
 }
 
+.house-item {
+    cursor: pointer;
+}
