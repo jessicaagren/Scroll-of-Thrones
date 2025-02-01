@@ -34,7 +34,7 @@ article, aside {
     }
 }
 
-#search-container, #search-aside, #game-container, #game-aside, #house-container, #house-aside {
+.containers {
     @include mixins.flex-center();
     flex-direction: column;
     padding: 5rem 2rem;
