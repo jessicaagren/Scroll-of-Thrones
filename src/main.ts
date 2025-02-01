@@ -1,5 +1,7 @@
 
 // import handleHouseClick from './components/buttons/houseGameButton/houseGameButton';
+import { getHouses } from './api/asoiafAPI';
+import handleHouseClick from './components/buttons/houseButton/houseButton';
 import handleMapClick from './components/buttons/mapButton/mapButton';
 import handleQuoteClick from './components/buttons/quoteGameButton/quoteGameButton';
 import handleSearchClick from './components/buttons/searchButton/searchButton';
@@ -48,7 +50,6 @@ handleQuoteClick();
 
 handleMapClick();
 
-// handleHouseClick();
+handleHouseClick();
 
 handleSoundClick();
-
