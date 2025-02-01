@@ -62,6 +62,33 @@ export const getRandomCharacter = async (): Promise<AsoiafCharacter> => {
     }
 };
 
+export const getHouses = async (): Promise<HouseType[]> => {
+    let allHouses: HouseType[] = [];
+    let page = 1;
+    const pageSize = 50;
+
+    try {
+        while (true) {
+            const response = await fetch(`${rooturl}houses?page=${page}&pageSize=${pageSize}`);
+            if (!response.ok) {
+                console.error(`Fel vid hämtning av hus.`);
+                break;
+            }
+
+            const data = await response.json();
+            if (!data.length) break;
+
+            allHouses = [...allHouses, ...data];
+            page++;
+        }
+
+        return allHouses;
+    } catch (error) {
+        console.error("Fel vid hämtning av hus:", error);
+        return [];
+    }
+};
+
 export const getHouseByID = async (id: string): Promise<HouseType | null> => {
     try {
         const response = await fetch(`${rooturl}houses/${id}`);
@@ -126,11 +153,9 @@ export const searchCharacters = async (query: string): Promise<AsoiafCharacterTy
 
         const filteredCharacters = characters.filter((character) => {
             const fullName = character.name?.trim();
-            const hasHouse = character.allegiances && character.allegiances.length > 0;
             
             return (
                 fullName &&
-                hasHouse &&
                 (fullName.toLowerCase().includes(query.toLowerCase()) ||
                 fullName.toLowerCase().endsWith(query.toLowerCase()))
             );
