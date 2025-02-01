@@ -14,7 +14,6 @@ export const setupSearchContainer = () => {
     searchContainer.appendChild(explanation);
 
     const inputContainer = document.createElement("div");
-    inputContainer.className = "containers";
     inputContainer.id = "input-container";
     searchContainer.appendChild(inputContainer);
 
