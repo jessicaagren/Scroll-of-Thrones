@@ -10,7 +10,7 @@ Go to the project root folder and run `npm i` to install necessary packages.
 
 Then run `npm run dev` to compile and run the project.
 
-## API
+## API's
 
 The project uses [An API of Ice and Fire](https://anapioficeandfire.com/) and [Game of Thrones Quote API](https://gameofthronesquotes.xyz/).
 
