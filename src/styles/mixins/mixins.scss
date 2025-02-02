@@ -41,28 +41,46 @@
     filter: drop-shadow(-2px 2px 8px var.$black);
 }
 
-@mixin for-phone-only {
+@mixin overflow() {
+    &::-webkit-scrollbar {
+        width: 0.5rem;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        background: var.$white;
+    }
+    
+    &::-webkit-scrollbar-track {
+        background: var.$transparent-black;
+    }
+}
+
+@mixin for-phone-only() {
     @media (max-width: 599px) {
-      @content;
+        @content;
     }
-  }
-  @mixin for-tablet-portrait-up {
+}
+
+@mixin for-tablet-portrait-up() {
     @media (min-width: 600px) {
-      @content;
+        @content;
     }
-  }
-  @mixin for-tablet-landscape-up {
+}
+
+@mixin for-tablet-landscape-up() {
     @media (min-width: 900px) {
-      @content;
+        @content;
     }
-  }
-  @mixin for-desktop-up {
+}
+
+@mixin for-desktop-up() {
     @media (min-width: 1200px) {
-      @content;
+        @content;
     }
-  }
-  @mixin for-big-desktop-up {
+}
+
+@mixin for-big-desktop-up() {
     @media (min-width: 1800px) {
-      @content;
+        @content;
     }
-  }
+}
