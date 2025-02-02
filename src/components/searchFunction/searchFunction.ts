@@ -65,7 +65,8 @@ const handleRandomButton = () => {
     if (button) {
         button.addEventListener("click", async () => {
             clearPreviousSearchResults();
-
+            clearAside();
+            renderLoadingIndicator(aside);
             try {
                 const character = await getRandomCharacter();
                 if (character) {
