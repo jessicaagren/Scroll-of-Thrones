@@ -80,7 +80,7 @@ const renderQuoteGame = async (): Promise<void> => {
         const gameContainer = document.getElementById("game-container") as HTMLElement;
         gameContainer.innerHTML = `
             <section class="game-info">
-                <p><span class="quote">${quote.sentence}"</span></p>
+                <p><span class="quote">"${quote.sentence}"</span></p>
                 <p>Points: ${quoteGameScore}</p>
             </section>
         `;
