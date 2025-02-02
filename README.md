@@ -1,6 +1,12 @@
 # Scroll-of-Thrones
 
-This is a project that fetches different API URL:s on _A Song of Ice and Fire_ and _Game of Thrones_ and gives the user the opportunity to search for characters and play a mini game where you guess the quotes.
+This is a project that fetches different API URL:s on _A Song of Ice and Fire_ and _Game of Thrones_ and gives the user the opportunity to search for characters and play a mini game where you guess quotes.
+
+## Features
+
+- Search for characters and read information about them.
+- Look up houses and read information about them.
+- Play _Guess the Quote_ where you guess who said a specific quote.
 
 ## Download and run project
 
