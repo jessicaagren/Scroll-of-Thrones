@@ -13,7 +13,7 @@ nav {
     // padding: 2rem;
 }
 
-header, #buttons-container {
+header {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
@@ -36,6 +36,28 @@ header {
 
 #dragon-icon {
     border-radius: 50%;
-    width: 3.5rem;
+    max-width: 3.5rem;
+    max-height: 3.5rem;
     @include mixins.box-shadow-debossed(var.$transparent-black);
+}
+
+@media (max-width: 1100px) {
+    nav {
+        @include mixins.set-background-image('./media/backgrounds/leather-book-landscape.png', contain);
+        min-height: 200px;
+    }
+    #dragon-icon {
+        display: none;
+    }
+    header {
+        padding: 0;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 0;
+        h1 {
+            display: inline;
+            padding-bottom: 0;
+            padding-top: 7rem;
+        }
+    }
 }

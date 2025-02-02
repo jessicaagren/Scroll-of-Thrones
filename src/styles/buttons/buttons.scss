@@ -38,7 +38,6 @@
     
     & img {
         max-width: 3.5rem;
-
     }
 }
 
@@ -53,5 +52,10 @@
 @media (max-width: 1100px) {
     #buttons-container {
         display: flex;
+        padding: 0;
+        padding-bottom: 5rem;
+    }
+    .button-icons {
+        display: none;
     }
 }
