@@ -49,3 +49,9 @@
         @include mixins.box-shadow-debossed(var.$transparent-white);
     }
 }
+
+@media (max-width: 1100px) {
+    #buttons-container {
+        display: flex;
+    }
+}
