@@ -164,17 +164,17 @@ const renderCharacterInfo = async (character: AsoiafCharacterType) => {
     searchAside.innerHTML = `
         <h2 id="title">${character.name}</h2>
         ${houseSVG}
-        <section>
-            <p>House: ${houseNames.length > 0 ? houseNames.join(", ") : "Unknown"}</p>
-            <p>House words: ${houseWords.length > 0 ? houseWords.join(", ") : "Unknown"}</p>
-            <p>Titles: ${character.titles.length > 0 ? character.titles.join(", ") : "Unknown"}</p>
-            <p>Culture: ${character.culture || "Unknown"}</p>
-            <p>Mother: ${motherCharacter ? motherCharacter.name : "Unknown"}</p>
-            <p>Father: ${fatherCharacter ? fatherCharacter.name : "Unknown"}</p>
-            <p>Spouse: ${spouseCharacter ? spouseCharacter.name : "Unknown"}</p>
-            <p>Born: ${character.born || "Unknown"}</p>
-            <p>Died: ${character.died || "Unknown"}</p>
-            <p>POV books: ${bookNames.length > 0 ? bookNames.join(", ") : "None"}</p>
+        <section id="character-info">
+            <p><span>House:</span> ${houseNames.length > 0 ? houseNames.join(", ") : "Unknown"}</p>
+            <p><span>House words:</span> ${houseWords.length > 0 ? houseWords.join(", ") : "Unknown"}</p>
+            <p><span>Titles:</span> ${character.titles.length > 0 ? character.titles.join(", ") : "Unknown"}</p>
+            <p><span>Culture:</span> ${character.culture || "Unknown"}</p>
+            <p><span>Mother:</span> ${motherCharacter ? motherCharacter.name : "Unknown"}</p>
+            <p><span>Father:</span> ${fatherCharacter ? fatherCharacter.name : "Unknown"}</p>
+            <p><span>Spouse:</span> ${spouseCharacter ? spouseCharacter.name : "Unknown"}</p>
+            <p><span>Born:</span> ${character.born || "Unknown"}</p>
+            <p><span>Died:</span> ${character.died || "Unknown"}</p>
+            <p><span>POV books:</span> ${bookNames.length > 0 ? bookNames.join(", ") : "None"}</p>
         </section>
     `;
 };

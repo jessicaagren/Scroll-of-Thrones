@@ -41,6 +41,13 @@ article, aside {
     width: 70%;
     height: auto;
     max-height: 80%;
+    h2 {
+        font-family: IMFellEnglish, Georgia, 'Times New Roman', Times, serif;
+    }
+}
+
+#search-container {
+    justify-content: flex-start;
 }
 
 .game-info {
@@ -59,15 +66,15 @@ article, aside {
     gap: 1rem;
 }
 
-#search-container, #game-container, #house-container {
-    h2 {
-        font-family: IMFellEnglish, Georgia, 'Times New Roman', Times, serif;
-    }
-}
-
 #search-input {
     background-color: var.$transparent-white;
     margin-bottom: 1rem;
+}
+
+#pagination-container {
+    button {
+        margin: 1rem;
+    }
 }
 
 #character-list {
@@ -77,6 +84,7 @@ article, aside {
     overflow-y: auto;
     overflow-x: hidden;
     padding: 0.5rem;
+    @include mixins.overflow();
 
     & li {
         min-width: 45%;
@@ -84,21 +92,22 @@ article, aside {
         box-sizing: border-box;
         cursor: pointer;
     }
-    &::-webkit-scrollbar {
-        width: 0.5rem;
-    }
-    
-    &::-webkit-scrollbar-thumb {
-        background: var.$white;
-    }
-    
-    &::-webkit-scrollbar-track {
-        background: var.$transparent-black;
-    }
+
 }
 
 #character-list:not:first-child {
     width: calc(50% - 1rem);
+}
+
+#character-info {
+    max-width: 90%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    @include mixins.overflow();
+
+    p{
+        padding-top: 0.5rem;
+    }
 }
 
 .house-item {

@@ -113,14 +113,14 @@ const renderHouseInfo = async (house: HouseType) => {
 
 
     houseAside.innerHTML = `
+    <section id="house-info">
         <h2 id="house-title">${house.name}</h2>
         ${houseSVG}
-        <p>Words: ${house.words || "Unknown"}</p>
-        <p>Coat of arms: ${house.coatOfArms || "Unknown"}</p>
-        <p>Current lord: ${currentLordCharacter ? currentLordCharacter.name : "Unknown"}</p>
-        <p>Region: ${house.region || "Unknown"}</p>
-        <p>Coat of Arms: ${house.coatOfArms || "Unknown"}</p>
-        <p>Founded: ${house.founded || "Unknown"}</p>
-        <p>Overlord: ${overlordCharacter ? overlordCharacter.name : "Unknown"}</p>
-    `;
+        <p><span>Words:</span> ${house.words || "Unknown"}</p>
+        <p><span>Coat of arms:</span> ${house.coatOfArms || "Unknown"}</p>
+        <p><span>Current lord:</span> ${currentLordCharacter ? currentLordCharacter.name : "Unknown"}</p>
+        <p><span>Region:</span> ${house.region || "Unknown"}</p>
+        <p><span>Founded:</span> ${house.founded || "Unknown"}</p>
+        <p><span>Overlord:</span> ${overlordCharacter ? overlordCharacter.name : "Unknown"}</p>
+    </section>`;
 };
