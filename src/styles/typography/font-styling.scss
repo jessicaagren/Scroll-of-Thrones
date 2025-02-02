@@ -1,6 +1,10 @@
 @use './fonts.scss';
 @use '../variables/var.scss';
 
+html {
+    font-size: 16px;
+}
+
 h1 {
     font-size: 2rem;
     letter-spacing: 0.7rem;
@@ -25,8 +29,14 @@ h1, h2 {
 }
 
 #house-title {
+    text-align: center;
     font-size: 1.8rem;
     margin: -2rem 0 -1rem 0;
+    padding: 2rem;
+}
+
+p {
+    padding-top: 0.5rem;
 }
 
 p, input, button, ul {
@@ -40,11 +50,33 @@ ul {
     font-size: 1rem;
 }
 
-// .quote {
-//     font-style: italic;
-// }
+span {
+    font-style: italic;
+    &.quote {
+        font-size: 1.5rem;
+    }
+}
 
-// .quote-name {
-//     font-family: Aquiline;
-// }
+@media (max-width: 599px)
+{
+    html {
+        font-size: 10px;
+    }
+}
 
+    @media (min-width: 600px) {
+        html {
+            font-size: 12px;
+        }
+    }
+
+    html {
+        @media (min-width: 900px) {
+            font-size: 14px;
+        }
+    }
+    html {
+        @media (min-width: 1200px) {
+            font-size: 16px;
+        }
+    }
