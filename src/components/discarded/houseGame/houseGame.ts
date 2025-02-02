@@ -146,9 +146,6 @@
 //     }
 // };
 
-// //TODO Läs igenom och dubbelkolla (ska spelet ändras?)
-// // TODO ANvänd nedan lista vid sökning istället
-
 // export const housesList = [
 //     { name: "Arryn", icon: "/media/houses/arryn.svg" },
 //     { name: "Baelish", icon: "/media/houses/baelish.svg" },
