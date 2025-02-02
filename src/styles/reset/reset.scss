@@ -1,5 +1,4 @@
 html {
-    font-size: 100%;
     * {
         margin: 0;
         padding: 0;
@@ -14,4 +13,10 @@ body {
 
 li {
     list-style: none;
+}
+
+@media (max-width: 1100px) {
+    body {
+        min-height: 100vh;
+    }
 }
