@@ -31,6 +31,29 @@ export const startQuoteGame = async (): Promise<void> => {
     button.textContent = "Start game";
     button.addEventListener("click", () => renderQuoteGame());
     gameContainer.appendChild(button);
+
+    if (totalQuoteGameScores.length > 0) {
+    const previousScores = document.createElement("div");
+    gameContainer.appendChild(previousScores);
+    previousScores.innerHTML = `
+                <p>Previous scores:</p>
+                <ul id="score-list"></ul>
+            </section>
+        `;
+
+        const scoreList = document.getElementById("score-list") as HTMLUListElement;
+
+        if (!scoreList) {
+            console.error("Element för scoreList går inte att hämta");
+            return;
+        }
+
+            for (const scores of totalQuoteGameScores) {
+                const listItem = document.createElement("li");
+                listItem.textContent = `${scores}`;
+                scoreList.appendChild(listItem);
+            }
+        }
 };
 
 const getRandomNames = async (correctName: string): Promise<string[]> => {
@@ -57,7 +80,7 @@ const renderQuoteGame = async (): Promise<void> => {
         const gameContainer = document.getElementById("game-container") as HTMLElement;
         gameContainer.innerHTML = `
             <section class="game-info">
-                <p>"${quote.sentence}"</p>
+                <p><span class="quote">${quote.sentence}"</span></p>
                 <p>Points: ${quoteGameScore}</p>
             </section>
         `;
