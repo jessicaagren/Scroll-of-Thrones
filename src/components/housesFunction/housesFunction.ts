@@ -1,6 +1,6 @@
 import { getHouses, getHouseByID, getCharacterByID } from "../../api/asoiafAPI";
 import { article, aside, knownHouses } from "../../constants/constants";
-import { clearAside, getIdFromURL } from "../../helpers/helpers";
+import { clearAside, getIdFromURL, removeLoadingIndicator, renderLoadingIndicator } from "../../helpers/helpers";
 import HouseType from "../../types/houseType";
 
 let currentPage = 1;
@@ -94,6 +94,8 @@ const renderHouseInfo = async (house: HouseType) => {
     houseAside.id = "house-aside";
     aside.appendChild(houseAside);
 
+    renderLoadingIndicator(houseAside);
+
     let houseSVG = "";
     const houseNames = house.name.split(" ");
 
@@ -111,6 +113,7 @@ const renderHouseInfo = async (house: HouseType) => {
     const currentLordCharacter = currentLord ? await getCharacterByID(currentLord) : null;
     const overlordCharacter = overlord ? await getCharacterByID(overlord) : null;
 
+    removeLoadingIndicator(houseAside);
 
     houseAside.innerHTML = `
     <section id="house-info">
@@ -124,3 +127,4 @@ const renderHouseInfo = async (house: HouseType) => {
         <p><span>Overlord:</span> ${overlordCharacter ? overlordCharacter.name : "Unknown"}</p>
     </section>`;
 };
+
