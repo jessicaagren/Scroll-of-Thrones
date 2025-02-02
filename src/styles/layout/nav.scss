@@ -9,7 +9,8 @@ nav {
     width: 100%;
     flex-direction: column;
     justify-content: space-around;
-    align-items: center;    
+    align-items: center;
+    // padding: 2rem;
 }
 
 header, #buttons-container {
@@ -23,9 +24,14 @@ header, #buttons-container {
 header {
     justify-content: flex-end;
     width: 60%;
+    padding-top: 3rem;
     h1 {
         @include mixins.relief-text(var.$dark-brown);
     }
+}
+
+#buttons-container {
+    padding-bottom: 3rem;
 }
 
 #dragon-icon {
