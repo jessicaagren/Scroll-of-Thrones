@@ -1,6 +1,5 @@
 
 // import handleHouseClick from './components/buttons/houseGameButton/houseGameButton';
-import { getHouses } from './api/asoiafAPI';
 import handleHouseClick from './components/buttons/houseButton/houseButton';
 import handleMapClick from './components/buttons/mapButton/mapButton';
 import handleQuoteClick from './components/buttons/quoteGameButton/quoteGameButton';
@@ -12,19 +11,17 @@ import './style.scss';
 
 // TODO Rensa mer bland style, se över funktioner för DRY
 
-// TODO Se över typning
-
 // TODO Kolla error-meddelanden
 
 // TODO Läs uppgift och kolla state??
 
-// TODO Gör lista på husen och skriv ut info om husen (istället för spel?)
-
 // TODO (Om tid finns) gör favoritfunktion
 
-// TODO GÖr "Map" till info med kontaktuppgifter och API-sources
+// TODO GÖr "Map" till info med kontaktuppgifter och API-sources - kolla stylen!
 
-// TODO När man trycker på hus visas "Guess the house" och Begin. Visa upp en karaktär och fyra alternativ på hus. Fortsätt tills man svarar fel, spara poäng. Varje karaktär kan bara komma en gång. Alternativ på karaktär väljs från ASOIAF-API.
+// TODO Lägg in introtext när man öppnar!
+
+// TODO Styla search
 
 // TODO handleSearchClick från CharacterSearchForm.ts
 // const handleSearchClick = async () => {
