@@ -85,21 +85,20 @@ article, aside {
     overflow-x: hidden;
     padding: 0.5rem;
     @include mixins.overflow();
+}
 
-    & li {
-        min-width: 45%;
-        margin: 0.25rem;
-        box-sizing: border-box;
-        cursor: pointer;
-    }
-
+li {
+    min-width: 45%;
+    margin: 0.25rem;
+    box-sizing: border-box;
+    cursor: pointer;
 }
 
 #character-list:not:first-child {
     width: calc(50% - 1rem);
 }
 
-#character-info {
+#character-info, #house-info {
     max-width: 90%;
     overflow-y: auto;
     overflow-x: hidden;
@@ -112,4 +111,16 @@ article, aside {
 
 .house-item {
     cursor: pointer;
+}
+
+@media (max-width: 900px) {
+    .containers {
+        padding: 25% 0;
+    }
+}
+
+@media (max-width: 1300px) {
+    #buttons-container {
+        padding-bottom: 5rem;
+    }
 }
