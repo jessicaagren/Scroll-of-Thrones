@@ -1,0 +1,16 @@
+@use '../mixins/mixins.scss';
+@use '../variables/var.scss';
+
+#favourite {
+    all: unset;
+    background-color: var.$transparent-white;
+    border-radius: 50%;
+    @include mixins.flex-center();
+
+    #favourite-icon {
+        padding: 0.5rem;
+        max-width: 2.5rem;
+        max-height: 2.5rem;
+        filter: grayscale(1);
+    }
+}

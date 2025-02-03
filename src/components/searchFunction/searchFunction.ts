@@ -1,6 +1,7 @@
 import { getBookByID, getCharacterByID, getHouseByID, getRandomCharacter, searchCharacters } from "../../api/asoiafAPI";
 import { article, aside, knownHouses } from "../../constants/constants";
-import { clearAsideAndAddBackground, getIdFromURL, removeLoadingIndicator, renderLoadingIndicator } from "../../helpers/helpers";
+import { clearAsideAndAddBackground, clearPreviousOutput, getIdFromURL, removeLoadingIndicator, renderLoadingIndicator } from "../../helpers/helpers";
+import { favouriteCharacters } from "../../state/state";
 import AsoiafCharacterType from "../../types/asoiafCharacterType";
 
 export const setupSearchContainer = () => {
@@ -36,14 +37,24 @@ export const setupSearchContainer = () => {
         if (event.key === "Enter") handleSearch();
     });
 
+    const searchButtonContainer = document.createElement("div");
+    searchButtonContainer.id = "search-button-container";
+    searchContainer.appendChild(searchButtonContainer);
+
+    const favButton = document.createElement("button");
+    favButton.textContent = "Favourites";
+    favButton.id = "favourite-button";
+    searchButtonContainer.appendChild(favButton);
+
+    handleFavouriteButton();
+
     const randomButton = document.createElement("button");
     randomButton.textContent = "Randomise";
     randomButton.id = "randomise-button";
-    searchContainer.appendChild(randomButton);
+    searchButtonContainer.appendChild(randomButton);
 
     handleRandomButton();
 };
-
 
 const handleSearch = async () => {
     const input = document.getElementById("search-input") as HTMLInputElement;
@@ -51,7 +62,7 @@ const handleSearch = async () => {
 
     if (!input.value.trim()) return;
 
-    clearPreviousSearchResults();
+    clearPreviousOutput();
     renderLoadingIndicator(searchContainer);
 
     const searchInput = input.value;
@@ -67,7 +78,7 @@ const handleRandomButton = () => {
     const button = document.getElementById("randomise-button") as HTMLButtonElement;
     if (button) {
         button.addEventListener("click", async () => {
-            clearPreviousSearchResults();
+            clearPreviousOutput();
             clearAsideAndAddBackground();
             renderLoadingIndicator(aside);
             try {
@@ -88,15 +99,6 @@ const handleRandomButton = () => {
     } else {
         console.error("Knapp hittades inte.");
     }
-};
-
-const clearPreviousSearchResults = () => {
-    const searchContainer = document.getElementById("search-container") as HTMLElement;
-    const previousSearchElement = document.getElementById('search-output');
-    const previousCharacterList = document.getElementById('character-list');
-
-    if (previousSearchElement) searchContainer.removeChild(previousSearchElement);
-    if (previousCharacterList) searchContainer.removeChild(previousCharacterList);
 };
 
 const renderSearchResults = (searchInput: string, searchedCharacters: AsoiafCharacterType[]) => {
@@ -174,6 +176,9 @@ const renderCharacterInfo = async (character: AsoiafCharacterType) => {
 
     searchAside.innerHTML = `
         <h2 id="title">${character.name}</h2>
+        <button id="favourite" alt="Favourite button">
+            <img src="/media/icons/heart.png" alt="Favourite button" id="favourite-icon" />
+        </button>
         ${houseSVG}
         <section id="character-info">
             <p><span>House:</span> ${houseNames.length > 0 ? houseNames.join(", ") : "Unknown"}</p>
@@ -186,18 +191,74 @@ const renderCharacterInfo = async (character: AsoiafCharacterType) => {
             <p><span>POV books:</span> ${bookNames.length > 0 ? bookNames.join(", ") : "None"}</p>
         </section>
     `;
+
+    createFavouriteIcon(character);
+}
+
+const handleFavouriteButton = () => {
+    const button = document.getElementById("favourite-button") as HTMLButtonElement;
+    if (button) {
+        button.addEventListener("click", async () => {
+            clearPreviousOutput();
+            clearAsideAndAddBackground();
+            
+            try {
+                renderFavouriteCharacters();
+            } catch (error) {
+                console.error("Fel vid rendering av favoritkaraktärer:", error);
+            }
+        });
+    } else {
+        console.error("Favoritknappen hittades inte.");
+    }
 };
 
+const renderFavouriteCharacters = () => {
+    const searchContainer = document.getElementById("search-container") as HTMLElement;
 
-// const createCharacterCard = (character: DisneyCharacter) => {
-// 	const div = document.createElement("div");
-// 	div.classList.add("CharacterCard");
+    clearPreviousOutput();
 
-// 	div.innerHTML = `
-//         <p>${character.name}</p>
-//         <img src="${character.imageUrl}">
-//     `;
-// 	return div;
-// };
+    const favouriteElement = document.createElement("p");
+    favouriteElement.id = 'favourite-output';
+    favouriteElement.innerHTML = `Your favourites: ${favouriteCharacters.length}`;
+    searchContainer.appendChild(favouriteElement);
+    
+    const favouriteList = document.createElement("ul");
+    favouriteList.id = 'favourite-list';
+    
+    favouriteCharacters.forEach(character => {
+        const listItem = document.createElement("li");
+        listItem.textContent = character.name;
+        listItem.addEventListener("click", () => {
+            renderCharacterInfo(character);
+            
+            const aside = document.querySelector("aside");
+            if (aside) {
+                aside.scrollIntoView({ behavior: "smooth" });
+            }
+        });
+        favouriteList.appendChild(listItem);
+    });
 
-// export default createCharacterCard;
+    searchContainer.appendChild(favouriteList);
+};
+
+const createFavouriteIcon = (character: AsoiafCharacterType) => {
+    const favouriteButton = document.getElementById("favourite") as HTMLButtonElement;
+    const favouriteIcon = document.getElementById("favourite-icon") as HTMLElement;
+
+    const isFavourite = favouriteCharacters.some(fav => fav.name === character.name);
+    favouriteIcon.style.filter = isFavourite ? "none" : "grayscale(1)";
+    
+    favouriteButton.addEventListener("click", () => {
+        const favIndex = favouriteCharacters.findIndex(fav => fav.name === character.name);
+    
+        if (favIndex === -1) {
+            favouriteCharacters.push(character);
+            favouriteIcon.style.filter = "none";
+        } else {
+            favouriteCharacters.splice(favIndex, 1);
+            favouriteIcon.style.filter = "grayscale(1)";
+        }
+    })
+}
