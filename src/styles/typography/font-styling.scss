@@ -53,13 +53,23 @@ ul {
 span {
     font-style: italic;
     &.quote {
-        font-size: 1.5rem;
+        font-size: 2rem;
     }
 }
 
 .info {
     text-align: center;
     padding-bottom: 1rem;
+}
+
+a {
+    color: var.$dark-brown;
+    &:active, &:visited:active {
+        color: var.$red;
+    }
+    &:visited {
+        color: var.$dark-red;
+    }
 }
 
 @media (max-width: 599px)
