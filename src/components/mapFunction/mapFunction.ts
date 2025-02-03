@@ -10,8 +10,8 @@ const setupInfo = () => {
         <h2 id="title">Scroll of Thrones</h2>
         <section>
         <h3>Made by: Jessica Ågren</h3>
-        <p><a href="https://www.linkedin.com/in/jessicaagren/">Linkedin</a></p>
-        <p><a href="https://github.com/jessicaagren">Github</a></p>
+        <a href="https://www.linkedin.com/in/jessicaagren/"><img src="/media/icons/linkedin.png" alt="Linkedin" style="width:42px;height:42px;"></a>
+        <a href="https://github.com/jessicaagren"><img src="/media/icons/github.png" alt="Github" style="width:42px;height:42px;"></a>
         <h4>API:s used:</h4>
             <p><a href="https://anapioficeandfire.com/">An API of Ice and Fire</a></p>
             <p><a href="https://gameofthronesquotes.xyz/">Game of Thrones Quotes API</a></p>
