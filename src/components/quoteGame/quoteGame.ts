@@ -76,18 +76,17 @@ const renderQuoteGame = async (): Promise<void> => {
     try {
         const quote = await getUniqueRandomQuote();
         const randomNames = await getRandomNames(quote.character.name);
-
+                
         const gameContainer = document.getElementById("game-container") as HTMLElement;
         gameContainer.innerHTML = `
-            <section class="game-info">
-                <p><span class="quote">"${quote.sentence}"</span></p>
-                <p>Points: ${quoteGameScore}</p>
-            </section>
+        <section class="game-info">
+        <p><span class="quote">"${quote.sentence}"</span></p>
+        <p>Points: ${quoteGameScore}</p>
+        </section>
         `;
-
+        
         clearAsideAndAddBackground();
 
-        // TODO Lägg in laddare?
         const gameAside = document.createElement("section");
         gameAside.className = "containers";
         gameAside.id = "game-aside";
@@ -130,6 +129,8 @@ const handleGuess = async (selectedName: string, correctName: string) => {
             playSound(soundOn, gameOverAudio);
         }
 
+        clearAsideAndAddBackground();
+
         gameContainer.innerHTML = `
             <section class="game-info">
                 <p><strong>Incorrect!</strong> The quote was by ${correctName}.</p>
@@ -139,8 +140,6 @@ const handleGuess = async (selectedName: string, correctName: string) => {
                 <ul id="score-list"></ul>
             </section>
         `;
-
-        // TODO Rensa aside
 
         const button = document.createElement("button");
         button.textContent = "Play again";
