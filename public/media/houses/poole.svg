@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="660" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+  <radialGradient id="rg" gradientUnits="userSpaceOnUse" cx="220" cy="220" r="405">
+    <stop style="stop-color:#fff;stop-opacity:.3" offset="0" />
+    <stop style="stop-color:#fff;stop-opacity:.2" offset="0.2" />
+    <stop style="stop-color:#666;stop-opacity:.1" offset="0.6" />
+    <stop style="stop-color:#000;stop-opacity:.13" offset="1" />
+  </radialGradient>
+  <path id="shield" d="m 2 2 v 257 c 0 286 298 398 298 398 c 0 0 298 -112 298 -398 V 2 Z" />
+</defs>
+<use id="bg" style="fill:#fff;" xlink:href="#shield" />
+<path id="tressure" style="fill:#999;" d="M 50 50 L 50 259 C 50 473.57263 241.96889 578.02974 300 604.73828 C 358.03111 578.02974 550 473.57263 550 259 L 550 50 L 50 50 z M 75 75 L 525 75 L 525 259 C 525 447.83692 363.7583 545.74512 300 577.10938 C 236.2417 545.74513 75 447.83692 75 259 L 75 75 z" />
+<circle fill="#00c" cx="300" cy="295" r="145" />
+<use id="shine" style="fill:url(#rg);stroke:#000;stroke-width:3;" xlink:href="#shield" />
+</svg>

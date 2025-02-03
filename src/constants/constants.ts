@@ -9,4 +9,4 @@ export const drawingSwordAudio = new Audio('./media/audio/draw-sword.mp3');
 export const gameOverAudio = new Audio('./media/audio/wrong-answer.mp3');
 export const correctAudio = new Audio('./media/audio/correct.mp3');
 
-export const knownHouses = [ "Arryn", "Baelish", "Baratheon", "Bolton", "Clegane", "Dondarrion", "Frey", "Greyjoy", "Karstark", "Lannister", "Martell", "Mormont", "Reed", "Stark", "Targaryen", "Tully", "Tyrell", "Florent", "Connington", "Hightower", "Manderly" ];
+export const knownHouses = [ "Arryn", "Baelish", "Baratheon", "Bolton", "Clegane", "Dondarrion", "Frey", "Greyjoy", "Karstark", "Lannister", "Martell", "Mormont", "Reed", "Stark", "Targaryen", "Tully", "Tyrell", "Florent", "Connington", "Hightower", "Manderly", "Harroway", "Kettleblack", "Lorch", "Lynderly", "Merryweather", "Mooton", "Morrigen", "Oakheart", "Poole", "Redwyne", "Reyne", "Redfort", "Royce", "Selmy", "Slynt", "Smallwood", "Stokeworth", "Swann", "Swyft", "Tallhart", "Tarly", "Tarth", "Thorne", "Blackwood", "Marbrand", "Uller" ];
