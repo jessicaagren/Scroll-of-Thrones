@@ -5,7 +5,7 @@ nav {
     @include mixins.set-background-image('./media/backgrounds/leather-book.png', contain);
     @include mixins.background-drop-shadow();
     display: flex;
-    gap: 20px;
+    // gap: 20px;
     width: 100%;
     flex-direction: column;
     justify-content: space-around;
@@ -41,6 +41,11 @@ header {
     @include mixins.box-shadow-debossed(var.$transparent-black);
 }
 
+@media (max-width: 1500px) {
+    nav {
+        padding: 4rem 0;
+    }
+}
 @media (max-width: 900px) {
     nav {
         @include mixins.set-background-image('./media/backgrounds/leather-book-landscape.png', contain);
@@ -57,7 +62,7 @@ header {
         h1 {
             display: inline;
             padding-bottom: 0;
-            padding-top: 7rem;
+            padding-top: 6rem;
         }
     }
 }
