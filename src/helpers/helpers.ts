@@ -15,17 +15,17 @@ export const clearAndAddClickedClass = (buttonElement: HTMLButtonElement) => {
     buttonElement.classList.add("clicked");
 }
 
-export const clearArticleAndAddBackground = (backgroundURL?: string) => {
-    article.textContent = "";
+export const clearAsideAndAddBackground = (backgroundURL?: string) => {
+    aside.textContent = "";
     if(backgroundURL)
     {
-        if (article.style.backgroundImage !== `url("${backgroundURL}")`) {
-            article.style.backgroundImage = `url("${backgroundURL}")`;
+        if (aside.style.backgroundImage !== `url("${backgroundURL}")`) {
+            aside.style.backgroundImage = `url("${backgroundURL}")`;
         }    }
 }
 
-export const clearAside = () => {
-    aside.textContent ="";
+export const clearArticle = () => {
+    article.textContent ="";
 }
 
 export const renderLoadingIndicator = (element: HTMLElement) => {

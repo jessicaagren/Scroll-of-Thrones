@@ -1,6 +1,6 @@
 import { getHouses, getHouseByID, getCharacterByID } from "../../api/asoiafAPI";
 import { article, aside, knownHouses } from "../../constants/constants";
-import { clearAside, getIdFromURL, removeLoadingIndicator, renderLoadingIndicator } from "../../helpers/helpers";
+import { clearAsideAndAddBackground, getIdFromURL, removeLoadingIndicator, renderLoadingIndicator } from "../../helpers/helpers";
 import HouseType from "../../types/houseType";
 
 let currentPage = 1;
@@ -88,7 +88,7 @@ const changePage = (direction: number) => {
 };
 
 const renderHouseInfo = async (house: HouseType) => {
-    clearAside();
+    clearAsideAndAddBackground();
     const houseAside = document.createElement("div");
     houseAside.className = "containers";
     houseAside.id = "house-aside";

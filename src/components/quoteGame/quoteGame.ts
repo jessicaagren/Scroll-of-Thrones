@@ -1,7 +1,7 @@
 import { getRandomQuote, getUniqueRandomQuote, usedQuotes } from "../../api/quoteAPI";
 import { soundOn } from "../buttons/soundButton/soundButton";
 import { article, aside, correctAudio, gameOverAudio } from "../../constants/constants";
-import { clearArticleAndAddBackground, clearAside, playSound } from "../../helpers/helpers";
+import { clearAsideAndAddBackground, clearArticle, playSound } from "../../helpers/helpers";
 
 const usedNames: Set<string> = new Set();
 
@@ -13,8 +13,8 @@ export const startQuoteGame = async (): Promise<void> => {
     usedQuotes.clear();
     usedNames.clear();
 
-    clearAside();
-    clearArticleAndAddBackground();
+    clearAsideAndAddBackground();
+    clearArticle();
     
     const gameContainer = document.createElement("section");
     gameContainer.className = "containers";
@@ -85,7 +85,9 @@ const renderQuoteGame = async (): Promise<void> => {
             </section>
         `;
 
-        clearAside();
+        clearAsideAndAddBackground();
+
+        // TODO Lägg in laddare?
         const gameAside = document.createElement("section");
         gameAside.className = "containers";
         gameAside.id = "game-aside";
@@ -137,6 +139,8 @@ const handleGuess = async (selectedName: string, correctName: string) => {
                 <ul id="score-list"></ul>
             </section>
         `;
+
+        // TODO Rensa aside
 
         const button = document.createElement("button");
         button.textContent = "Play again";

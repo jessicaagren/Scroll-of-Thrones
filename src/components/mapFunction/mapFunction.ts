@@ -1,10 +1,10 @@
-import { aside } from "../../constants/constants";
+import { article } from "../../constants/constants";
 
 const setupInfo = () => {
     const infoContainer = document.createElement("div");
     infoContainer.className = "containers";
     infoContainer.id = "info-container";
-    aside.appendChild(infoContainer);
+    article.appendChild(infoContainer);
 
     infoContainer.innerHTML = `
         <h2 id="title">Scroll of Thrones</h2>

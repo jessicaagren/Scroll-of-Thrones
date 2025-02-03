@@ -3,7 +3,7 @@ import { setupHouseContainer } from "../../housesFunction/housesFunction";
 import handleButtonClick from "../handleButtonClick/handleButtonClick";
 
 const handleHouseClick = () => {
-    handleButtonClick("houses", "houses-button", "./media/backgrounds/paper-mask-standing2.png", setupHouseContainer, drawingSwordAudio)
+    handleButtonClick("houses", "houses-button", "./media/backgrounds/paper-mask-standing.png", setupHouseContainer, drawingSwordAudio)
 }
 
 export default handleHouseClick;

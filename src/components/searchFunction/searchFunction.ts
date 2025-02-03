@@ -1,6 +1,6 @@
 import { getBookByID, getCharacterByID, getHouseByID, getRandomCharacter, searchCharacters } from "../../api/asoiafAPI";
 import { article, aside, knownHouses } from "../../constants/constants";
-import { clearAside, getIdFromURL, removeLoadingIndicator, renderLoadingIndicator } from "../../helpers/helpers";
+import { clearArticle, clearAsideAndAddBackground, getIdFromURL, removeLoadingIndicator, renderLoadingIndicator } from "../../helpers/helpers";
 import AsoiafCharacterType from "../../types/asoiafCharacterType";
 
 export const setupSearchContainer = () => {
@@ -65,7 +65,7 @@ const handleRandomButton = () => {
     if (button) {
         button.addEventListener("click", async () => {
             clearPreviousSearchResults();
-            clearAside();
+            clearAsideAndAddBackground();
             renderLoadingIndicator(aside);
             try {
                 const character = await getRandomCharacter();
@@ -140,14 +140,10 @@ const renderCharacterInfo = async (character: AsoiafCharacterType) => {
     }
 
     const spouseId = getIdFromURL(character.spouse);
-    const motherId = getIdFromURL(character.mother);
-    const fatherId = getIdFromURL(character.father);
 
     const spouseCharacter = spouseId ? await getCharacterByID(spouseId) : null;
-    const motherCharacter = motherId ? await getCharacterByID(motherId) : null;
-    const fatherCharacter = fatherId ? await getCharacterByID(fatherId) : null;
 
-    clearAside();
+    clearAsideAndAddBackground();
     const searchAside = document.createElement("div");
     searchAside.className ="containers";
     searchAside.id = "search-aside";
@@ -170,8 +166,6 @@ const renderCharacterInfo = async (character: AsoiafCharacterType) => {
             <p><span>House words:</span> ${houseWords.length > 0 ? houseWords.join(", ") : "Unknown"}</p>
             <p><span>Titles:</span> ${character.titles.length > 0 ? character.titles.join(", ") : "Unknown"}</p>
             <p><span>Culture:</span> ${character.culture || "Unknown"}</p>
-            <p><span>Mother:</span> ${motherCharacter ? motherCharacter.name : "Unknown"}</p>
-            <p><span>Father:</span> ${fatherCharacter ? fatherCharacter.name : "Unknown"}</p>
             <p><span>Spouse:</span> ${spouseCharacter ? spouseCharacter.name : "Unknown"}</p>
             <p><span>Born:</span> ${character.born || "Unknown"}</p>
             <p><span>Died:</span> ${character.died || "Unknown"}</p>

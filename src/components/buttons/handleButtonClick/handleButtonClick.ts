@@ -1,5 +1,5 @@
 import { article } from "../../../constants/constants";
-import { clearAndAddClickedClass, clearArticleAndAddBackground, clearAside, playSound } from "../../../helpers/helpers";
+import { clearAndAddClickedClass, clearArticle, clearAsideAndAddBackground, playSound } from "../../../helpers/helpers";
 import { soundOn } from "../soundButton/soundButton";
 
 const handleButtonClick = (
@@ -20,8 +20,8 @@ const handleButtonClick = (
                 }
 
                 clearAndAddClickedClass(button);
-                clearArticleAndAddBackground(backgroundUrl);
-                clearAside();
+                clearAsideAndAddBackground(backgroundUrl);
+                clearArticle();
 
                 if(callback) {
                     callback();
