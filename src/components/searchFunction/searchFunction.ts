@@ -1,6 +1,6 @@
 import { getBookByID, getCharacterByID, getHouseByID, getRandomCharacter, searchCharacters } from "../../api/asoiafAPI";
 import { article, aside, knownHouses } from "../../constants/constants";
-import { clearAsideAndAddBackground, createButton, getIdFromURL, removeLoadingIndicator, renderLoadingIndicator } from "../../helpers/helpers";
+import { clearAsideAndAddBackground, getIdFromURL, removeLoadingIndicator, renderLoadingIndicator } from "../../helpers/helpers";
 import AsoiafCharacterType from "../../types/asoiafCharacterType";
 
 export const setupSearchContainer = () => {
