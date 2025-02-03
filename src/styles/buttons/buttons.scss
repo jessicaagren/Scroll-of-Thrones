@@ -49,7 +49,11 @@
     }
 }
 
-@media (max-width: 1100px) {
+button:active {
+    background-color: var.$transparent-dark-red;
+}
+
+@media (max-width: 900px) {
     #buttons-container {
         display: flex;
         padding: 0;
