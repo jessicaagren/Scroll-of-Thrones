@@ -8,6 +8,8 @@
 @use './styles/layout/nav.scss';
 @use './styles/assets/houseSigil.scss';
 @use './styles/assets/soundButton.scss';
+@use './styles/assets/favouriteButton.scss';
+
 
 article, aside {
     @include mixins.background-drop-shadow();
@@ -146,4 +148,8 @@ li {
     li {
         min-width: 0;
     }
+}
+
+#quote-span {
+    cursor: pointer;
 }
