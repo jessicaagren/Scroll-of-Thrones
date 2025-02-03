@@ -42,3 +42,19 @@ export const removeLoadingIndicator = (element: HTMLElement) => {
 export const getIdFromURL = (url: string) => {
     return url.split("/").filter(Boolean).pop();
 };
+
+export const clearPreviousOutput = () => {
+    const searchContainer = document.getElementById("search-container") as HTMLElement;
+
+    const previousSearchElement = document.getElementById('search-output');
+    const previousCharacterList = document.getElementById('character-list');
+    
+    if (previousSearchElement) searchContainer.removeChild(previousSearchElement);
+    if (previousCharacterList) searchContainer.removeChild(previousCharacterList);
+
+    const previousFavouriteElement = document.getElementById("favourite-output");
+    const previousFavouriteList = document.getElementById("favourite-list");
+    
+    if (previousFavouriteElement) searchContainer.removeChild(previousFavouriteElement);
+    if (previousFavouriteList) searchContainer.removeChild(previousFavouriteList);
+}
