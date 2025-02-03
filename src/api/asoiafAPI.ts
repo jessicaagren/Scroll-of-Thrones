@@ -152,12 +152,12 @@ export const searchCharacters = async (query: string): Promise<AsoiafCharacterTy
         const characters = results.flat();
 
         const filteredCharacters = characters.filter((character) => {
-            const fullName = character.name?.trim();
+            const fullName = character.name.trim();
             
             return (
                 fullName &&
-                (fullName.toLowerCase().includes(query.toLowerCase()) ||
-                fullName.toLowerCase().endsWith(query.toLowerCase()))
+                (fullName.toLowerCase().includes(query.toLowerCase())
+                )
             );
         });
 
