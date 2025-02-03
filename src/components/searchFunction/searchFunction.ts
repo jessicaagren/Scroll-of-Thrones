@@ -73,7 +73,11 @@ const handleRandomButton = () => {
             try {
                 const character = await getRandomCharacter();
                 if (character) {
-                    renderCharacterInfo(character);
+                    
+                    if (aside) {
+                        aside.scrollIntoView({ behavior: "smooth" });
+                    }
+                        renderCharacterInfo(character);
                 } else {
                     console.error("Ingen karaktär hittades.");
                 }
@@ -109,7 +113,14 @@ const renderSearchResults = (searchInput: string, searchedCharacters: AsoiafChar
     searchedCharacters.forEach(character => {
         const listItem = document.createElement("li");
         listItem.textContent = character.name;
-        listItem.addEventListener("click", () => renderCharacterInfo(character));
+        listItem.addEventListener("click", () => {
+            renderCharacterInfo(character);
+            
+            const aside = document.querySelector("aside");
+            if (aside) {
+                aside.scrollIntoView({ behavior: "smooth" });
+            }
+        });
         characterList.appendChild(listItem);
     });
 

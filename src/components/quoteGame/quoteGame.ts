@@ -9,6 +9,7 @@ let quoteGameScore: number = 0;
 let totalQuoteGameScores: number[] = [];
 
 export const startQuoteGame = async (): Promise<void> => {
+
     quoteGameScore = 0;
     usedQuotes.clear();
     usedNames.clear();
@@ -106,6 +107,10 @@ const renderQuoteGame = async (): Promise<void> => {
 
 const handleGuess = async (selectedName: string, correctName: string) => {
     const gameContainer = document.getElementById("game-container") as HTMLElement;
+
+    if (article) {
+        article.scrollIntoView({ behavior: "smooth" });
+    }
 
     if (selectedName === correctName) {
         quoteGameScore++;

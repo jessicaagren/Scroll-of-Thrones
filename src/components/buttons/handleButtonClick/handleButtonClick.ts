@@ -22,6 +22,9 @@ const handleButtonClick = (
                 clearAndAddClickedClass(button);
                 clearAsideAndAddBackground(backgroundUrl);
                 clearArticle();
+                if (article) {
+                    article.scrollIntoView({ behavior: "smooth" });
+                }
 
                 if(callback) {
                     callback();

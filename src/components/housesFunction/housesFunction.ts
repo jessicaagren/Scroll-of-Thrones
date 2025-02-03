@@ -93,7 +93,9 @@ const renderHouseInfo = async (house: HouseType) => {
     houseAside.className = "containers";
     houseAside.id = "house-aside";
     aside.appendChild(houseAside);
-
+    if (aside) {
+        aside.scrollIntoView({ behavior: "smooth" });
+    }
     renderLoadingIndicator(houseAside);
 
     let houseSVG = "";
