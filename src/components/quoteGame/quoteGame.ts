@@ -3,12 +3,12 @@ import { soundOn } from "../buttons/soundButton/soundButton";
 import { article, aside, correctAudio, gameOverAudio } from "../../constants/constants";
 import { clearAsideAndAddBackground, clearArticle, playSound } from "../../helpers/helpers";
 import Quote from "../../types/quoteType";
+import { totalQuoteGameScores } from "../../state/state";
 
 const usedNames: Set<string> = new Set();
 const usedQuotes: Set<string> = new Set();
 
 let quoteGameScore: number = 0;
-let totalQuoteGameScores: number[] = [];
 
 export const startQuoteGame = async (): Promise<void> => {
 
