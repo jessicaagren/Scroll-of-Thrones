@@ -53,6 +53,27 @@ button:active {
     background-color: var.$transparent-dark-red;
 }
 
+#search-button-container {
+    display: flex;
+    gap: 1rem;
+}
+
+#favourite-button {
+    background-color: var.$red;
+    color: var.$white;
+    &:active {
+        background-color: var.$transparent-red;
+    }
+}
+
+#randomise-button {
+    background-color: var.$brown;
+    color: var.$white;
+    &:active {
+        background-color: var.$transparent-brown;
+    }
+}
+
 @media (max-width: 900px) {
     #buttons-container {
         // display: flex;
