@@ -20,6 +20,7 @@ main {
 
 article, aside {
     min-height: 500px;
+    max-width: auto;
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -33,7 +34,7 @@ aside {
     @include mixins.set-background-image('./media/backgrounds/paper-mask-standing.png', contain);
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 900px) {
     main {
         flex-direction: column;
     }
