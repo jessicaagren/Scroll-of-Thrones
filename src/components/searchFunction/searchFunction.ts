@@ -1,9 +1,12 @@
 import { getBookByID, getCharacterByID, getHouseByID, getRandomCharacter, searchCharacters } from "../../api/asoiafAPI";
 import { article, aside, knownHouses } from "../../constants/constants";
-import { clearArticle, clearAsideAndAddBackground, getIdFromURL, removeLoadingIndicator, renderLoadingIndicator } from "../../helpers/helpers";
+import { clearAsideAndAddBackground, createButton, getIdFromURL, removeLoadingIndicator, renderLoadingIndicator } from "../../helpers/helpers";
 import AsoiafCharacterType from "../../types/asoiafCharacterType";
 
 export const setupSearchContainer = () => {
+
+    clearAsideAndAddBackground();
+
     const searchContainer = document.createElement("div");
     searchContainer.className = "containers";
     searchContainer.id = "search-container";
