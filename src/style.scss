@@ -40,11 +40,11 @@ article, aside {
     padding: 5rem 2rem;
     width: 70%;
     height: auto;
-    max-height: 80%;
+    max-height: 75%;
     &#search-aside {
         padding-top: 7rem;
     }
-    &#game-aside, &#game-container {
+    &#game-aside, &#game-container, &#credits-container {
         align-items: center;
         height: 100%;
         button {
@@ -126,12 +126,24 @@ li {
 
 @media (max-width: 900px) {
     .containers {
-        padding: 25% 0;
+        padding: 15% 0;
+    }
+    .game-info {
+        max-width: 70%;
+    }
+    #character-list {
+        margin: 0 20%;
+    }
+    #buttons-container {
+        padding-bottom: 5rem;
     }
 }
 
 @media (max-width: 1300px) {
     #buttons-container {
-        padding-bottom: 5rem;
+        padding-bottom: 7rem;
+    }
+    li {
+        min-width: 0;
     }
 }
