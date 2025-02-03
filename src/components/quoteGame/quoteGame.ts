@@ -1,9 +1,11 @@
-import { getRandomQuote, getUniqueRandomQuote, usedQuotes } from "../../api/quoteAPI";
+import { getRandomQuote } from "../../api/quoteAPI";
 import { soundOn } from "../buttons/soundButton/soundButton";
 import { article, aside, correctAudio, gameOverAudio } from "../../constants/constants";
 import { clearAsideAndAddBackground, clearArticle, playSound } from "../../helpers/helpers";
+import Quote from "../../types/quoteType";
 
 const usedNames: Set<string> = new Set();
+const usedQuotes: Set<string> = new Set();
 
 let quoteGameScore: number = 0;
 let totalQuoteGameScores: number[] = [];
@@ -55,6 +57,16 @@ export const startQuoteGame = async (): Promise<void> => {
                 scoreList.appendChild(listItem);
             }
         }
+};
+
+const getUniqueRandomQuote = async (): Promise<Quote> => {
+    let quote: Quote;
+    do {
+        quote = await getRandomQuote();
+    } while (usedQuotes.has(quote.sentence));
+
+    usedQuotes.add(quote.sentence); 
+    return quote;
 };
 
 const getRandomNames = async (correctName: string): Promise<string[]> => {
