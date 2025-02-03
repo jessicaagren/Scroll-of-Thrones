@@ -5,41 +5,14 @@ import handleMapClick from './components/buttons/mapButton/mapButton';
 import handleQuoteClick from './components/buttons/quoteGameButton/quoteGameButton';
 import handleSearchClick from './components/buttons/searchButton/searchButton';
 import { handleSoundClick } from './components/buttons/soundButton/soundButton';
+import { startQuoteGame } from './components/quoteGame/quoteGame';
+import { article } from './constants/constants';
+import { clearArticle, clearAsideAndAddBackground, clearPreviousOutput } from './helpers/helpers';
 import './style.scss';
-
-// TODO Fixa responsivitet (ändra root med mixin?)
 
 // TODO Rensa mer bland style, se över funktioner för DRY
 
 // TODO Kolla error-meddelanden
-
-// TODO Läs uppgift och kolla state??
-
-// TODO (Om tid finns) gör favoritfunktion
-
-// TODO GÖr "Map" till info med kontaktuppgifter och API-sources - kolla stylen!
-
-// TODO Lägg in introtext när man öppnar!
-
-// TODO Styla search
-
-// TODO handleSearchClick från CharacterSearchForm.ts
-// const handleSearchClick = async () => {
-//     if (inputField.value) {
-//         characterList.showLoader();
-
-//         const searchWord = inputField.value;
-//         inputField.value = "";
-//         inputField.focus();
-
-//         const data = await searchDisneyCharacterByName(searchWord);
-//         console.log(data);
-
-//         characterList.search = searchWord;
-//         characterList.characters = data;
-//         characterList.render();
-//     }
-// };
 
 handleSearchClick();
 
@@ -50,3 +23,44 @@ handleMapClick();
 handleHouseClick();
 
 handleSoundClick();
+
+
+const handleHeaderClick = () => {
+    const header = document.querySelector("h1") as HTMLElement;
+    header.addEventListener("click", async () => {
+        
+        clearPreviousOutput();
+        clearAsideAndAddBackground();
+        clearArticle();
+
+        article.innerHTML = `<section class="containers" id="intro">
+        <h2>Welcome to Scroll of Thrones!</h2>
+                <p class="intro">
+                Discover the world of <span>A Song of Ice and Fire</span> by
+                searching for your favourite characters and reading about the houses
+                of Westeros and beyond, or challenge yourself with a game of
+                <span id="quote-span">Guess the quote</span>.
+                </p>
+                <p><span class="quote">Valar morghulis.</span></p>
+                </section>`;
+
+        handleTextQuoteClick();
+    })
+
+}
+
+handleHeaderClick();
+
+const handleTextQuoteClick = () => {
+    const quoteSpan = document.getElementById("quote-span") as HTMLElement;
+    quoteSpan.addEventListener("click", async () => {
+        
+        clearPreviousOutput();
+        clearAsideAndAddBackground();
+        clearArticle();
+
+        startQuoteGame();
+    })
+}
+
+handleTextQuoteClick();
