@@ -9,11 +9,11 @@ export const handleSoundClick = () => {
                 if (soundElement.style.filter === 'grayscale(1)') {
                     soundElement.style.filter = 'none';
                     soundOn = true;
-                    // console.log(soundOn);
+                    // console.log(`Sound is: ${soundOn}`);
                 } else {
                     soundElement.style.filter = 'grayscale(1)';
                     soundOn = false;
-                    // console.log(soundOn);
+                    // console.log(`Sound is: ${soundOn}`);
                 }
             } catch (error) {
                 console.error("Fel vid klickhantering:", error);
