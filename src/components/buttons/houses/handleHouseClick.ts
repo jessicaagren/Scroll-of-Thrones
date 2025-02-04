@@ -1,5 +1,5 @@
 import { drawingSwordAudio } from "../../../constants/constants";
-import { setupHouseContainer } from "../../housesFunction/housesFunction";
+import { setupHouseContainer } from "./setupHouseContainer";
 import handleButtonClick from "../handleButtonClick/handleButtonClick";
 
 const handleHouseClick = () => {

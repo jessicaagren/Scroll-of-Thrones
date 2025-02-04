@@ -1,24 +1,19 @@
 
-// import handleHouseClick from './components/buttons/houseGameButton/houseGameButton';
-import handleHouseClick from './components/buttons/houseButton/houseButton';
-import handleMapClick from './components/buttons/mapButton/mapButton';
-import handleQuoteClick from './components/buttons/quoteGameButton/quoteGameButton';
-import handleSearchClick from './components/buttons/searchButton/searchButton';
+import handleHouseClick from './components/buttons/houses/handleHouseClick';
+import handleQuoteClick from './components/buttons/quoteGame/handleQuoteClick';
+import handleSearchClick from './components/buttons/searchButton/handleSearchClick';
 import { handleSoundClick } from './components/buttons/soundButton/soundButton';
-import { startQuoteGame } from './components/quoteGame/quoteGame';
+import { startQuoteGame } from './components/buttons/quoteGame/startQuoteGame';
 import { article } from './constants/constants';
 import { clearArticle, clearAsideAndAddBackground, clearPreviousOutput } from './helpers/helpers';
 import './style.scss';
-
-// TODO Rensa mer bland style, se över funktioner för DRY
-
-// TODO Kolla error-meddelanden
+import handleCreditsClick from './components/buttons/credits/handleCreditsClick';
 
 handleSearchClick();
 
 handleQuoteClick();
 
-handleMapClick();
+handleCreditsClick();
 
 handleHouseClick();
 

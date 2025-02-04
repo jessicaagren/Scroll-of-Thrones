@@ -1,5 +1,5 @@
 import { writingAudio } from "../../../constants/constants";
-import { startQuoteGame } from "../../quoteGame/quoteGame";
+import { startQuoteGame } from "./startQuoteGame";
 import handleButtonClick from "../handleButtonClick/handleButtonClick";
 
 const handleQuoteClick = () => {

@@ -1,6 +1,6 @@
-import { article } from "../../constants/constants";
+import { article } from "../../../constants/constants";
 
-const setupInfo = () => {
+const setupCredits = () => {
     const creditsContainer = document.createElement("div");
     creditsContainer.className = "containers";
     creditsContainer.id = "credits-container";
@@ -21,4 +21,4 @@ const setupInfo = () => {
     `;
 };
 
-export default setupInfo;
+export default setupCredits;

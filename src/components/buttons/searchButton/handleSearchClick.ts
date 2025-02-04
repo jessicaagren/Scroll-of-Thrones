@@ -1,6 +1,6 @@
 import { bellAudio } from "../../../constants/constants";
-import { setupSearchContainer } from "../../searchFunction/searchFunction";
 import handleButtonClick from "../handleButtonClick/handleButtonClick";
+import { setupSearchContainer } from "./setupSearchContainer";
 
 const handleSearchClick = () => {
     handleButtonClick("search", "search-button", "./media/backgrounds/paper-mask-standing.png", setupSearchContainer, bellAudio);

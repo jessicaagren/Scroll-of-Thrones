@@ -1,14 +1,10 @@
-import { getRandomQuote } from "../../api/quoteAPI";
-import { soundOn } from "../buttons/soundButton/soundButton";
-import { article, aside, correctAudio, gameOverAudio } from "../../constants/constants";
-import { clearAsideAndAddBackground, clearArticle, playSound } from "../../helpers/helpers";
-import Quote from "../../types/quoteType";
-import { totalQuoteGameScores } from "../../state/state";
+import { article, correctAudio, gameOverAudio } from "../../../constants/constants";
+import { clearAsideAndAddBackground, clearArticle, playSound } from "../../../helpers/helpers";
+import { totalQuoteGameScores, usedNames, usedQuotes } from "../../../state/state";
+import { soundOn } from "../soundButton/soundButton";
+import { renderQuoteGame } from "./renderQuoteGame";
 
-const usedNames: Set<string> = new Set();
-const usedQuotes: Set<string> = new Set();
-
-let quoteGameScore: number = 0;
+export let quoteGameScore: number = 0;
 
 export const startQuoteGame = async (): Promise<void> => {
 
@@ -59,65 +55,7 @@ export const startQuoteGame = async (): Promise<void> => {
         }
 };
 
-const getUniqueRandomQuote = async (): Promise<Quote> => {
-    let quote: Quote;
-    do {
-        quote = await getRandomQuote();
-    } while (usedQuotes.has(quote.sentence));
-
-    usedQuotes.add(quote.sentence); 
-    return quote;
-};
-
-const getRandomNames = async (correctName: string): Promise<string[]> => {
-    const randomNames: string[] = [];
-
-    while (randomNames.length < 3) {
-        const randomQuote = await getRandomQuote();
-
-        if (!usedNames.has(randomQuote.character.name) && randomQuote.character.name !== correctName) {
-            randomNames.push(randomQuote.character.name);
-            usedNames.add(randomQuote.character.name);
-        }
-    }
-
-    randomNames.push(correctName);
-    return randomNames.sort(() => Math.random() - 0.5);
-};
-
-const renderQuoteGame = async (): Promise<void> => {
-    try {
-        const quote = await getUniqueRandomQuote();
-        const randomNames = await getRandomNames(quote.character.name);
-                
-        const gameContainer = document.getElementById("game-container") as HTMLElement;
-        gameContainer.innerHTML = `
-        <section class="game-info">
-        <p><span class="quote">"${quote.sentence}"</span></p>
-        <p>Points: ${quoteGameScore}</p>
-        </section>
-        `;
-        
-        clearAsideAndAddBackground();
-
-        const gameAside = document.createElement("section");
-        gameAside.className = "containers";
-        gameAside.id = "game-aside";
-        aside.appendChild(gameAside);
-
-        randomNames.forEach(name => {
-            const button = document.createElement("button");
-            button.textContent = name;
-            button.addEventListener("click", () => handleGuess(name, quote.character.name));
-            gameAside.appendChild(button);
-        });
-
-    } catch (error) {
-        console.error("Ett fel inträffade:", error);
-    }
-};
-
-const handleGuess = async (selectedName: string, correctName: string) => {
+export const handleGuess = async (selectedName: string, correctName: string) => {
     const gameContainer = document.getElementById("game-container") as HTMLElement;
 
     if (article) {

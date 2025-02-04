@@ -1,9 +1,8 @@
-import Quote from "../types/quoteType";
-
-const rooturl = "https://api.gameofthronesquotes.xyz/v1/random";
+import { quoteRooturl } from "../../constants/constants";
+import Quote from "../../types/quoteType";
 
 export const getRandomQuote = async (): Promise<Quote> => {
-    const response = await fetch(rooturl);
+    const response = await fetch(quoteRooturl);
     if (!response.ok) {
         throw new Error('Något gick fel vid hämtning av citat');
     }
