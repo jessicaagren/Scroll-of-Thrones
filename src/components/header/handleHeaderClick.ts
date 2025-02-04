@@ -7,7 +7,7 @@ export const handleHeaderClick = () => {
     header.addEventListener("click", async () => {
         
         clearPreviousOutput();
-        clearAsideAndAddBackground();
+        clearAsideAndAddBackground('./media/backgrounds/paper-mask-standing.png');
         clearArticle();
         clearAndAddClickedClass();
 
