@@ -35,7 +35,7 @@ export const setupSearchContainer = () => {
 
     searchButton.addEventListener("click", handleSearch);
     input.addEventListener("keydown", (event) => {
-        if (event.key === "Enter") handleSearch;
+        if (event.key === "Enter") handleSearch();
     });
 
     const searchButtonContainer = document.createElement("div");
