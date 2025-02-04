@@ -5,13 +5,16 @@ import HouseType from "../../types/houseType";
 
 export const renderHouseInfo = async (house: HouseType) => {
     clearAsideAndAddBackground();
+
     const houseAside = document.createElement("div");
     houseAside.className = "containers";
     houseAside.id = "house-aside";
     aside.appendChild(houseAside);
+
     if (aside) {
         aside.scrollIntoView({ behavior: "smooth" });
     }
+    
     renderLoadingIndicator(houseAside);
 
     let houseSVG = "";

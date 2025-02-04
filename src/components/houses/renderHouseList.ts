@@ -17,7 +17,7 @@ export const renderHouseList = () => {
     const prevButton = document.getElementById("prev-button") as HTMLButtonElement;
     const nextButton = document.getElementById("next-button") as HTMLButtonElement;
 
-    houseList.innerHTML = "";
+    houseList.textContent = "";
 
     const start = (currentPage - 1) * housesPerPage;
     const end = start + housesPerPage;
