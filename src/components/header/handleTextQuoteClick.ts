@@ -1,5 +1,7 @@
 import { startQuoteGame } from "../quoteGame/startQuoteGame";
-import { clearArticle, clearAsideAndAddBackground, clearPreviousOutput } from "../../helpers/helpers";
+import { clearArticle, clearAsideAndAddBackground, clearPreviousOutput, playSound } from "../../helpers/helpers";
+import { soundOn } from "../buttons/soundButton/soundButton";
+import { writingAudio } from "../../constants/constants";
 
 export const handleTextQuoteClick = () => {
     const quoteSpan = document.getElementById("quote-span") as HTMLElement;
@@ -8,6 +10,8 @@ export const handleTextQuoteClick = () => {
         clearPreviousOutput();
         clearAsideAndAddBackground();
         clearArticle();
+
+        playSound(soundOn, writingAudio);
 
         startQuoteGame();
     })
