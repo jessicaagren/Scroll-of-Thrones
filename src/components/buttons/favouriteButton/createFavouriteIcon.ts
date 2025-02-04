@@ -1,15 +1,15 @@
 import { favouriteCharacters } from "../../../state/state";
 import AsoiafCharacterType from "../../../types/asoiafCharacterType";
 
-export const createFavouriteButton = (character: AsoiafCharacterType) => {
+export const createFavouriteIcon = (character: AsoiafCharacterType) => {
     const favouriteButton = document.getElementById("favourite") as HTMLButtonElement;
     const favouriteIcon = document.getElementById("favourite-icon") as HTMLElement;
 
-    const isFavourite = favouriteCharacters.some(fav => fav.name === character.name);
+    const isFavourite = favouriteCharacters.some(fav => fav.url === character.url);
     favouriteIcon.style.filter = isFavourite ? "none" : "grayscale(1)";
     
     favouriteButton.addEventListener("click", () => {
-        const favIndex = favouriteCharacters.findIndex(fav => fav.name === character.name);
+        const favIndex = favouriteCharacters.findIndex(fav => fav.url === character.url);
     
         if (favIndex === -1) {
             favouriteCharacters.push(character);

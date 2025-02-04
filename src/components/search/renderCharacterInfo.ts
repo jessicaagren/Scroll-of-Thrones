@@ -4,7 +4,7 @@ import { getHouseByID } from "../../api/asoiafAPI/houseFetches";
 import { aside, knownHouses } from "../../constants/constants";
 import { clearAsideAndAddBackground, getIdFromURL } from "../../helpers/helpers";
 import AsoiafCharacterType from "../../types/asoiafCharacterType";
-import { createFavouriteButton } from "../buttons/favouriteButton/createFavouriteButton";
+import { createFavouriteIcon } from "../buttons/favouriteButton/createFavouriteIcon";
 
 
 export const renderCharacterInfo = async (character: AsoiafCharacterType) => {
@@ -70,5 +70,5 @@ export const renderCharacterInfo = async (character: AsoiafCharacterType) => {
         </section>
     `;
 
-    createFavouriteButton(character);
+    createFavouriteIcon(character);
 }

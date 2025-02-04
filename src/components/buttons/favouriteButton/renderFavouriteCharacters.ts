@@ -1,3 +1,4 @@
+import { aside } from "../../../constants/constants";
 import { clearPreviousOutput } from "../../../helpers/helpers";
 import { favouriteCharacters } from "../../../state/state";
 import { renderCharacterInfo } from "../../search/renderCharacterInfo";
@@ -21,7 +22,6 @@ export const renderFavouriteCharacters = () => {
         listItem.addEventListener("click", () => {
             renderCharacterInfo(character);
             
-            const aside = document.querySelector("aside");
             if (aside) {
                 aside.scrollIntoView({ behavior: "smooth" });
             }

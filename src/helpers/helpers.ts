@@ -7,12 +7,14 @@ export const playSound = (soundOn: boolean, audioElement: HTMLAudioElement) => {
     }
 };
 
-export const clearAndAddClickedClass = (buttonElement: HTMLButtonElement) => {
+export const clearAndAddClickedClass = (buttonElement?: HTMLButtonElement) => {
     const buttonElements = document.querySelectorAll(".button-icons");
     buttonElements.forEach(button => {
         button.classList.remove("clicked");
     });
-    buttonElement.classList.add("clicked");
+    if(buttonElement) {
+        buttonElement.classList.add("clicked");
+    }
 }
 
 export const clearAsideAndAddBackground = (backgroundURL?: string) => {
