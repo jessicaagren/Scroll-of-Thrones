@@ -91,8 +91,6 @@ export const handleGuess = async (selectedName: string, correctName: string) => 
                 <p><strong>Incorrect!</strong> The quote was by ${correctName}.</p>
                 <p>Game over.</p>
                 <p>Total score: ${quoteGameScore}</p>
-                <p>Previous scores:</p>
-                <ul id="score-list"></ul>
             </section>
         `;
 
@@ -102,18 +100,5 @@ export const handleGuess = async (selectedName: string, correctName: string) => 
         gameContainer.appendChild(button);
 
         totalQuoteGameScores.push(quoteGameScore);
-
-        const scoreList = document.getElementById("score-list") as HTMLUListElement;
-
-        if (!scoreList) {
-            console.error("Element för scoreList går inte att hämta");
-            return;
-        }
-
-        for (const scores of totalQuoteGameScores) {
-            const listItem = document.createElement("li");
-            listItem.textContent = `${scores}`;
-            scoreList.appendChild(listItem);
-        }
     }
 };
