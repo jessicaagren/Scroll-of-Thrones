@@ -1,5 +1,5 @@
-import { favouriteCharacters } from "../../../../state/state";
-import AsoiafCharacterType from "../../../../types/asoiafCharacterType";
+import { favouriteCharacters } from "../../../state/state";
+import AsoiafCharacterType from "../../../types/asoiafCharacterType";
 
 export const createFavouriteButton = (character: AsoiafCharacterType) => {
     const favouriteButton = document.getElementById("favourite") as HTMLButtonElement;

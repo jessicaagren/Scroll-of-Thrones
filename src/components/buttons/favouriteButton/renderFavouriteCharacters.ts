@@ -1,6 +1,6 @@
-import { clearPreviousOutput } from "../../../../helpers/helpers";
-import { favouriteCharacters } from "../../../../state/state";
-import { renderCharacterInfo } from "../renderCharacterInfo";
+import { clearPreviousOutput } from "../../../helpers/helpers";
+import { favouriteCharacters } from "../../../state/state";
+import { renderCharacterInfo } from "../../search/renderCharacterInfo";
 
 export const renderFavouriteCharacters = () => {
     const searchContainer = document.getElementById("search-container") as HTMLElement;

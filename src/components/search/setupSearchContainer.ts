@@ -1,6 +1,6 @@
-import { article } from "../../../constants/constants";
-import { clearAsideAndAddBackground } from "../../../helpers/helpers";
-import { handleFavouriteButton } from "./favouriteButton/handleFavouriteButton";
+import { article } from "../../constants/constants";
+import { clearAsideAndAddBackground } from "../../helpers/helpers";
+import { handleFavouriteButton } from "../buttons/favouriteButton/handleFavouriteButton";
 import { handleRandomButton } from "./handleRandomButton";
 import { handleSearch } from "./handleSearch";
 

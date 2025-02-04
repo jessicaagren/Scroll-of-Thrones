@@ -1,6 +1,6 @@
-import { getRandomCharacter } from "../../../api/asoiafAPI/characterFetches";
-import { aside } from "../../../constants/constants";
-import { clearAsideAndAddBackground, clearPreviousOutput, renderLoadingIndicator } from "../../../helpers/helpers";
+import { getRandomCharacter } from "../../api/asoiafAPI/characterFetches";
+import { aside } from "../../constants/constants";
+import { clearAsideAndAddBackground, clearPreviousOutput, renderLoadingIndicator } from "../../helpers/helpers";
 import { renderCharacterInfo } from "./renderCharacterInfo";
 
 export const handleRandomButton = () => {

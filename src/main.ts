@@ -1,7 +1,7 @@
 
 import handleHouseClick from './components/houses/handleHouseClick';
 import handleQuoteClick from './components/quoteGame/handleQuoteClick';
-import handleSearchClick from './components/buttons/searchButton/handleSearchClick';
+import handleSearchClick from './components/search/handleSearchClick';
 import { handleSoundClick } from './components/buttons/soundButton/soundButton';
 import { startQuoteGame } from './components/quoteGame/startQuoteGame';
 import { article } from './constants/constants';

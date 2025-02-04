@@ -1,4 +1,4 @@
-import { clearAsideAndAddBackground, clearPreviousOutput } from "../../../../helpers/helpers";
+import { clearAsideAndAddBackground, clearPreviousOutput } from "../../../helpers/helpers";
 import { renderFavouriteCharacters } from "./renderFavouriteCharacters";
 
 export const handleFavouriteButton = () => {

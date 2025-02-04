@@ -1,5 +1,5 @@
-import { bellAudio } from "../../../constants/constants";
-import handleButtonClick from "../handleButtonClick/handleButtonClick";
+import { bellAudio } from "../../constants/constants";
+import handleButtonClick from "../buttons/handleButtonClick/handleButtonClick";
 import { setupSearchContainer } from "./setupSearchContainer";
 
 const handleSearchClick = () => {

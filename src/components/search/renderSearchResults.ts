@@ -1,5 +1,6 @@
-import AsoiafCharacterType from "../../../types/asoiafCharacterType";
+import AsoiafCharacterType from "../../types/asoiafCharacterType";
 import { renderCharacterInfo } from "./renderCharacterInfo";
+
 
 export const renderSearchResults = (searchInput: string, searchedCharacters: AsoiafCharacterType[]) => {
     const searchContainer = document.getElementById("search-container") as HTMLElement;

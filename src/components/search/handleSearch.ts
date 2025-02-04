@@ -1,5 +1,5 @@
-import { searchCharacters } from "../../../api/asoiafAPI/characterFetches";
-import { clearPreviousOutput, removeLoadingIndicator, renderLoadingIndicator } from "../../../helpers/helpers";
+import { searchCharacters } from "../../api/asoiafAPI/characterFetches";
+import { clearPreviousOutput, removeLoadingIndicator, renderLoadingIndicator } from "../../helpers/helpers";
 import { renderSearchResults } from "./renderSearchResults";
 
 export const handleSearch = async () => {

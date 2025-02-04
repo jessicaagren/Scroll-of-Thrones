@@ -1,10 +1,11 @@
-import { getBookByID } from "../../../api/asoiafAPI/bookFetches";
-import { getCharacterByID } from "../../../api/asoiafAPI/characterFetches";
-import { getHouseByID } from "../../../api/asoiafAPI/houseFetches";
-import { aside, knownHouses } from "../../../constants/constants";
-import { clearAsideAndAddBackground, getIdFromURL } from "../../../helpers/helpers";
-import AsoiafCharacterType from "../../../types/asoiafCharacterType";
-import { createFavouriteButton } from "./favouriteButton/createFavouriteButton";
+import { getBookByID } from "../../api/asoiafAPI/bookFetches";
+import { getCharacterByID } from "../../api/asoiafAPI/characterFetches";
+import { getHouseByID } from "../../api/asoiafAPI/houseFetches";
+import { aside, knownHouses } from "../../constants/constants";
+import { clearAsideAndAddBackground, getIdFromURL } from "../../helpers/helpers";
+import AsoiafCharacterType from "../../types/asoiafCharacterType";
+import { createFavouriteButton } from "../buttons/favouriteButton/createFavouriteButton";
+
 
 export const renderCharacterInfo = async (character: AsoiafCharacterType) => {
     let houseNames: string[] = [];
