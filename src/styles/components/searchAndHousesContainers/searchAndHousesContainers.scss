@@ -1,0 +1,80 @@
+@use '../../mixins/mixins.scss';
+@use '../../variables/var.scss';
+@use './houseSigil.scss';
+@use './loadingIndicator.scss';
+
+#input-container {
+    display: flex;
+    gap: 1rem;
+}
+
+#search-input {
+    background-color: var.$transparent-white;
+    margin-bottom: 1rem;
+}
+
+#character-list {
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 50rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0.5rem;
+    @include mixins.overflow();
+}
+
+#character-list:not:first-child {
+    width: calc(50% - 1rem);
+}
+
+#pagination-container {
+    button {
+        margin: 1rem;
+    }
+}
+
+li {
+    min-width: 45%;
+    margin: 0.25rem;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+#character-info, #house-info {
+    max-width: 90%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    @include mixins.overflow();
+
+    p{
+        padding-top: 0.5rem;
+    }
+}
+
+.house-item {
+    cursor: pointer;
+}
+
+@media (max-width: 900px) {
+    .containers {
+        padding: 15% 0;
+    }
+    .game-info {
+        max-width: 70%;
+    }
+    #character-list {
+        margin: 0 20%;
+    }
+    #buttons-container {
+        padding-bottom: 5rem;
+    }
+}
+
+@media (max-width: 1300px) {
+    #buttons-container {
+        padding-bottom: 7rem;
+    }
+    li {
+        min-width: 0;
+    }
+}

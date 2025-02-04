@@ -1,0 +1,11 @@
+.game-info {
+    padding-bottom: 2rem;
+}
+
+#game-container > * {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}

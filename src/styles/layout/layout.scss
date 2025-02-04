@@ -1,4 +1,5 @@
 @use '../mixins/mixins.scss';
+@use '../variables/var.scss';
 @use './nav.scss';
 
 body {
@@ -19,6 +20,30 @@ main {
 }
 
 article, aside {
+    & button {
+        background-color: var.$white;
+        margin-bottom: 1rem;
+        cursor: pointer;
+    }
+    
+    & input, button {
+        font-family: IMFellEnglish, Georgia, 'Times New Roman', Times, serif;
+        color: var.$black;
+        min-height: 2rem;
+        padding: 0 0.5rem;
+        border: none;
+        border-radius: 0.5rem;
+        
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
+article, aside {
+    @include mixins.background-drop-shadow();
+    width: 100%;
+    height: 100%;
     min-height: 500px;
     max-width: auto;
     display: flex;
@@ -45,5 +70,27 @@ aside {
 
     article, aside {
         justify-content: center;
+    }
+}
+
+.containers {
+    @include mixins.flex-center();
+    flex-direction: column;
+    padding: 5rem 2rem;
+    width: 70%;
+    height: auto;
+    max-height: 75%;
+    &#search-aside {
+        padding-top: 7rem;
+    }
+    &#game-aside, &#game-container, &#credits-container {
+        align-items: center;
+        height: 100%;
+        button {
+            font-size: 1.5rem;
+        }
+        &#search-container {
+            justify-content: flex-start;
+        }
     }
 }
