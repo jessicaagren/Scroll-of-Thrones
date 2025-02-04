@@ -1,5 +1,5 @@
-import { getRandomQuote } from "../../../api/quoteAPI/quoteAPI";
-import { usedNames } from "../../../state/state";
+import { getRandomQuote } from "../../api/quoteAPI/quoteAPI";
+import { usedNames } from "../../state/state";
 
 export const getRandomNames = async (correctName: string): Promise<string[]> => {
     const randomNames: string[] = [];

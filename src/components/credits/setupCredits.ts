@@ -1,4 +1,4 @@
-import { article } from "../../../constants/constants";
+import { article } from "../../constants/constants";
 
 const setupCredits = () => {
     const creditsContainer = document.createElement("div");

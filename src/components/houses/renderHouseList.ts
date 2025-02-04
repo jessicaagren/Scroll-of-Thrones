@@ -1,5 +1,5 @@
-import { getHouseByID } from "../../../api/asoiafAPI/houseFetches";
-import { getIdFromURL } from "../../../helpers/helpers";
+import { getHouseByID } from "../../api/asoiafAPI/houseFetches";
+import { getIdFromURL } from "../../helpers/helpers";
 import { allHouses } from "./setupHouseContainer";
 import { renderHouseInfo } from "./renderHouseInfo";
 

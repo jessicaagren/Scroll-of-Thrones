@@ -1,5 +1,5 @@
-import { aside } from "../../../constants/constants";
-import { clearAsideAndAddBackground } from "../../../helpers/helpers";
+import { aside } from "../../constants/constants";
+import { clearAsideAndAddBackground } from "../../helpers/helpers";
 import { getRandomNames } from "./getRandomNames";
 import { getUniqueRandomQuote } from "./getUniqueRandomQuote";
 import { handleGuess, quoteGameScore } from "./startQuoteGame";

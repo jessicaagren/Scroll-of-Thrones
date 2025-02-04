@@ -1,7 +1,7 @@
-import { getCharacterByID } from "../../../api/asoiafAPI/characterFetches";
-import { aside, knownHouses } from "../../../constants/constants";
-import { clearAsideAndAddBackground, getIdFromURL, removeLoadingIndicator, renderLoadingIndicator } from "../../../helpers/helpers";
-import HouseType from "../../../types/houseType";
+import { getCharacterByID } from "../../api/asoiafAPI/characterFetches";
+import { aside, knownHouses } from "../../constants/constants";
+import { clearAsideAndAddBackground, getIdFromURL, removeLoadingIndicator, renderLoadingIndicator } from "../../helpers/helpers";
+import HouseType from "../../types/houseType";
 
 export const renderHouseInfo = async (house: HouseType) => {
     clearAsideAndAddBackground();

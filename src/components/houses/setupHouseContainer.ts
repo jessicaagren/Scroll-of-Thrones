@@ -1,7 +1,7 @@
-import { getHouses } from "../../../api/asoiafAPI/houseFetches";
-import { article } from "../../../constants/constants";
-import { removeLoadingIndicator, renderLoadingIndicator } from "../../../helpers/helpers";
-import HouseType from "../../../types/houseType";
+import { getHouses } from "../../api/asoiafAPI/houseFetches";
+import { article } from "../../constants/constants";
+import { removeLoadingIndicator, renderLoadingIndicator } from "../../helpers/helpers";
+import HouseType from "../../types/houseType";
 import { changePage, renderHouseList } from "./renderHouseList";
 
 export let allHouses: HouseType[] = [];

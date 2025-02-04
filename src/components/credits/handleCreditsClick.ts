@@ -1,5 +1,5 @@
-import { flipPageAudio } from "../../../constants/constants";
-import handleButtonClick from "../handleButtonClick/handleButtonClick";
+import { flipPageAudio } from "../../constants/constants";
+import handleButtonClick from "../buttons/handleButtonClick/handleButtonClick";
 import setupCredits from "./setupCredits";
 
 

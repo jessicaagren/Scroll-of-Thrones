@@ -1,13 +1,13 @@
 
-import handleHouseClick from './components/buttons/houses/handleHouseClick';
-import handleQuoteClick from './components/buttons/quoteGame/handleQuoteClick';
+import handleHouseClick from './components/houses/handleHouseClick';
+import handleQuoteClick from './components/quoteGame/handleQuoteClick';
 import handleSearchClick from './components/buttons/searchButton/handleSearchClick';
 import { handleSoundClick } from './components/buttons/soundButton/soundButton';
-import { startQuoteGame } from './components/buttons/quoteGame/startQuoteGame';
+import { startQuoteGame } from './components/quoteGame/startQuoteGame';
 import { article } from './constants/constants';
 import { clearArticle, clearAsideAndAddBackground, clearPreviousOutput } from './helpers/helpers';
 import './style.scss';
-import handleCreditsClick from './components/buttons/credits/handleCreditsClick';
+import handleCreditsClick from './components/credits/handleCreditsClick';
 
 handleSearchClick();
 
