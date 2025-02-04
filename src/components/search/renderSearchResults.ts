@@ -7,7 +7,12 @@ export const renderSearchResults = (searchInput: string, searchedCharacters: Aso
 
     const searchElement = document.createElement("p");
     searchElement.id = 'search-output';
-    searchElement.innerHTML = `Your search: "${searchInput}", results: ${searchedCharacters.length}`;
+    if(searchedCharacters.length > 0) {
+        searchElement.innerHTML = `Your search: "${searchInput}", results: ${searchedCharacters.length}`;
+    }
+    else {
+        searchElement.innerHTML =`Your search "${searchInput}" did not return any results`;
+    }
     searchContainer.appendChild(searchElement);
 
     const characterList = document.createElement("ul");
