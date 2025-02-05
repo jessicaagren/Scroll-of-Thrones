@@ -49,106 +49,106 @@ https://api.gameofthronesquotes.xyz/v1/random
 ## Folder and file structure
 
 ```
-Scroll-of-Thrones                                                  //
-├─ .gitignore                                                      //
-├─ index.html                                                      //
-├─ LICENSE                                                         //
-├─ package-lock.json                                               //
-├─ package.json                                                    //
-├─ public                                                          //
-│  ├─ fonts                                                        //
-│  └─ media                                                        //
-│     ├─ assets                                                    //
-│     ├─ audio                                                     //
-│     ├─ backgrounds                                               //
-│     ├─ houses                                                    //
-│     └─ icons                                                     //
-├─ README.md                                                       //
-├─ src                                                             //
-│  ├─ api                                                          //
-│  │  ├─ asoiafAPI                                                 //
-│  │  │  ├─ bookFetches.ts                                         //
-│  │  │  ├─ characterFetches.ts                                    //
-│  │  │  └─ houseFetches.ts                                        //
-│  │  └─ quoteAPI                                                  //
-│  │     └─ quoteAPI.ts                                            //
-│  ├─ components                                                   //
-│  │  ├─ buttons                                                   //
-│  │  │  ├─ favouriteButton                                        //
-│  │  │  │  ├─ createFavouriteIcon.ts                              //
-│  │  │  │  ├─ handleFavouriteButton.ts                            //
-│  │  │  │  ├─ handleFavouriteIconClick.ts                         //
-│  │  │  │  └─ renderFavouriteCharacters.ts                        //
-│  │  │  ├─ handleButtonClick                                      //
-│  │  │  │  └─ handleButtonClick.ts                                //
-│  │  │  └─ handleSoundClick                                       //
-│  │  │     └─ handleSoundClick.ts                                 //
-│  │  ├─ credits                                                   //
-│  │  │  ├─ handleCreditsClick.ts                                  //
-│  │  │  └─ setupCredits.ts                                        //
-│  │  ├─ discarded                                                 //
-│  │  │  └─ houseGame                                              //
-│  │  │     └─ houseGame.ts                                        //
-│  │  ├─ header                                                    //
-│  │  │  ├─ handleHeaderClick.ts                                   //
-│  │  │  └─ handleTextQuoteClick.ts                                //
-│  │  ├─ houses                                                    //
-│  │  │  ├─ handleHouseClick.ts                                    //
-│  │  │  ├─ renderHouseInfo.ts                                     //
-│  │  │  ├─ renderHouseList.ts                                     //
-│  │  │  └─ setupHouseContainer.ts                                 //
-│  │  ├─ quoteGame                                                 //
-│  │  │  ├─ getRandomNames.ts                                      //
-│  │  │  ├─ getUniqueRandomQuote.ts                                //
-│  │  │  ├─ handleQuoteClick.ts                                    //
-│  │  │  ├─ renderQuoteGame.ts                                     //
-│  │  │  └─ startQuoteGame.ts                                      //
-│  │  └─ search                                                    //
-│  │     ├─ handleRandomButton.ts                                  //
-│  │     ├─ handleSearch.ts                                        //
-│  │     ├─ handleSearchClick.ts                                   //
-│  │     ├─ renderCharacterInfo.ts                                 //
-│  │     ├─ renderSearchResults.ts                                 //
-│  │     └─ setupSearchContainer.ts                                //
-│  ├─ constants                                                    //
-│  │  └─ constants.ts                                              //
-│  ├─ helpers                                                      //
-│  │  └─ helpers.ts                                                //
-│  ├─ main.ts                                                      //
-│  ├─ state                                                        //
-│  │  └─ state.ts                                                  //
-│  ├─ style.scss                                                   //
-│  ├─ styles                                                       //
-│  │  ├─ components                                                //
-│  │  │  ├─ buttons                                                //
-│  │  │  │  ├─ favouriteButton.scss                                //
-│  │  │  │  ├─ navButtons.scss                                     //
-│  │  │  │  └─ soundButton.scss                                    //
-│  │  │  ├─ quoteGame                                              //
-│  │  │  │  └─ quoteGame.scss                                      //
-│  │  │  └─ searchAndHousesContainers                              //
-│  │  │     ├─ houseSigil.scss                                     //
-│  │  │     ├─ loadingIndicator.scss                               //
-│  │  │     └─ searchAndHousesContainers.scss                      //
-│  │  ├─ layout                                                    //
-│  │  │  ├─ layout.scss                                            //
-│  │  │  └─ nav.scss                                               //
-│  │  ├─ mixins                                                    //
-│  │  │  └─ mixins.scss                                            //
-│  │  ├─ reset                                                     //
-│  │  │  └─ reset.scss                                             //
-│  │  ├─ typography                                                //
-│  │  │  ├─ font-styling.scss                                      //
-│  │  │  └─ fonts.scss                                             //
-│  │  └─ variables                                                 //
-│  │     └─ var.scss                                               //
-│  ├─ types                                                        //
-│  │  ├─ asoiafCharacterType.ts                                    //
-│  │  ├─ bookType.ts                                               //
-│  │  ├─ houseType.ts                                              //
-│  │  └─ quoteType.ts                                              //
-│  └─ vite-env.d.ts                                                //
-└─ tsconfig.json                                                   //
+Scroll-of-Thrones
+├─ .gitignore
+├─ index.html
+├─ LICENSE
+├─ package-lock.json
+├─ package.json
+├─ public
+│  ├─ fonts                                                        // All imported fonts
+│  └─ media                                                        // All image and audio files
+│     ├─ assets
+│     ├─ audio
+│     ├─ backgrounds
+│     ├─ houses
+│     └─ icons
+├─ README.md
+├─ src
+│  ├─ api                                                          // File source for all the API fetches
+│  │  ├─ asoiafAPI
+│  │  │  ├─ bookFetches.ts
+│  │  │  ├─ characterFetches.ts
+│  │  │  └─ houseFetches.ts
+│  │  └─ quoteAPI
+│  │     └─ quoteAPI.ts
+│  ├─ components                                                   // All .ts files divided into components / feature
+│  │  ├─ buttons
+│  │  │  ├─ favouriteButton
+│  │  │  │  ├─ createFavouriteIcon.ts
+│  │  │  │  ├─ handleFavouriteButton.ts
+│  │  │  │  ├─ handleFavouriteIconClick.ts
+│  │  │  │  └─ renderFavouriteCharacters.ts
+│  │  │  ├─ handleButtonClick
+│  │  │  │  └─ handleButtonClick.ts
+│  │  │  └─ handleSoundClick
+│  │  │     └─ handleSoundClick.ts
+│  │  ├─ credits
+│  │  │  ├─ handleCreditsClick.ts
+│  │  │  └─ setupCredits.ts
+│  │  ├─ discarded
+│  │  │  └─ houseGame
+│  │  │     └─ houseGame.ts
+│  │  ├─ header
+│  │  │  ├─ handleHeaderClick.ts
+│  │  │  └─ handleTextQuoteClick.ts
+│  │  ├─ houses
+│  │  │  ├─ handleHouseClick.ts
+│  │  │  ├─ renderHouseInfo.ts
+│  │  │  ├─ renderHouseList.ts
+│  │  │  └─ setupHouseContainer.ts
+│  │  ├─ quoteGame
+│  │  │  ├─ getRandomNames.ts
+│  │  │  ├─ getUniqueRandomQuote.ts
+│  │  │  ├─ handleQuoteClick.ts
+│  │  │  ├─ renderQuoteGame.ts
+│  │  │  └─ startQuoteGame.ts
+│  │  └─ search
+│  │     ├─ handleRandomButton.ts
+│  │     ├─ handleSearch.ts
+│  │     ├─ handleSearchClick.ts
+│  │     ├─ renderCharacterInfo.ts
+│  │     ├─ renderSearchResults.ts
+│  │     └─ setupSearchContainer.ts
+│  ├─ constants                                                    // All constants
+│  │  └─ constants.ts
+│  ├─ helpers                                                      // All helpers
+│  │  └─ helpers.ts
+│  ├─ main.ts                                                      // Main .ts file with starting functions
+│  ├─ state                                                        // All state
+│  │  └─ state.ts
+│  ├─ style.scss                                                   // Main .scss file with imports
+│  ├─ styles                                                       // All styles
+│  │  ├─ components
+│  │  │  ├─ buttons
+│  │  │  │  ├─ favouriteButton.scss
+│  │  │  │  ├─ navButtons.scss
+│  │  │  │  └─ soundButton.scss
+│  │  │  ├─ quoteGame
+│  │  │  │  └─ quoteGame.scss
+│  │  │  └─ searchAndHousesContainers
+│  │  │     ├─ houseSigil.scss
+│  │  │     ├─ loadingIndicator.scss
+│  │  │     └─ searchAndHousesContainers.scss
+│  │  ├─ layout
+│  │  │  ├─ layout.scss
+│  │  │  └─ nav.scss
+│  │  ├─ mixins
+│  │  │  └─ mixins.scss
+│  │  ├─ reset
+│  │  │  └─ reset.scss
+│  │  ├─ typography
+│  │  │  ├─ font-styling.scss
+│  │  │  └─ fonts.scss
+│  │  └─ variables
+│  │     └─ var.scss
+│  ├─ types                                                        // All added types
+│  │  ├─ asoiafCharacterType.ts
+│  │  ├─ bookType.ts
+│  │  ├─ houseType.ts
+│  │  └─ quoteType.ts
+│  └─ vite-env.d.ts
+└─ tsconfig.json
 
 ```
 
