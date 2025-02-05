@@ -56,8 +56,8 @@ Scroll-of-Thrones
 ├─ package-lock.json
 ├─ package.json
 ├─ public
-│  ├─ fonts                                                        // All imported fonts
-│  └─ media                                                        // All image and audio files
+│  ├─ fonts                                         // All imported fonts
+│  └─ media                                         // All image and audio files
 │     ├─ assets
 │     ├─ audio
 │     ├─ backgrounds
@@ -65,14 +65,14 @@ Scroll-of-Thrones
 │     └─ icons
 ├─ README.md
 ├─ src
-│  ├─ api                                                          // File source for all the API fetches
+│  ├─ api                                           // File source for all the API fetches
 │  │  ├─ asoiafAPI
 │  │  │  ├─ bookFetches.ts
 │  │  │  ├─ characterFetches.ts
 │  │  │  └─ houseFetches.ts
 │  │  └─ quoteAPI
 │  │     └─ quoteAPI.ts
-│  ├─ components                                                   // All .ts files divided into components / feature
+│  ├─ components                                    // All .ts files divided into components / feature
 │  │  ├─ buttons
 │  │  │  ├─ favouriteButton
 │  │  │  │  ├─ createFavouriteIcon.ts
@@ -110,15 +110,15 @@ Scroll-of-Thrones
 │  │     ├─ renderCharacterInfo.ts
 │  │     ├─ renderSearchResults.ts
 │  │     └─ setupSearchContainer.ts
-│  ├─ constants                                                    // All constants
+│  ├─ constants                                     // All constants
 │  │  └─ constants.ts
-│  ├─ helpers                                                      // All helpers
+│  ├─ helpers                                       // All helpers
 │  │  └─ helpers.ts
-│  ├─ main.ts                                                      // Main .ts file with starting functions
-│  ├─ state                                                        // All state
+│  ├─ main.ts                                       // Main .ts file with starting functions
+│  ├─ state                                         // All state
 │  │  └─ state.ts
-│  ├─ style.scss                                                   // Main .scss file with imports
-│  ├─ styles                                                       // All styles
+│  ├─ style.scss                                    // Main .scss file with imports
+│  ├─ styles                                        // All styles
 │  │  ├─ components
 │  │  │  ├─ buttons
 │  │  │  │  ├─ favouriteButton.scss
@@ -142,7 +142,7 @@ Scroll-of-Thrones
 │  │  │  └─ fonts.scss
 │  │  └─ variables
 │  │     └─ var.scss
-│  ├─ types                                                        // All added types
+│  ├─ types                                         // All added types
 │  │  ├─ asoiafCharacterType.ts
 │  │  ├─ bookType.ts
 │  │  ├─ houseType.ts
