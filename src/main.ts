@@ -3,7 +3,7 @@ import './style.scss';
 import handleHouseClick from './components/houses/handleHouseClick';
 import handleQuoteClick from './components/quoteGame/handleQuoteClick';
 import handleSearchClick from './components/search/handleSearchClick';
-import { handleSoundClick } from './components/buttons/soundButton/soundButton';
+import { handleSoundClick } from './components/buttons/handleSoundClick/handleSoundClick';
 import handleCreditsClick from './components/credits/handleCreditsClick';
 import { handleTextQuoteClick } from './components/header/handleTextQuoteClick';
 import { handleHeaderClick } from './components/header/handleHeaderClick';

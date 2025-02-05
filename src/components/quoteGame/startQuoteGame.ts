@@ -1,7 +1,7 @@
 import { article, correctAudio, gameOverAudio } from "../../constants/constants";
 import { clearAsideAndAddBackground, clearArticle, playSound } from "../../helpers/helpers";
 import { totalQuoteGameScores, usedNames, usedQuotes } from "../../state/state";
-import { soundOn } from "../buttons/soundButton/soundButton";
+import { soundOn } from "../buttons/handleSoundClick/handleSoundClick";
 import { renderQuoteGame } from "./renderQuoteGame";
 
 export let quoteGameScore: number = 0;
