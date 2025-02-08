@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://jessicaagren.github.io/Scroll-of-Thrones/",
+  "homepage": "https://jessicaagren.github.io/Scroll-of-Thrones/public/",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
