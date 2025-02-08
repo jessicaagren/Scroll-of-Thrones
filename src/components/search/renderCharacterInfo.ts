@@ -48,7 +48,7 @@ export const renderCharacterInfo = async (character: AsoiafCharacterType) => {
         const matchingHouse = knownHouses.find(house => houseNames[0].includes(house));
         if (matchingHouse) {
             const houseSlug = matchingHouse.toLowerCase();
-            houseSVG = `<img src="./media/houses/${houseSlug}.svg" alt="${matchingHouse}" class="house-sigil">`;
+            houseSVG = `<img src="/media/houses/${houseSlug}.svg" alt="${matchingHouse}" class="house-sigil">`;
         }
     }
 

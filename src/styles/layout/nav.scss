@@ -2,7 +2,7 @@
 @use '../variables/var.scss';
 
 nav {
-    @include mixins.set-background-image('./media/backgrounds/leather-book.png', contain);
+    @include mixins.set-background-image('/media/backgrounds/leather-book.png', contain);
     @include mixins.background-drop-shadow();
     display: flex;
     // gap: 20px;
@@ -48,7 +48,7 @@ header {
 }
 @media (max-width: 900px) {
     nav {
-        @include mixins.set-background-image('./media/backgrounds/leather-book-landscape.png', contain);
+        @include mixins.set-background-image('/media/backgrounds/leather-book-landscape.png', contain);
         min-height: 200px;
     }
     #dragon-icon {
